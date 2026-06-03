@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-06-03 - Xiaohei handoff recovery rules
+
+- Added explicit recovery instructions for threads that started before `ian-xiaohei-illustrations` appeared in their available skill list.
+- Added a handoff prompt for agents: read the local Xiaohei `SKILL.md`, produce a shot list first, then generate body illustrations.
+- Added quality constraints to avoid English text, big titles, PPT layouts, and decorative-only Xiaohei figures.
+
 ## 2026-06-03 - Ian Xiaohei editorial illustration integration
 
 - Added `ian-xiaohei-illustrations` as an optional third-party editorial illustration skill with MIT License and NOTICE attribution.

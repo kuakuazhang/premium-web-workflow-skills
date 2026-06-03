@@ -123,6 +123,29 @@ Workflow:
 
 Rule of thumb: Xiaohei can make the body smarter and more memorable; it should not carry the website's premium first impression.
 
+### Xiaohei Handoff Rules
+
+When the user asks another thread to use Xiaohei illustrations, the agent may not instantly recognize the skill if that thread started before the skill was installed. In that case, do not fake the style with generic image generation.
+
+Use this exact recovery order:
+
+1. Check whether `ian-xiaohei-illustrations` appears in the available skill list.
+2. If it appears, read and follow its `SKILL.md`.
+3. If it does not appear but this package is installed locally, read:
+   `/Users/kukuazhang/.codex/skills/ian-xiaohei-illustrations/SKILL.md`
+4. If the local file is missing, ask the user to restart Codex or install the latest `premium-web-workflow-skills` package. Do not continue generating "Xiaohei-style" images from memory.
+
+Before generating images, output a short shot list:
+
+- which body section each illustration belongs to
+- the one claim/process/metaphor it explains
+- what Xiaohei is doing
+- which labels are allowed, if any
+
+For webpages, prefer no readable text inside the image unless the skill explicitly calls for short handwritten Chinese labels. If labels are needed, keep them very short and keep the real explanation as DOM text beside the image.
+
+If the first generated image contains English text, a big title, PPT layout, too many labels, or Xiaohei is only decorative, regenerate using the QA checklist from `ian-xiaohei-illustrations` instead of settling for the wrong asset.
+
 ## Default Workflow
 
 Use this order for new website or landing-page work:

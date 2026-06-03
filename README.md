@@ -77,6 +77,12 @@ For Chinese longform/knowledge illustrations:
 做一个中文知识型网页，首页按 Hero-first 做沉浸式首屏；中段如果有抽象判断或流程，请调用 ian-xiaohei-illustrations 生成 2-4 张小黑式正文解释插图，作为穿插内容，不要用它替代图表/按钮/交互组件。
 ```
 
+If another thread does not recognize Xiaohei immediately:
+
+```text
+请不要把“小黑式”当成普通风格词自己脑补。请先检查是否有 ian-xiaohei-illustrations skill；如果当前可用列表没有，但本机已安装，请直接读取 /Users/kukuazhang/.codex/skills/ian-xiaohei-illustrations/SKILL.md，按它的规则先做 shot list，再逐张生成。小黑图只用于正文解释插图，不处理首页 Hero；图片内不要出现英文、大标题或 PPT 流程图。
+```
+
 For custom Hero video:
 
 ```text
