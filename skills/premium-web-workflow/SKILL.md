@@ -95,6 +95,34 @@ Seedance is optional and paid. Never call it silently.
 - For background Hero loops, default to 720p, 4-6 seconds, `generate_audio=false`, and localize the result into the project assets.
 - Download generated videos promptly because API result URLs are temporary. Use local video paths in production or durable local pages.
 
+## Editorial Illustration Mode
+
+If the `ian-xiaohei-illustrations` skill is available, use it as an optional body-section illustration provider for Chinese longform, knowledge, report, podcast, methodology, and industry-explainer webpages.
+
+Use Ian Xiaohei illustrations for:
+
+- a middle-section visual break in a dense knowledge page
+- one abstract claim, workflow, contrast, state, or metaphor that needs a memorable explanation
+- Chinese article-style inline illustrations that keep the page from becoming a PPT/report stack
+- small editorial moments after the Hero, between diagrams, or near quotes/explainers
+
+Do not use it for:
+
+- the main premium Hero of a public website
+- commercial brand KV, product hero, Apple/Awwwards-style first viewport, or cinematic background
+- charts, tables, maps, KPI panels, filters, tabs, buttons, legends, timelines, or interactive diagrams
+- replacing DOM/SVG/canvas data objects with illustration images
+
+Workflow:
+
+1. First design the Hero using Hero-first rules.
+2. After the knowledge architecture is clear, identify 1-5 "cognitive anchors" that deserve editorial illustration.
+3. Route those anchors through `ian-xiaohei-illustrations` as separate 16:9 illustrations.
+4. Place the generated images as body illustrations with real DOM captions/explanations nearby.
+5. Keep attribution clear if redistributing the skill package: Ian Xiaohei is a third-party visual language by Ian / helloianneo.
+
+Rule of thumb: Xiaohei can make the body smarter and more memorable; it should not carry the website's premium first impression.
+
 ## Default Workflow
 
 Use this order for new website or landing-page work:
@@ -227,8 +255,9 @@ Use this mode when the user wants to "learn everything", understand an industry,
 1. Extract the main claims, terms, actors, business flows, timelines, tensions, and decision recipes from the source.
 2. Design a premium Hero from the distilled topic before implementing the body. Use generated or owned visual assets for atmosphere, subject, or metaphor unless the user explicitly asks for a plain internal report.
 3. Turn the knowledge structure into real UI objects: searchable index, chapter map, glossary, comparison matrix, SVG loops/networks/pyramids, tabs, filters, and drill-down panels.
-4. Use generated images only for non-textual support such as hero atmosphere, product/robot renders, textures, or editorial illustration. Do not put important claims, charts, tables, or quotes inside images.
-5. Browser-verify both desktop and mobile. For mobile, check `scrollWidth <= clientWidth`, first-viewport hero visibility, and that dense SVG/diagram sections remain readable or intentionally scrollable inside their own container.
+4. Add editorial illustration only for selected cognitive anchors. If using Ian Xiaohei, keep each illustration to one claim/process/metaphor and do not let it replace interactive knowledge objects.
+5. Use generated images only for non-textual support such as hero atmosphere, product/robot renders, textures, or editorial illustration. Do not put important claims, charts, tables, or quotes inside images.
+6. Browser-verify both desktop and mobile. For mobile, check `scrollWidth <= clientWidth`, first-viewport hero visibility, and that dense SVG/diagram sections remain readable or intentionally scrollable inside their own container.
 
 ## Existing Website / Company Homepage
 

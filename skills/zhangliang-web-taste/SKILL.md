@@ -30,6 +30,7 @@ The user prefers pages that feel like:
 - Apple/Awwwards-level restraint: clean, cinematic, spacious, sharp
 - meaningful visual assets: generated hero art, product/robot renders, editorial scenes, textures
 - real interactive knowledge objects: SVG diagrams, tabs, filters, matrices, searchable structure
+- body illustrations that add memory and rhythm without replacing real data/UI
 - motion that guides attention and gives the page continuity
 - mobile first viewport that still has identity, Hero, and visual presence
 
@@ -112,6 +113,7 @@ For long transcripts, research reports, or learning pages:
 - Start with information architecture: claims, actors, timelines, terms, decision recipes, tensions.
 - Then design the first viewport as a premium immersive Hero, using a generated or owned visual asset unless explicitly skipped.
 - Then make real interactive knowledge objects: SVG diagrams, matrices, tabs, glossary, chapter map, filters.
+- Use Ian Xiaohei-style illustrations only as body-section explanation breaks for selected cognitive anchors. They should make one idea memorable, not become the page's main design system.
 - Still make the Hero visually premium. A knowledge page can be useful without looking like a report cover.
 - Do not let the whole page become a sequence of equal cards. Use varied section rhythm.
 

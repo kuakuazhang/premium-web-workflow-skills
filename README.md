@@ -2,11 +2,12 @@
 
 Codex skills for building higher-craft webpages and visual dashboards instead of generic AI/PPT-like pages.
 
-This package contains three skills:
+This package contains four skills:
 
 - `premium-web-workflow`: the main workflow for website, landing page, homepage, Hero, redesign, animation, and visual frontend work.
 - `zhangliang-web-taste`: a personal taste layer that catches common AI-webpage/dashboard failures such as PPT-like hero sections, boxed right-side images, screenshot-collage sections, weak motion, static chart screenshots, and generic card grids.
 - `seedance-video-asset`: an optional video-asset workflow for generating custom Hero/background videos through Volcengine Seedance 2.0, with cost confirmation and secret-safety rules.
+- `ian-xiaohei-illustrations`: a third-party Ian Xiaohei article-illustration skill, included with attribution, for hand-drawn Chinese explanatory illustrations inside longform/knowledge webpages.
 
 ## What It Does
 
@@ -20,8 +21,9 @@ The workflow pushes Codex to:
 4. Keep important text, buttons, nav, tables, charts, and diagrams as real DOM/SVG/canvas instead of flattened screenshots.
 5. Use generated or local assets for Hero atmosphere, renders, textures, and visual scenes when appropriate.
 6. Use Seedance 2.0 only when a page needs a custom video asset, such as replacing a MotionSites demo video with the user's actual product/scene motion.
-7. Add meaningful motion and browser-verify desktop/mobile screenshots.
-8. Localize critical remote videos/images when a page will be kept or deployed, and add fallback visuals so a dead external URL does not break the Hero.
+7. Use Ian Xiaohei illustrations only for middle/body explanatory moments in Chinese knowledge pages, not as the main premium Hero system.
+8. Add meaningful motion and browser-verify desktop/mobile screenshots.
+9. Localize critical remote videos/images when a page will be kept or deployed, and add fallback visuals so a dead external URL does not break the Hero.
 
 ## Install
 
@@ -38,6 +40,7 @@ mkdir -p "$HOME/.codex/skills"
 cp -R skills/premium-web-workflow "$HOME/.codex/skills/"
 cp -R skills/zhangliang-web-taste "$HOME/.codex/skills/"
 cp -R skills/seedance-video-asset "$HOME/.codex/skills/"
+cp -R skills/ian-xiaohei-illustrations "$HOME/.codex/skills/"
 ```
 
 Restart Codex or open a new thread after installing so the skills appear in the available skill list.
@@ -66,6 +69,12 @@ For visual dashboards:
 
 ```text
 做一个可视化看板，默认激活 premium-web-workflow。如果是公开展示/行业地图，就先做 Hero-first 沉浸式首屏；如果是内部运营看板，就做成高级、密集、可交互的决策界面，不要做成 PPT 图表卡片。
+```
+
+For Chinese longform/knowledge illustrations:
+
+```text
+做一个中文知识型网页，首页按 Hero-first 做沉浸式首屏；中段如果有抽象判断或流程，请调用 ian-xiaohei-illustrations 生成 2-4 张小黑式正文解释插图，作为穿插内容，不要用它替代图表/按钮/交互组件。
 ```
 
 For custom Hero video:
@@ -98,6 +107,10 @@ Before calling a paid video API, Codex should estimate the likely cost and ask f
 ## Version History
 
 See `CHANGELOG.md`. GitHub also shows every committed iteration through the commit history.
+
+## Third-Party Attribution
+
+`ian-xiaohei-illustrations` is created by Ian / helloianneo and is included under the MIT License with NOTICE. The recurring "小黑" character is Ian's visual language for Chinese article illustrations. See `THIRD_PARTY_NOTICES.md`.
 
 ## Notes
 

@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-06-03 - Ian Xiaohei editorial illustration integration
+
+- Added `ian-xiaohei-illustrations` as an optional third-party editorial illustration skill with MIT License and NOTICE attribution.
+- Added Editorial Illustration Mode to `premium-web-workflow` for Chinese longform, knowledge, report, and podcast pages.
+- Clarified that Xiaohei-style illustrations are for middle/body explanatory moments, not the main premium Hero treatment.
+- Added `THIRD_PARTY_NOTICES.md`.
+
 ## 2026-06-03 - Dashboard trigger coverage
 
 - Added default trigger coverage for 可视化看板, 数据看板, 可视化大屏, 行业地图, 行业可视化, 报告可视化, dashboard, and data visualization.
