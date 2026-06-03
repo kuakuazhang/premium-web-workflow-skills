@@ -12,15 +12,16 @@ This package contains three skills:
 
 The workflow pushes Codex to:
 
-1. Select or derive a strong visual direction before writing code.
-2. Use MotionSites in two layers:
+1. Treat the Hero/first viewport as a separate deliverable before writing the rest of the page.
+2. Generate or source a strong Hero visual asset when no premium asset exists yet.
+3. Use MotionSites in two layers:
    - **Direct Reuse Mode**: choose a design on `https://motionsites.ai/`, paste the official `Copy` prompt, reproduce it first, then adapt.
    - **Reference Mode**: if no prompt is selected, borrow only design mechanics such as Hero composition, motion, image role, glass effects, and section rhythm.
-3. Keep important text, buttons, nav, tables, charts, and diagrams as real DOM/SVG/canvas instead of flattened screenshots.
-4. Use generated or local assets for Hero atmosphere, renders, textures, and visual scenes when appropriate.
-5. Use Seedance 2.0 only when a page needs a custom video asset, such as replacing a MotionSites demo video with the user's actual product/scene motion.
-6. Add meaningful motion and browser-verify desktop/mobile screenshots.
-7. Localize critical remote videos/images when a page will be kept or deployed, and add fallback visuals so a dead external URL does not break the Hero.
+4. Keep important text, buttons, nav, tables, charts, and diagrams as real DOM/SVG/canvas instead of flattened screenshots.
+5. Use generated or local assets for Hero atmosphere, renders, textures, and visual scenes when appropriate.
+6. Use Seedance 2.0 only when a page needs a custom video asset, such as replacing a MotionSites demo video with the user's actual product/scene motion.
+7. Add meaningful motion and browser-verify desktop/mobile screenshots.
+8. Localize critical remote videos/images when a page will be kept or deployed, and add fallback visuals so a dead external URL does not break the Hero.
 
 ## Install
 
@@ -58,7 +59,7 @@ For page review:
 For normal webpage creation:
 
 ```text
-做一个公司官网首页，按 premium-web-workflow 默认流程走。如果能找到合适的 MotionSites 直接复用模板，先让我选；如果没有，就进入参考模式。
+做一个公司官网首页，按 premium-web-workflow 默认流程走。先做沉浸式 Hero 方案和视觉资产，不要先排文字内容。如果能找到合适的 MotionSites 直接复用模板，先让我选；如果没有，就进入参考模式。
 ```
 
 For custom Hero video:

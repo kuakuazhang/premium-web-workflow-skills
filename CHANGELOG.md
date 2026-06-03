@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-06-03 - Hero-first default workflow
+
+- Made immersive Hero design a required default gate for polished webpages.
+- Added the rule that agents should generate or source a bespoke Hero visual asset before implementing the rest of the page when no strong asset exists.
+- Strengthened knowledge/report/industry page guidance so these pages still get a premium first viewport instead of a report-title slide.
+- Added exceptions for internal dashboards, wireframes, pure documentation pages, small fixes, and fast prototypes.
+
 ## 2026-06-03 - Seedance video asset workflow
 
 - Added `seedance-video-asset` as an optional video generation workflow for premium Hero/background video assets.

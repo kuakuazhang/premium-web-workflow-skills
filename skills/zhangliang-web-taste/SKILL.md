@@ -25,6 +25,7 @@ The user prefers pages that feel like:
 
 - a real website with a strong first-viewport signal
 - immersive Hero composition where image, type, and space belong together
+- a generated or owned Hero visual asset when no strong asset exists yet
 - Apple/Awwwards-level restraint: clean, cinematic, spacious, sharp
 - meaningful visual assets: generated hero art, product/robot renders, editorial scenes, textures
 - real interactive knowledge objects: SVG diagrams, tabs, filters, matrices, searchable structure
@@ -57,6 +58,8 @@ Good output is not "this resembles a MotionSites template." Good output is "this
 
 Hero is the highest-risk area. If it fails, the whole page feels like PPT.
 
+Default assumption: every polished webpage starts with a real Hero strategy. If the page is not explicitly an internal dashboard, wireframe, or pure documentation page, the agent should first create or source the Hero's visual foundation before building the rest of the page.
+
 Prefer:
 
 - full-bleed or near full-bleed image as a background plate, spatial layer, or immersive scene
@@ -68,6 +71,7 @@ Prefer:
 
 Avoid by default:
 
+- starting from text sections and adding the Hero asset as an afterthought
 - a large rounded card wrapping the Hero
 - left-text/right-image composition unless clearly strongest
 - an image trapped inside a right-side card
@@ -76,6 +80,8 @@ Avoid by default:
 - hero text baked into an image
 
 Hero visual assets may be generated with image generation. The asset should not contain readable UI text, buttons, labels, tables, or important claims.
+
+If no provided product/image/video asset exists, generate a bespoke Hero visual asset or reference image. For company overview, industry map, research summary, or "four companies quick view" pages, this is especially important: the first viewport should feel like an immersive website, not a report title slide.
 
 Hero video assets may be generated when they add something a still image cannot: product motion, spatial depth, cinematic atmosphere, or a loop that makes the page feel alive. Background Hero videos should usually be muted, short, locally hosted, and supported by a poster/fallback.
 
@@ -103,6 +109,7 @@ Rule of thumb: if the user should click it, copy it, search it, filter it, or le
 For long transcripts, research reports, or learning pages:
 
 - Start with information architecture: claims, actors, timelines, terms, decision recipes, tensions.
+- Then design the first viewport as a premium immersive Hero, using a generated or owned visual asset unless explicitly skipped.
 - Then make real interactive knowledge objects: SVG diagrams, matrices, tabs, glossary, chapter map, filters.
 - Still make the Hero visually premium. A knowledge page can be useful without looking like a report cover.
 - Do not let the whole page become a sequence of equal cards. Use varied section rhythm.

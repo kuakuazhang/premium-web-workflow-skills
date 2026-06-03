@@ -1,6 +1,6 @@
 ---
 name: premium-web-workflow
-description: Default global workflow for making beautiful webpages. MUST use whenever the user says 做网页, 设计网页, 做官网, 公司官网, landing page, 落地页, 产品页, 首页, 页面设计, 网页改版, 网页太丑, 不像官网, 像PPT, 加动效, 加交互, 高级感, 苹果风, Awwwards, or asks to design/build/redesign/polish/critique/animate any website or visual frontend page. Enforces a high-craft workflow: reusable premium references when useful, section references, faithful implementation, optional generated video assets, GSAP motion, then browser verification. Avoid static PPT-like pages.
+description: Default global workflow for making beautiful webpages. MUST use whenever the user says 做网页, 设计网页, 做官网, 公司官网, landing page, 落地页, 产品页, 首页, 页面设计, 网页改版, 网页太丑, 不像官网, 像PPT, 加动效, 加交互, 高级感, 苹果风, Awwwards, or asks to design/build/redesign/polish/critique/animate any website or visual frontend page. Enforces a hero-first high-craft workflow: immersive first viewport, generated or owned visual asset, reusable premium references when useful, section references, faithful implementation, optional generated video assets, GSAP motion, then browser verification. Avoid static PPT-like pages.
 ---
 
 # Premium Web Workflow V2
@@ -15,6 +15,8 @@ Treat webpage work as a design-production pipeline, not a text-to-HTML task:
 
 ```
 brief / content
+  -> Hero-first immersion plan
+  -> bespoke hero visual asset or motion scene
   -> section-level visual references
   -> faithful implementation
   -> GSAP motion layer
@@ -27,6 +29,29 @@ Be proactive. If the user asks for a webpage and does not specify a stack, use t
 ## Personal Taste Overlay
 
 If the `zhangliang-web-taste` skill is available, use it together with this workflow for the user's webpage design, redesign, critique, and review tasks. It captures the user's specific anti-PPT taste, Hero expectations, image-asset boundary, and review criteria.
+
+## Hero-First Immersion Gate
+
+For any public-facing website, company page, landing page, product page, homepage, industry overview, or polished visual report, treat the first viewport as a separate deliverable. Do not start implementation by laying out all text sections and then adding a decorative image later.
+
+Before coding the page, define the Hero's visual strategy and choose at least one primary visual asset path:
+
+- generated Hero image: cinematic background plate, product/robot/object render, editorial scene, spatial metaphor, texture, or environment
+- owned video: localized MotionSites video, product footage, generated Seedance loop, or other durable background video
+- code-native scene: canvas/WebGL/SVG/GSAP composition when the subject is better as an interactive or animated system
+- real provided asset: product photo, customer scene, brand image, or source material supplied by the user
+
+If no strong asset exists and the page is meant to look premium, generate a bespoke Hero reference/asset before implementing the Hero. A title, subtitle, two CTAs, and a card grid is not enough.
+
+The Hero must have:
+
+- one clear visual subject or immersive spatial atmosphere
+- real HTML headline, copy, nav, CTA, and key labels layered into the scene
+- composition that feels like a website first viewport, not a report cover or slide
+- desktop and mobile first-viewport verification
+- a hint of the next section when appropriate
+
+Exceptions: skip the Hero-first visual asset only when the user explicitly asks for an internal dashboard, wireframe, pure documentation page, small code fix, accessibility-only fix, or very fast prototype. Even then, avoid PPT-like title blocks when possible.
 
 ## MotionSites Two-Layer Layer
 
@@ -57,32 +82,39 @@ Seedance is optional and paid. Never call it silently.
 
 Use this order for new website or landing-page work:
 
-1. **Reusable Design Selection**
+1. **Hero-First Immersion Plan**
+   - Define what the first viewport should make the user feel and understand within 3 seconds.
+   - Choose the Hero type: full-bleed visual scene, video background, spatial product/object stage, animated canvas/WebGL/SVG scene, editorial image-led Hero, or MotionSites direct reuse.
+   - If no usable Hero asset exists, generate or source one before building the page.
+   - If the page is a research/industry/company overview, turn the topic into a visual metaphor or concrete subject. Do not default to a plain report title.
+
+2. **Reusable Design Selection**
    - If the user asks for MotionSites/direct reuse, or the project needs a premium Hero and no visual direction exists, first help the user select a reusable design.
    - Preferred path: open or provide `https://motionsites.ai/`, let the user choose a design, and ask them to paste the official `Copy` prompt.
    - If the user already pasted a complete prompt, do not ask them to reselect. Treat that prompt as the design spec.
    - If the user cannot find a suitable design, switch to Reference Pattern Selection.
 
-2. **Reference Pattern Selection**
+3. **Reference Pattern Selection**
    - If no reusable prompt is selected, choose 1-3 reference patterns from high-end design references, MotionSites-style patterns, or the user's provided references.
    - Summarize the chosen pattern in implementation terms: layout, image role, type scale, motion, interaction, and responsive behavior.
    - Do not copy prompt text verbatim into the final page brief. Distill and adapt it.
 
-3. **Video Asset Decision**
+4. **Video Asset Decision**
    - Decide whether the Hero or a key section needs a real video asset.
    - If a MotionSites demo video already gives the right composition and motion but the subject is wrong, use it as a motion/size reference and generate or source a replacement asset.
    - If a still image is enough, do not use paid video generation.
    - If Seedance is needed, route through `seedance-video-asset` and stop for cost confirmation before the paid call.
 
-4. **Visual Direction**
+5. **Visual Direction**
    - Use `imagegen-frontend-web` first.
+   - Generate the Hero reference/asset first unless Direct Reuse Mode already provides a strong Hero.
    - Generate one separate horizontal reference image per section.
    - Default to 6 sections for a landing page and 8 sections for a full website template unless the user gives a count.
    - Do not compress the whole page into one tall mockup.
    - The output should establish the aesthetic before code begins: hero composition, imagery, typography, palette, spacing, and section rhythm.
    - In Direct Reuse Mode, skip new generated reference images unless the copied prompt lacks a key visual asset or the user asks for adaptation. The copied prompt itself is the reference.
 
-5. **Image-to-Code Implementation**
+6. **Image-to-Code Implementation**
    - Use `image-to-code` after the reference images exist.
    - Recreate layout, hierarchy, typography, palette, spacing, imagery, and material qualities as faithfully as possible.
    - Avoid drifting into generic card grids, centered dark heroes, purple gradients, oversized pills, or PPT-like content blocks.
@@ -152,7 +184,7 @@ When a section reference image exists, rebuild it by decomposition. Do not guess
    - Compare against the reference image for composition, text scale, spacing, contrast, and component fidelity.
    - If the implementation only looks similar because it uses a full-section `<img>`, it fails.
 
-6. **Motion Layer**
+7. **Motion Layer**
    - Use GSAP skills when animation, scroll narrative, parallax, reveal effects, pinned sections, text motion, SVG motion, or polished micro-interactions are needed.
    - Prefer:
      - `gsap-timeline` for choreographed sequences.
@@ -162,7 +194,7 @@ When a section reference image exists, rebuild it by decomposition. Do not guess
    - Animate transform and opacity first. Avoid animating layout properties like width, height, top, left, margin, and padding unless there is a strong reason.
    - Motion should make the page feel alive without turning it into a demo reel. Use it to guide attention, create continuity, and support the story.
 
-7. **Browser Verification**
+8. **Browser Verification**
    - Run the site locally when needed.
    - Open it in a browser and check desktop and mobile viewports.
    - Verify the page is not blank, the hero is visible, text does not overlap, animations run smoothly, and the result resembles the reference images.
@@ -176,9 +208,10 @@ When the source is a long transcript, report, research note, or industry analysi
 Use this mode when the user wants to "learn everything", understand an industry, or preserve many details from source material:
 
 1. Extract the main claims, terms, actors, business flows, timelines, tensions, and decision recipes from the source.
-2. Turn those into real UI objects: searchable index, chapter map, glossary, comparison matrix, SVG loops/networks/pyramids, tabs, filters, and drill-down panels.
-3. Use generated images only for non-textual support such as hero atmosphere, product/robot renders, textures, or editorial illustration. Do not put important claims, charts, tables, or quotes inside images.
-4. Browser-verify both desktop and mobile. For mobile, check `scrollWidth <= clientWidth`, first-viewport hero visibility, and that dense SVG/diagram sections remain readable or intentionally scrollable inside their own container.
+2. Design a premium Hero from the distilled topic before implementing the body. Use generated or owned visual assets for atmosphere, subject, or metaphor unless the user explicitly asks for a plain internal report.
+3. Turn the knowledge structure into real UI objects: searchable index, chapter map, glossary, comparison matrix, SVG loops/networks/pyramids, tabs, filters, and drill-down panels.
+4. Use generated images only for non-textual support such as hero atmosphere, product/robot renders, textures, or editorial illustration. Do not put important claims, charts, tables, or quotes inside images.
+5. Browser-verify both desktop and mobile. For mobile, check `scrollWidth <= clientWidth`, first-viewport hero visibility, and that dense SVG/diagram sections remain readable or intentionally scrollable inside their own container.
 
 ## Existing Website / Company Homepage
 
@@ -227,6 +260,7 @@ Do not use fast mode by default for company homepages, launch pages, premium mar
 A delivered page should feel like a real website, not a slide deck. It needs:
 
 - A strong first-viewport signal: meaningful hero image, visual system, motion scene, product/browser frame, or cinematic composition.
+- A Hero that was intentionally designed before the body, not a title block with a late decorative asset.
 - Clear typographic hierarchy and mature spacing.
 - Real DOM content. Text, buttons, cards, charts, filters, tabs, timelines, and diagrams must be rebuilt as frontend elements rather than flattened into screenshots.
 - A cohesive palette with restraint.
