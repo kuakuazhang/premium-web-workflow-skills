@@ -1,6 +1,6 @@
 ---
 name: zhangliang-web-taste
-description: Use when the user asks to build, redesign, critique, review, polish, or improve a webpage and cares about 高级感, 顶级网站, Hero, 苹果风, Awwwards, 不像PPT, 做网页, 设计网页, 做官网, 网页评审, or 张亮网页审美.
+description: Use when the user asks to build, redesign, critique, review, polish, or improve a webpage, visual dashboard, 可视化看板, 数据看板, 行业地图, 报告可视化, or cares about 高级感, 顶级网站, Hero, 苹果风, Awwwards, 不像PPT, 做网页, 设计网页, 做官网, 网页评审, or 张亮网页审美.
 ---
 
 # Zhangliang Web Taste
@@ -26,6 +26,7 @@ The user prefers pages that feel like:
 - a real website with a strong first-viewport signal
 - immersive Hero composition where image, type, and space belong together
 - a generated or owned Hero visual asset when no strong asset exists yet
+- visual dashboards that feel like designed decision surfaces, not PPT charts pasted into cards
 - Apple/Awwwards-level restraint: clean, cinematic, spacious, sharp
 - meaningful visual assets: generated hero art, product/robot renders, editorial scenes, textures
 - real interactive knowledge objects: SVG diagrams, tabs, filters, matrices, searchable structure
@@ -113,6 +114,16 @@ For long transcripts, research reports, or learning pages:
 - Then make real interactive knowledge objects: SVG diagrams, matrices, tabs, glossary, chapter map, filters.
 - Still make the Hero visually premium. A knowledge page can be useful without looking like a report cover.
 - Do not let the whole page become a sequence of equal cards. Use varied section rhythm.
+
+## Dashboard Taste
+
+For 可视化看板 / 数据看板:
+
+- public-facing or presentation dashboards should still open with a premium visual Hero or narrative first viewport
+- internal operational dashboards should be dense, calm, and highly usable rather than cinematic
+- charts, filters, tables, legends, maps, and KPI cards should be real interactive UI
+- avoid static chart screenshots, decorative metric cards, and PPT-like data panels
+- use motion to reveal relationships, guide scanning, and connect views, not to distract from the data
 
 ## Review Mode
 

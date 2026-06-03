@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-06-03 - Dashboard trigger coverage
+
+- Added default trigger coverage for 可视化看板, 数据看板, 可视化大屏, 行业地图, 行业可视化, 报告可视化, dashboard, and data visualization.
+- Added Visual Dashboard Mode with separate rules for public/presentation dashboards and internal/operational dashboards.
+- Updated taste rules so dashboards avoid static chart screenshots and PPT-like data panels.
+
 ## 2026-06-03 - Hero-first default workflow
 
 - Made immersive Hero design a required default gate for polished webpages.

@@ -1,11 +1,11 @@
 # Premium Web Workflow Skills
 
-Codex skills for building higher-craft webpages instead of generic AI/PPT-like pages.
+Codex skills for building higher-craft webpages and visual dashboards instead of generic AI/PPT-like pages.
 
 This package contains three skills:
 
 - `premium-web-workflow`: the main workflow for website, landing page, homepage, Hero, redesign, animation, and visual frontend work.
-- `zhangliang-web-taste`: a personal taste layer that catches common AI-webpage failures such as PPT-like hero sections, boxed right-side images, screenshot-collage sections, weak motion, and generic card grids.
+- `zhangliang-web-taste`: a personal taste layer that catches common AI-webpage/dashboard failures such as PPT-like hero sections, boxed right-side images, screenshot-collage sections, weak motion, static chart screenshots, and generic card grids.
 - `seedance-video-asset`: an optional video-asset workflow for generating custom Hero/background videos through Volcengine Seedance 2.0, with cost confirmation and secret-safety rules.
 
 ## What It Does
@@ -60,6 +60,12 @@ For normal webpage creation:
 
 ```text
 做一个公司官网首页，按 premium-web-workflow 默认流程走。先做沉浸式 Hero 方案和视觉资产，不要先排文字内容。如果能找到合适的 MotionSites 直接复用模板，先让我选；如果没有，就进入参考模式。
+```
+
+For visual dashboards:
+
+```text
+做一个可视化看板，默认激活 premium-web-workflow。如果是公开展示/行业地图，就先做 Hero-first 沉浸式首屏；如果是内部运营看板，就做成高级、密集、可交互的决策界面，不要做成 PPT 图表卡片。
 ```
 
 For custom Hero video:

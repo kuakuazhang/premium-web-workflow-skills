@@ -1,11 +1,11 @@
 ---
 name: premium-web-workflow
-description: Default global workflow for making beautiful webpages. MUST use whenever the user says 做网页, 设计网页, 做官网, 公司官网, landing page, 落地页, 产品页, 首页, 页面设计, 网页改版, 网页太丑, 不像官网, 像PPT, 加动效, 加交互, 高级感, 苹果风, Awwwards, or asks to design/build/redesign/polish/critique/animate any website or visual frontend page. Enforces a hero-first high-craft workflow: immersive first viewport, generated or owned visual asset, reusable premium references when useful, section references, faithful implementation, optional generated video assets, GSAP motion, then browser verification. Avoid static PPT-like pages.
+description: Default global workflow for making beautiful webpages and visual dashboards. MUST use whenever the user says 做网页, 设计网页, 做官网, 公司官网, landing page, 落地页, 产品页, 首页, 页面设计, 网页改版, 可视化看板, 数据看板, 可视化大屏, 行业地图, 行业可视化, 报告可视化, dashboard, data visualization, 网页太丑, 不像官网, 像PPT, 加动效, 加交互, 高级感, 苹果风, Awwwards, or asks to design/build/redesign/polish/critique/animate any website, visual dashboard, or visual frontend page. Enforces a hero-first high-craft workflow for public/polished pages, strong dashboard composition for internal tools, generated or owned visual assets when needed, reusable premium references, faithful implementation, optional generated video assets, GSAP motion, then browser verification. Avoid static PPT-like pages.
 ---
 
 # Premium Web Workflow V2
 
-This is the user's default webpage-making workflow. If the user casually says "做网页", "设计一个官网", "做个 landing page", "这个页面太像 PPT", or anything similar, use this skill automatically. The user should not need to remember or type the skill name.
+This is the user's default webpage and visual-dashboard workflow. If the user casually says "做网页", "设计一个官网", "做个 landing page", "做一个可视化看板", "做数据看板", "做行业地图", "这个页面太像 PPT", or anything similar, use this skill automatically. The user should not need to remember or type the skill name.
 
 The purpose is to stop generic AI webpages. For visually important web work, do not jump straight from content to static HTML. Create a strong visual target first, implement against that target, add motion, and verify the result.
 
@@ -52,6 +52,23 @@ The Hero must have:
 - a hint of the next section when appropriate
 
 Exceptions: skip the Hero-first visual asset only when the user explicitly asks for an internal dashboard, wireframe, pure documentation page, small code fix, accessibility-only fix, or very fast prototype. Even then, avoid PPT-like title blocks when possible.
+
+## Visual Dashboard Mode
+
+Use this mode when the user asks for a 可视化看板, 数据看板, 可视化大屏, 行业地图, 行业可视化, 报告可视化, dashboard, or data visualization page.
+
+First classify the dashboard:
+
+- **Public / presentation dashboard**: industry map, company comparison, investor/research visual report, public-facing data story, or page meant to feel like a website. Use Hero-first immersion. The first viewport should have a strong visual subject, narrative title, and one clear entry path into the data.
+- **Internal / operational dashboard**: repeated-use monitoring, CRM/ops/product metrics, admin workflow, or dense decision tool. Do not force a cinematic Hero. Instead, make the first viewport a premium command surface with strong information hierarchy, filters, KPI summary, and real interactive controls.
+
+For both types:
+
+- charts, filters, tabs, legends, tables, timelines, maps, and cards must be real DOM/SVG/canvas, not screenshot images
+- use generated images only for non-textual atmosphere, section art, product/industry metaphor, or background plates
+- include hover/focus/active states for controls
+- verify desktop and mobile or define an intentional wide-screen-only layout for true data walls
+- avoid PPT-like cover sections followed by static cards
 
 ## MotionSites Two-Layer Layer
 
