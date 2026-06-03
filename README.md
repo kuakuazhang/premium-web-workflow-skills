@@ -2,10 +2,11 @@
 
 Codex skills for building higher-craft webpages instead of generic AI/PPT-like pages.
 
-This package contains two skills:
+This package contains three skills:
 
 - `premium-web-workflow`: the main workflow for website, landing page, homepage, Hero, redesign, animation, and visual frontend work.
 - `zhangliang-web-taste`: a personal taste layer that catches common AI-webpage failures such as PPT-like hero sections, boxed right-side images, screenshot-collage sections, weak motion, and generic card grids.
+- `seedance-video-asset`: an optional video-asset workflow for generating custom Hero/background videos through Volcengine Seedance 2.0, with cost confirmation and secret-safety rules.
 
 ## What It Does
 
@@ -17,8 +18,9 @@ The workflow pushes Codex to:
    - **Reference Mode**: if no prompt is selected, borrow only design mechanics such as Hero composition, motion, image role, glass effects, and section rhythm.
 3. Keep important text, buttons, nav, tables, charts, and diagrams as real DOM/SVG/canvas instead of flattened screenshots.
 4. Use generated or local assets for Hero atmosphere, renders, textures, and visual scenes when appropriate.
-5. Add meaningful motion and browser-verify desktop/mobile screenshots.
-6. Localize critical remote videos/images when a page will be kept or deployed, and add fallback visuals so a dead external URL does not break the Hero.
+5. Use Seedance 2.0 only when a page needs a custom video asset, such as replacing a MotionSites demo video with the user's actual product/scene motion.
+6. Add meaningful motion and browser-verify desktop/mobile screenshots.
+7. Localize critical remote videos/images when a page will be kept or deployed, and add fallback visuals so a dead external URL does not break the Hero.
 
 ## Install
 
@@ -34,6 +36,7 @@ Manual install:
 mkdir -p "$HOME/.codex/skills"
 cp -R skills/premium-web-workflow "$HOME/.codex/skills/"
 cp -R skills/zhangliang-web-taste "$HOME/.codex/skills/"
+cp -R skills/seedance-video-asset "$HOME/.codex/skills/"
 ```
 
 Restart Codex or open a new thread after installing so the skills appear in the available skill list.
@@ -58,6 +61,12 @@ For normal webpage creation:
 做一个公司官网首页，按 premium-web-workflow 默认流程走。如果能找到合适的 MotionSites 直接复用模板，先让我选；如果没有，就进入参考模式。
 ```
 
+For custom Hero video:
+
+```text
+这个 Hero 的 MotionSites 构图和视频尺寸我喜欢，但视频内容不是我的产品。请按 seedance-video-asset 流程，先估价并确认，再生成一个同样节奏/比例/循环方式的本地视频资产替换进去。
+```
+
 ## Important Asset Rule
 
 MotionSites prompts often include remote video/image URLs. For experiments, it is acceptable to use them first. For real usage:
@@ -67,7 +76,22 @@ MotionSites prompts often include remote video/image URLs. For experiments, it i
 - add a fallback poster, generated static frame, CSS background, or gradient scene;
 - replace assets whose license or persistence is uncertain.
 
+## Secret And Cost Rules
+
+Never commit API keys to this repository or any skill file.
+
+Seedance access should come from one of these places only:
+
+- a local environment variable such as `ARK_API_KEY`;
+- a local `.env` file that is ignored by Git;
+- a private backend/proxy that owns the key and enforces team budgets.
+
+Before calling a paid video API, Codex should estimate the likely cost and ask for explicit confirmation. For background Hero loops, prefer `generate_audio=false`, 720p, and 4-6 seconds unless the user asks for a final 1080p asset.
+
+## Version History
+
+See `CHANGELOG.md`. GitHub also shows every committed iteration through the commit history.
+
 ## Notes
 
 These skills are workflow and taste instructions. They work best when Codex also has access to frontend tooling, browser screenshots, image generation, and animation libraries such as GSAP or Framer Motion.
-

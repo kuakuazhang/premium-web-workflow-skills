@@ -39,6 +39,7 @@ The preferred operating model has two layers:
 
 - **Direct reuse**: the user chooses a MotionSites design and pastes the official copied prompt. Reproduce it closely first, screenshot-verify it, then adapt.
 - **Reference mode**: if the user does not choose a prompt, borrow only the design mechanics and create a custom page.
+- **Video replacement**: if the MotionSites composition and video treatment are right but the demo animation is wrong, keep the mechanics and replace only the video asset.
 
 When a MotionSites prompt or similar premium prompt is available:
 
@@ -48,6 +49,7 @@ When a MotionSites prompt or similar premium prompt is available:
 - Do not use paid-only or DMCA-disabled prompt repositories. Use only official visible copy, user-provided prompt text, or high-level pattern summaries.
 - For direct reuse, do not start by "making it better." First make it match the copied prompt, then improve or adapt only after the baseline is visible.
 - For durable pages, localize critical remote images/videos when licensing permits, and add fallback visuals so the Hero does not collapse if a URL dies.
+- If replacing a demo video with Seedance or another generator, preserve the original video's size, crop, duration, loop rhythm, motion intensity, and text-safe area. Do not throw away a good composition just because the asset changed.
 
 Good output is not "this resembles a MotionSites template." Good output is "this uses MotionSites-level craft for the user's actual page."
 
@@ -60,6 +62,7 @@ Prefer:
 - full-bleed or near full-bleed image as a background plate, spatial layer, or immersive scene
 - real HTML title, copy, CTA, and key labels over or within the visual scene
 - one strong visual subject with depth, lighting, and negative space
+- high-quality video background when motion is central to the first impression
 - lightweight floating top navigation that does not dominate the first viewport
 - a hint of the next section visible below the fold
 
@@ -73,6 +76,8 @@ Avoid by default:
 - hero text baked into an image
 
 Hero visual assets may be generated with image generation. The asset should not contain readable UI text, buttons, labels, tables, or important claims.
+
+Hero video assets may be generated when they add something a still image cannot: product motion, spatial depth, cinematic atmosphere, or a loop that makes the page feel alive. Background Hero videos should usually be muted, short, locally hosted, and supported by a poster/fallback.
 
 ## Image Asset Boundary
 

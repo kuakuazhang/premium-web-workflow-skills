@@ -1,9 +1,9 @@
 ---
 name: premium-web-workflow
-description: Default global workflow for making beautiful webpages. MUST use whenever the user says 做网页, 设计网页, 做官网, 公司官网, landing page, 落地页, 产品页, 首页, 页面设计, 网页改版, 网页太丑, 不像官网, 像PPT, 加动效, 加交互, 高级感, 苹果风, Awwwards, or asks to design/build/redesign/polish/critique/animate any website or visual frontend page. Enforces an image-first high-craft workflow: generate section reference images with imagegen-frontend-web, implement faithfully with image-to-code, add GSAP motion, then verify in browser. Avoid static PPT-like pages.
+description: Default global workflow for making beautiful webpages. MUST use whenever the user says 做网页, 设计网页, 做官网, 公司官网, landing page, 落地页, 产品页, 首页, 页面设计, 网页改版, 网页太丑, 不像官网, 像PPT, 加动效, 加交互, 高级感, 苹果风, Awwwards, or asks to design/build/redesign/polish/critique/animate any website or visual frontend page. Enforces a high-craft workflow: reusable premium references when useful, section references, faithful implementation, optional generated video assets, GSAP motion, then browser verification. Avoid static PPT-like pages.
 ---
 
-# Premium Web Workflow V1
+# Premium Web Workflow V2
 
 This is the user's default webpage-making workflow. If the user casually says "做网页", "设计一个官网", "做个 landing page", "这个页面太像 PPT", or anything similar, use this skill automatically. The user should not need to remember or type the skill name.
 
@@ -38,6 +38,20 @@ When the visual direction is weak, the user asks for a cooler Hero, or the page 
 - Use MotionSites prompts only when they are visible through the official site `Copy` button or explicitly provided by the user. Do not use DMCA-disabled repositories, mirrors, or paid-only prompt content that the user has not provided.
 - For direct reuse, preserve the original design mechanics first; only after the page is running and screenshot-verified should you replace brand, copy, colors, assets, or section content.
 - For production use, localize critical remote assets such as video, images, model files, and fonts when allowed; add fallback poster/CSS backgrounds so the page does not black-screen if an external URL fails.
+- If a MotionSites page has the right visual effect but the wrong demo video content, keep the page mechanics and replace only the video asset. Preserve the original video's aspect ratio, crop, duration, loop behavior, animation rhythm, overlay treatment, and text-safe areas.
+
+## Optional Video Asset Provider
+
+If the `seedance-video-asset` skill is available, use it when the webpage needs a custom generated video asset, especially for a premium Hero background or when replacing a MotionSites demo video with the user's own product/scene animation.
+
+Seedance is optional and paid. Never call it silently.
+
+- Use ChatGPT/image generation for static bitmap assets.
+- Use Seedance only when motion is materially better than a still image.
+- Before calling Seedance, state the intended model, resolution, duration, ratio, and a rough cost estimate, then ask for explicit confirmation.
+- Never place API keys in the skill, project repository, GitHub repo, README, or committed code. Read `ARK_API_KEY` only from the local environment, ignored `.env`, or a private backend/proxy.
+- For background Hero loops, default to 720p, 4-6 seconds, `generate_audio=false`, and localize the result into the project assets.
+- Download generated videos promptly because API result URLs are temporary. Use local video paths in production or durable local pages.
 
 ## Default Workflow
 
@@ -54,7 +68,13 @@ Use this order for new website or landing-page work:
    - Summarize the chosen pattern in implementation terms: layout, image role, type scale, motion, interaction, and responsive behavior.
    - Do not copy prompt text verbatim into the final page brief. Distill and adapt it.
 
-3. **Visual Direction**
+3. **Video Asset Decision**
+   - Decide whether the Hero or a key section needs a real video asset.
+   - If a MotionSites demo video already gives the right composition and motion but the subject is wrong, use it as a motion/size reference and generate or source a replacement asset.
+   - If a still image is enough, do not use paid video generation.
+   - If Seedance is needed, route through `seedance-video-asset` and stop for cost confirmation before the paid call.
+
+4. **Visual Direction**
    - Use `imagegen-frontend-web` first.
    - Generate one separate horizontal reference image per section.
    - Default to 6 sections for a landing page and 8 sections for a full website template unless the user gives a count.
@@ -62,7 +82,7 @@ Use this order for new website or landing-page work:
    - The output should establish the aesthetic before code begins: hero composition, imagery, typography, palette, spacing, and section rhythm.
    - In Direct Reuse Mode, skip new generated reference images unless the copied prompt lacks a key visual asset or the user asks for adaptation. The copied prompt itself is the reference.
 
-4. **Image-to-Code Implementation**
+5. **Image-to-Code Implementation**
    - Use `image-to-code` after the reference images exist.
    - Recreate layout, hierarchy, typography, palette, spacing, imagery, and material qualities as faithfully as possible.
    - Avoid drifting into generic card grids, centered dark heroes, purple gradients, oversized pills, or PPT-like content blocks.
@@ -132,7 +152,7 @@ When a section reference image exists, rebuild it by decomposition. Do not guess
    - Compare against the reference image for composition, text scale, spacing, contrast, and component fidelity.
    - If the implementation only looks similar because it uses a full-section `<img>`, it fails.
 
-5. **Motion Layer**
+6. **Motion Layer**
    - Use GSAP skills when animation, scroll narrative, parallax, reveal effects, pinned sections, text motion, SVG motion, or polished micro-interactions are needed.
    - Prefer:
      - `gsap-timeline` for choreographed sequences.
@@ -142,7 +162,7 @@ When a section reference image exists, rebuild it by decomposition. Do not guess
    - Animate transform and opacity first. Avoid animating layout properties like width, height, top, left, margin, and padding unless there is a strong reason.
    - Motion should make the page feel alive without turning it into a demo reel. Use it to guide attention, create continuity, and support the story.
 
-6. **Browser Verification**
+7. **Browser Verification**
    - Run the site locally when needed.
    - Open it in a browser and check desktop and mobile viewports.
    - Verify the page is not blank, the hero is visible, text does not overlap, animations run smoothly, and the result resembles the reference images.

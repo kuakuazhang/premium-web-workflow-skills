@@ -61,6 +61,28 @@ For production or durable local pages:
 - If an asset cannot be localized or licensed, replace it with a generated or owned asset before calling the page production-ready.
 - Mention any asset whose license or persistence is uncertain.
 
+## Video Replacement Mode
+
+Use this when the MotionSites page itself is visually right, but the demo video is not the user's product, story, or desired motion.
+
+The goal is not to redesign the page. The goal is to preserve the working mechanics and replace the video content surgically.
+
+1. Reproduce the MotionSites prompt first and verify the Hero in browser.
+2. Inspect the video as a design asset:
+   - rendered size and aspect ratio
+   - crop and `object-fit`
+   - duration and loop smoothness
+   - camera movement and motion intensity
+   - brightness/contrast under text
+   - text-safe areas
+   - whether the video is background texture or main narrative object
+3. Create a replacement brief that keeps those mechanics but swaps in the user's actual subject.
+4. If generating with Seedance, route through `seedance-video-asset`: estimate price, ask confirmation, generate, download locally, and add fallback.
+5. Replace only the video source first. Do not rewrite layout, typography, or CTA placement unless the new video requires minor contrast/crop tuning.
+6. Re-check desktop and mobile screenshots.
+
+This is especially useful when the user says: "this template feels good, but the animation/product/video is wrong."
+
 ## What To Avoid
 
 - Do not present MotionSites as open source if the current source is a DMCA-disabled repository.
@@ -78,6 +100,7 @@ brief / content
   -> Direct Reuse selection at motionsites.ai, if desired
   -> copied prompt reproduction, if selected
   -> Reference Mode pattern selection, if no direct prompt is selected
+  -> Video Replacement Mode, if MotionSites mechanics are good but video content is wrong
   -> custom visual direction for this project, if needed
   -> section-level reference images
   -> real implementation
