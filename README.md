@@ -20,7 +20,7 @@ The workflow pushes Codex to:
    - **Reference Mode**: if no prompt is selected, borrow only design mechanics such as Hero composition, motion, image role, glass effects, and section rhythm.
 4. Use Godly as a deep real-site reference source when no direct prompt exists, especially for Hero, motion, and premium site mechanics.
 5. Keep important text, buttons, nav, tables, charts, and diagrams as real DOM/SVG/canvas instead of flattened screenshots.
-6. Use Codex built-in `image_gen` / GPT Image as the default bitmap image generation path for Hero atmosphere, renders, textures, visual scenes, and static fallbacks.
+6. Use Codex built-in `image_gen` / GPT Image as the default bitmap image generation path for Hero atmosphere, renders, textures, visual scenes, and static fallbacks; do not default to SVG Hero art.
 7. Use Seedance 2.0 only when a page needs a custom video asset, such as replacing a MotionSites demo video with the user's actual product/scene motion.
 8. Use Ian Xiaohei illustrations only for middle/body explanatory moments in Chinese knowledge pages, not as the main premium Hero system.
 9. Add meaningful motion and browser-verify desktop/mobile screenshots.
@@ -113,6 +113,8 @@ For custom Hero video:
 ## Important Asset Rule
 
 For bitmap images, the default provider is Codex built-in `image_gen`, treated as the GPT Image path. This applies to Hero background plates, product/robot/object renders, editorial scenes, section illustrations, textures, poster frames, and static fallback images.
+
+For Hero images specifically, default to `image_gen` bitmap output. Do not hand-roll SVG Hero illustrations unless the user explicitly asks for SVG-native art. SVG remains appropriate for icons, connector lines, charts, diagrams, timelines, and interactive data structures.
 
 Do not use Seedance for images. Seedance is only an optional video asset provider. Do not require Midjourney, Stable Diffusion, or other external image services unless the user explicitly chooses them.
 

@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-06-04 - Default bitmap Hero image rule
+
+- Clarified that Hero images default to Codex built-in `image_gen` / GPT Image bitmap output.
+- Added a rule against using hand-written SVG Hero illustrations as the default main visual.
+- Kept SVG for icons, connector lines, charts, diagrams, timelines, UI overlays, and interactive data structures.
+
 ## 2026-06-04 - Default GPT image generation path
 
 - Clarified that bitmap image assets default to Codex built-in `image_gen` / GPT Image.

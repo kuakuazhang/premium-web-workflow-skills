@@ -56,10 +56,12 @@ Before coding the page, define the Hero's visual strategy and choose at least on
 
 - generated Hero image: cinematic background plate, product/robot/object render, editorial scene, spatial metaphor, texture, or environment; default to Codex's built-in `image_gen` / GPT Image path when available
 - owned video: localized MotionSites video, product footage, generated Seedance loop, or other durable background video
-- code-native scene: canvas/WebGL/SVG/GSAP composition when the subject is better as an interactive or animated system
+- code-native scene: canvas/WebGL/GSAP composition only when the subject is better as an interactive or animated system
 - real provided asset: product photo, customer scene, brand image, or source material supplied by the user
 
 If no strong asset exists and the page is meant to look premium, generate a bespoke Hero reference/asset before implementing the Hero. A title, subtitle, two CTAs, and a card grid is not enough.
+
+Default Hero asset rule: do not use an SVG illustration as the primary Hero visual. Prefer a GPT Image / `image_gen` bitmap Hero asset. SVG is appropriate for icons, connector lines, diagrams, charts, labels, timelines, and interactive data structures, but it should not be used as a cheap substitute for a premium Hero background plate or visual subject.
 
 The Hero must have:
 
@@ -82,6 +84,7 @@ Before accepting a Hero, check:
 - The main headline fits in the first viewport without chaotic wrapping, clipping, or dominating every other element.
 - The left or primary copy area is not a dense paragraph block. If the strategic conclusion is long, compress it to one short sentence and move the details below the fold.
 - The first viewport has a real subject: generated image, owned image/video, product/scene render, spatial illustration, 3D/canvas object, or a strongly designed data object.
+- The primary Hero visual is not a hand-written SVG illustration unless the user explicitly requests an SVG-native art direction. For normal premium webpages, generate a bitmap Hero asset with `image_gen`.
 - Decorative grids, floating dots, radial glows, generic dashboards, and oversized typography are support layers only. They do not count as the primary visual subject.
 - If no asset exists for a public/presentation page, generate or source one before implementation. If image generation is unavailable, state that limitation and choose the next-best owned/code-native visual plan; do not silently ship a text-only Hero.
 - The Hero should be scannable in 3 seconds. Treat anything that requires reading a multi-line paragraph in the first viewport as a body section, not Hero content.
@@ -164,6 +167,8 @@ If `image_gen` is unavailable in the current Codex environment:
 3. Do not silently replace a required Hero image with a dark grid, particles, gradients, or oversized typography.
 
 Seedance is only the optional video asset path, not the default image generation path.
+
+For Hero images specifically, `image_gen` is the default provider. Do not hand-roll SVG Hero art by default. Use SVG in the Hero only for real vector UI/data layers on top of or around the bitmap/video/canvas subject.
 
 ## Editorial Illustration Mode
 

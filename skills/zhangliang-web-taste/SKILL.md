@@ -66,6 +66,7 @@ Default assumption: every polished webpage starts with a real Hero strategy. If 
 Prefer:
 
 - full-bleed or near full-bleed image as a background plate, spatial layer, or immersive scene
+- GPT Image / `image_gen` bitmap Hero art when no strong real asset exists
 - real HTML title, copy, CTA, and key labels over or within the visual scene
 - one strong visual subject with depth, lighting, and negative space
 - restrained first-screen copy: one core sentence, not a dense strategic paragraph
@@ -76,6 +77,7 @@ Prefer:
 Avoid by default:
 
 - starting from text sections and adding the Hero asset as an afterthought
+- using SVG Hero illustration as the default main visual instead of a generated bitmap image
 - using oversized typography, dark grid backgrounds, particles, or glows as a substitute for a real Hero visual asset
 - putting a long conclusion paragraph in the Hero's primary copy area
 - a large rounded card wrapping the Hero
@@ -88,6 +90,8 @@ Avoid by default:
 Hero visual assets may be generated with image generation. The asset should not contain readable UI text, buttons, labels, tables, or important claims.
 
 If no provided product/image/video asset exists, generate a bespoke Hero visual asset or reference image. For company overview, industry map, research summary, or "four companies quick view" pages, this is especially important: the first viewport should feel like an immersive website, not a report title slide.
+
+Default to `image_gen` bitmap assets for Hero art. Use SVG for diagrams, data objects, icons, lines, and UI overlays, not as the default Hero background/illustration.
 
 If a Hero can be described as "big words on a dark background," it fails unless the whole concept is deliberately typographic and still has excellent spacing, hierarchy, and restraint.
 
