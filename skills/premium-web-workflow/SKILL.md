@@ -54,7 +54,7 @@ For any public-facing website, company page, landing page, product page, homepag
 
 Before coding the page, define the Hero's visual strategy and choose at least one primary visual asset path:
 
-- generated Hero image: cinematic background plate, product/robot/object render, editorial scene, spatial metaphor, texture, or environment
+- generated Hero image: cinematic background plate, product/robot/object render, editorial scene, spatial metaphor, texture, or environment; default to Codex's built-in `image_gen` / GPT Image path when available
 - owned video: localized MotionSites video, product footage, generated Seedance loop, or other durable background video
 - code-native scene: canvas/WebGL/SVG/GSAP composition when the subject is better as an interactive or animated system
 - real provided asset: product photo, customer scene, brand image, or source material supplied by the user
@@ -141,6 +141,30 @@ Seedance is optional and paid. Never call it silently.
 - For background Hero loops, default to 720p, 4-6 seconds, `generate_audio=false`, and localize the result into the project assets.
 - Download generated videos promptly because API result URLs are temporary. Use local video paths in production or durable local pages.
 
+## Default Image Generation Provider
+
+For bitmap image assets, default to Codex's built-in `image_gen` tool, treated as the GPT Image generation path.
+
+Use this default for:
+
+- Hero background plates
+- product/robot/object renders
+- editorial scenes
+- visual metaphors
+- section illustrations
+- textures, poster frames, and static fallback images
+- Xiaohei-style generated raster illustrations when that skill calls for image generation
+
+Do not route image generation to Seedance, Midjourney, Stable Diffusion, external APIs, or prompt-only advice unless the user explicitly asks for a different provider.
+
+If `image_gen` is unavailable in the current Codex environment:
+
+1. State the limitation clearly.
+2. Continue with a precise asset brief/prompt and a code-native placeholder only if the user accepts that compromise.
+3. Do not silently replace a required Hero image with a dark grid, particles, gradients, or oversized typography.
+
+Seedance is only the optional video asset path, not the default image generation path.
+
 ## Editorial Illustration Mode
 
 If the `ian-xiaohei-illustrations` skill is available, use it as an optional body-section illustration provider for Chinese longform, knowledge, report, podcast, methodology, and industry-explainer webpages.
@@ -222,6 +246,7 @@ Use this order for new website or landing-page work:
 
 5. **Visual Direction**
    - Use `imagegen-frontend-web` first.
+   - For actual bitmap generation, use Codex built-in `image_gen` / GPT Image when available.
    - Generate the Hero reference/asset first unless Direct Reuse Mode already provides a strong Hero.
    - Generate one separate horizontal reference image per section.
    - Default to 6 sections for a landing page and 8 sections for a full website template unless the user gives a count.

@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-06-04 - Default GPT image generation path
+
+- Clarified that bitmap image assets default to Codex built-in `image_gen` / GPT Image.
+- Clarified that Seedance is only for optional video assets, not image generation.
+- Added fallback behavior when `image_gen` is unavailable in a Codex environment.
+
 ## 2026-06-04 - Hero readability and asset gate
 
 - Added a failure rule for giant-text Heroes with dense strategic paragraphs.
