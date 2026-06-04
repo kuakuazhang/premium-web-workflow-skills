@@ -1,0 +1,1387 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Premium Web Workflow | 让 Codex 默认做出像网站的网页</title>
+  <meta name="description" content="Premium Web Workflow 是一套给 Codex 使用的网页设计 Skill：先选设计母版，再生成 Hero 资产，最后用质量门禁拒绝 PPT 感网页。" />
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #f5f7f2;
+      --muted: rgba(245, 247, 242, .68);
+      --soft: rgba(245, 247, 242, .46);
+      --line: rgba(245, 247, 242, .16);
+      --line-strong: rgba(245, 247, 242, .28);
+      --bg: #070909;
+      --panel: rgba(14, 18, 17, .72);
+      --panel-solid: #111614;
+      --green: #48f0a4;
+      --mint: #b8ffd9;
+      --blue: #8fb9ff;
+      --amber: #f2c46d;
+      --rose: #ff9f9f;
+      --shadow: 0 24px 80px rgba(0, 0, 0, .45);
+      --radius: 22px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 20% 15%, rgba(72, 240, 164, .14), transparent 30%),
+        radial-gradient(circle at 84% 8%, rgba(143, 185, 255, .18), transparent 28%),
+        linear-gradient(180deg, #050606 0%, #0b0e0d 42%, #f0eee7 42%, #f0eee7 100%);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      letter-spacing: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .nav {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      z-index: 20;
+      display: flex;
+      width: min(calc(100% - 32px), var(--max));
+      transform: translateX(-50%);
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 12px 10px 16px;
+      border: 1px solid rgba(245, 247, 242, .16);
+      border-radius: 999px;
+      background: rgba(5, 7, 7, .55);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, .28);
+      backdrop-filter: blur(18px) saturate(1.2);
+      -webkit-backdrop-filter: blur(18px) saturate(1.2);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+      font-size: 14px;
+      font-weight: 650;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 28px;
+      height: 28px;
+      place-items: center;
+      border: 1px solid rgba(72, 240, 164, .58);
+      border-radius: 50%;
+      color: #07120d;
+      background: linear-gradient(135deg, var(--green), var(--mint));
+      box-shadow: 0 0 24px rgba(72, 240, 164, .36);
+      font-weight: 800;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: rgba(245, 247, 242, .72);
+      font-size: 13px;
+    }
+
+    .nav-links a {
+      padding: 8px 10px;
+      border-radius: 999px;
+      transition: color .2s ease, background .2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+      background: rgba(255, 255, 255, .08);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: var(--ink);
+      color: #070909;
+      font-size: 13px;
+      font-weight: 700;
+      transition: transform .2s ease, background .2s ease;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      background: #ffffff;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      overflow: hidden;
+      isolation: isolate;
+      background: #050606;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -3;
+      background: url("./assets/hero-design-studio.png") center right / cover no-repeat;
+      transform: scale(1.02);
+      animation: heroDrift 14s ease-in-out infinite alternate;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(90deg, rgba(5, 6, 6, .98) 0%, rgba(5, 6, 6, .88) 26%, rgba(5, 6, 6, .48) 55%, rgba(5, 6, 6, .1) 100%),
+        linear-gradient(180deg, rgba(5, 6, 6, .08) 0%, rgba(5, 6, 6, .32) 64%, rgba(5, 6, 6, .96) 100%);
+    }
+
+    @keyframes heroDrift {
+      from { transform: scale(1.02) translate3d(0, 0, 0); }
+      to { transform: scale(1.055) translate3d(-10px, -8px, 0); }
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background-image:
+        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: linear-gradient(90deg, #000 0%, transparent 70%);
+      opacity: .42;
+    }
+
+    .hero-inner {
+      display: grid;
+      width: min(calc(100% - 40px), var(--max));
+      min-height: 100svh;
+      margin: 0 auto;
+      align-content: end;
+      padding: 130px 0 70px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 22px;
+      padding: 8px 12px;
+      border: 1px solid rgba(72, 240, 164, .28);
+      border-radius: 999px;
+      background: rgba(72, 240, 164, .08);
+      color: var(--mint);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 18px rgba(72, 240, 164, .8);
+    }
+
+    h1 {
+      max-width: 780px;
+      margin: 0;
+      font-size: clamp(48px, 8vw, 108px);
+      line-height: .93;
+      font-weight: 760;
+      letter-spacing: 0;
+      overflow-wrap: break-word;
+    }
+
+    .mobile-break {
+      display: none;
+    }
+
+    .hero-copy {
+      max-width: 640px;
+      margin: 26px 0 0;
+      color: rgba(245, 247, 242, .76);
+      font-size: clamp(17px, 2vw, 22px);
+      line-height: 1.55;
+      font-weight: 430;
+      overflow-wrap: break-word;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 46px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 18px;
+      border: 1px solid rgba(245, 247, 242, .16);
+      border-radius: 999px;
+      color: var(--ink);
+      background: rgba(255, 255, 255, .06);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      font-weight: 720;
+      transition: transform .22s ease, border-color .22s ease, background .22s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      border-color: rgba(245, 247, 242, .34);
+      background: rgba(255, 255, 255, .1);
+    }
+
+    .button.primary {
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--green), #d8ffe9);
+      color: #07120d;
+      box-shadow: 0 18px 54px rgba(72, 240, 164, .24);
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      width: min(100%, 720px);
+      margin-top: 58px;
+      border: 1px solid rgba(245, 247, 242, .12);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: rgba(245, 247, 242, .1);
+      box-shadow: var(--shadow);
+    }
+
+    .metric {
+      padding: 20px;
+      background: rgba(8, 11, 10, .62);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .metric strong {
+      display: block;
+      color: var(--ink);
+      font-size: 27px;
+      line-height: 1;
+      font-weight: 760;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 9px;
+      color: var(--soft);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      right: max(22px, calc((100vw - var(--max)) / 2));
+      bottom: 38px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(245, 247, 242, .58);
+      font-size: 12px;
+      writing-mode: vertical-rl;
+    }
+
+    .scroll-hint::before {
+      content: "";
+      display: block;
+      width: 1px;
+      height: 58px;
+      background: linear-gradient(var(--green), transparent);
+    }
+
+    main {
+      background: #f0eee7;
+      color: #111512;
+    }
+
+    section {
+      position: relative;
+      padding: 100px 0;
+    }
+
+    .dark {
+      background: #080a0a;
+      color: var(--ink);
+    }
+
+    .wrap {
+      width: min(calc(100% - 40px), var(--max));
+      margin: 0 auto;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(260px, .8fr);
+      gap: 42px;
+      align-items: end;
+      margin-bottom: 44px;
+    }
+
+    .kicker {
+      margin: 0 0 14px;
+      color: #15734c;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .dark .kicker {
+      color: var(--green);
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(34px, 5.4vw, 72px);
+      line-height: .98;
+      font-weight: 760;
+      letter-spacing: 0;
+    }
+
+    .section-lead {
+      margin: 0;
+      color: rgba(17, 21, 18, .66);
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    .dark .section-lead {
+      color: var(--muted);
+    }
+
+    .vault {
+      display: grid;
+      grid-template-columns: 360px minmax(0, 1fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .archetype-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .archetype-button {
+      width: 100%;
+      cursor: pointer;
+      border: 1px solid rgba(17, 21, 18, .1);
+      border-radius: 18px;
+      padding: 16px;
+      text-align: left;
+      color: #111512;
+      background: rgba(255, 255, 255, .48);
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+
+    .archetype-button:hover,
+    .archetype-button.is-active {
+      transform: translateY(-1px);
+      border-color: rgba(21, 115, 76, .35);
+      background: #ffffff;
+    }
+
+    .archetype-button b {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 15px;
+    }
+
+    .archetype-button span {
+      display: block;
+      color: rgba(17, 21, 18, .58);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .contract {
+      position: relative;
+      min-height: 100%;
+      overflow: hidden;
+      border: 1px solid rgba(17, 21, 18, .1);
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 80% 10%, rgba(72, 240, 164, .2), transparent 28%),
+        linear-gradient(135deg, #101512, #1b211f);
+      color: var(--ink);
+      box-shadow: 0 28px 90px rgba(13, 20, 17, .16);
+    }
+
+    .contract::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size: 52px 52px;
+      mask-image: linear-gradient(180deg, #000, transparent 78%);
+      opacity: .5;
+    }
+
+    .contract-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      min-height: 100%;
+      grid-template-columns: minmax(0, 1fr) 210px;
+      gap: 24px;
+      padding: 30px;
+    }
+
+    .contract-title {
+      margin: 0 0 12px;
+      color: var(--mint);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .contract h3 {
+      margin: 0;
+      max-width: 540px;
+      font-size: clamp(28px, 4vw, 52px);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .contract p {
+      max-width: 580px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.62;
+    }
+
+    .contract-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .contract-chip {
+      min-height: 82px;
+      padding: 14px;
+      border: 1px solid rgba(245, 247, 242, .12);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, .05);
+    }
+
+    .contract-chip small {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--soft);
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .contract-chip b {
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+    .score-ring {
+      align-self: start;
+      display: grid;
+      width: 190px;
+      height: 190px;
+      place-items: center;
+      border: 1px solid rgba(245, 247, 242, .14);
+      border-radius: 50%;
+      background: conic-gradient(from -40deg, var(--green), var(--blue), var(--amber), var(--green));
+      padding: 1px;
+      box-shadow: 0 18px 70px rgba(72, 240, 164, .16);
+    }
+
+    .score-ring-inner {
+      display: grid;
+      width: 100%;
+      height: 100%;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(8, 11, 10, .9);
+      text-align: center;
+    }
+
+    .score-ring strong {
+      display: block;
+      font-size: 42px;
+      line-height: 1;
+    }
+
+    .score-ring span {
+      display: block;
+      margin-top: 8px;
+      color: var(--soft);
+      font-size: 12px;
+    }
+
+    .pipeline {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 1px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      overflow: hidden;
+      background: var(--line);
+    }
+
+    .step {
+      min-height: 250px;
+      padding: 22px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)),
+        #0e1211;
+      transition: background .2s ease, transform .2s ease;
+    }
+
+    .step:hover {
+      background:
+        linear-gradient(180deg, rgba(72,240,164,.12), rgba(255,255,255,.025)),
+        #101513;
+    }
+
+    .step-num {
+      display: flex;
+      width: 38px;
+      height: 38px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(72, 240, 164, .3);
+      border-radius: 50%;
+      color: var(--green);
+      font-weight: 800;
+    }
+
+    .step h3 {
+      margin: 42px 0 12px;
+      font-size: 22px;
+      line-height: 1.05;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      gap: 42px;
+      align-items: center;
+    }
+
+    .artifact-stage {
+      position: relative;
+      min-height: 520px;
+      overflow: hidden;
+      border-radius: 34px;
+      background:
+        radial-gradient(circle at 20% 15%, rgba(72, 240, 164, .18), transparent 24%),
+        radial-gradient(circle at 85% 15%, rgba(143, 185, 255, .16), transparent 26%),
+        linear-gradient(145deg, #0a0d0d, #171c1a);
+      box-shadow: var(--shadow);
+    }
+
+    .browser-frame,
+    .phone-frame,
+    .quality-panel {
+      position: absolute;
+      border: 1px solid rgba(245, 247, 242, .16);
+      background: rgba(255, 255, 255, .06);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, .34);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .browser-frame {
+      top: 64px;
+      left: 42px;
+      right: 90px;
+      height: 300px;
+      border-radius: 20px;
+      overflow: hidden;
+      transform: rotate(-2deg);
+    }
+
+    .browser-top {
+      height: 38px;
+      border-bottom: 1px solid rgba(245, 247, 242, .12);
+      background: rgba(0, 0, 0, .22);
+    }
+
+    .browser-top::before {
+      content: "";
+      display: block;
+      width: 48px;
+      height: 10px;
+      margin: 14px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #ffb1a4 0 18%, #ffd37d 18% 42%, var(--green) 42% 64%, transparent 64%);
+    }
+
+    .browser-body {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 18px;
+      padding: 24px;
+    }
+
+    .mini-title {
+      height: 82px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(245,247,242,.9), rgba(245,247,242,.36));
+    }
+
+    .mini-line {
+      height: 10px;
+      margin-top: 12px;
+      border-radius: 999px;
+      background: rgba(245, 247, 242, .28);
+    }
+
+    .mini-line.short {
+      width: 64%;
+    }
+
+    .mini-visual {
+      height: 180px;
+      border-radius: 18px;
+      background:
+        radial-gradient(circle at 60% 35%, rgba(72,240,164,.7), transparent 16%),
+        linear-gradient(135deg, rgba(143,185,255,.34), rgba(245,247,242,.12));
+    }
+
+    .phone-frame {
+      right: 30px;
+      bottom: 70px;
+      width: 150px;
+      height: 240px;
+      border-radius: 26px;
+      transform: rotate(5deg);
+    }
+
+    .phone-frame::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border-radius: 18px;
+      background:
+        linear-gradient(180deg, rgba(245,247,242,.8), rgba(245,247,242,.1) 34%, rgba(72,240,164,.28)),
+        linear-gradient(90deg, transparent 20%, rgba(255,255,255,.12) 20% 22%, transparent 22%);
+    }
+
+    .quality-panel {
+      left: 58px;
+      bottom: 42px;
+      width: 300px;
+      border-radius: 22px;
+      padding: 18px;
+    }
+
+    .check-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(245, 247, 242, .1);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .check-row:last-child {
+      border-bottom: 0;
+    }
+
+    .check-row b {
+      color: var(--mint);
+      font-size: 12px;
+    }
+
+    .rules-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .rule {
+      padding: 22px;
+      border: 1px solid rgba(17, 21, 18, .1);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, .58);
+      min-height: 230px;
+    }
+
+    .rule .tag {
+      display: inline-flex;
+      margin-bottom: 28px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(17, 21, 18, .08);
+      color: rgba(17, 21, 18, .62);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .rule h3 {
+      margin: 0 0 12px;
+      font-size: 23px;
+      line-height: 1.08;
+    }
+
+    .rule p {
+      margin: 0;
+      color: rgba(17, 21, 18, .62);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .scoreboard {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 1px;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      overflow: hidden;
+      background: var(--line);
+    }
+
+    .score-item {
+      padding: 22px 16px;
+      background: rgba(255, 255, 255, .05);
+      min-height: 210px;
+    }
+
+    .score-item strong {
+      display: block;
+      color: var(--green);
+      font-size: 36px;
+      line-height: 1;
+    }
+
+    .score-item span {
+      display: block;
+      margin-top: 44px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .cta {
+      min-height: 82vh;
+      display: grid;
+      align-items: center;
+      background:
+        radial-gradient(circle at 70% 20%, rgba(72, 240, 164, .18), transparent 28%),
+        linear-gradient(180deg, #f0eee7, #d9d5cc);
+    }
+
+    .cta-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 320px;
+      gap: 32px;
+      align-items: end;
+      padding: 46px;
+      border: 1px solid rgba(17, 21, 18, .12);
+      border-radius: 36px;
+      background: rgba(255, 255, 255, .52);
+      box-shadow: 0 28px 100px rgba(17, 21, 18, .13);
+    }
+
+    .cta h2 {
+      max-width: 780px;
+    }
+
+    .command {
+      border-radius: 22px;
+      overflow: hidden;
+      background: #0a0d0d;
+      color: var(--ink);
+      box-shadow: 0 20px 80px rgba(17, 21, 18, .22);
+    }
+
+    .command-top {
+      display: flex;
+      gap: 6px;
+      padding: 14px;
+      border-bottom: 1px solid rgba(245, 247, 242, .12);
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--rose);
+    }
+
+    .dot:nth-child(2) { background: var(--amber); }
+    .dot:nth-child(3) { background: var(--green); }
+
+    .command pre {
+      margin: 0;
+      padding: 18px;
+      white-space: pre-wrap;
+      color: rgba(245, 247, 242, .74);
+      font: 13px/1.6 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-inner {
+        padding-bottom: 34px;
+      }
+
+      .hero::before {
+        background-position: 62% center;
+      }
+
+      .hero-metrics,
+      .section-head,
+      .vault,
+      .split,
+      .cta-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .contract-content {
+        grid-template-columns: 1fr;
+      }
+
+      .score-ring {
+        width: 150px;
+        height: 150px;
+      }
+
+      .pipeline,
+      .rules-grid,
+      .scoreboard {
+        grid-template-columns: 1fr;
+      }
+
+      .step {
+        min-height: 190px;
+      }
+
+      .artifact-stage {
+        min-height: 470px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        top: 12px;
+        border-radius: 22px;
+      }
+
+      .brand span {
+        max-width: 168px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      .hero-inner,
+      .wrap {
+        width: min(360px, calc(100vw - 28px));
+        margin-left: 14px;
+        margin-right: auto;
+      }
+
+      .hero-copy {
+        width: 100%;
+        max-width: 360px;
+        font-size: 16px;
+        word-break: break-all;
+      }
+
+      h1 {
+        width: 100%;
+        max-width: 360px;
+        font-size: clamp(38px, 11vw, 44px);
+        line-height: 1.02;
+        word-break: break-all;
+      }
+
+      .mobile-break {
+        display: block;
+      }
+
+      .hero-metrics {
+        margin-top: 34px;
+      }
+
+      .metric {
+        padding: 16px;
+      }
+
+      .scroll-hint {
+        display: none;
+      }
+
+      section {
+        padding: 72px 0;
+      }
+
+      .contract-content,
+      .cta-panel {
+        padding: 24px;
+      }
+
+      .contract-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .browser-frame {
+        left: 18px;
+        right: 18px;
+        top: 44px;
+        height: 250px;
+      }
+
+      .browser-body {
+        grid-template-columns: 1fr;
+        padding: 18px;
+      }
+
+      .mini-visual {
+        display: none;
+      }
+
+      .phone-frame {
+        right: 18px;
+        bottom: 34px;
+        width: 116px;
+        height: 190px;
+      }
+
+      .quality-panel {
+        left: 18px;
+        right: 96px;
+        bottom: 32px;
+        width: auto;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="主导航">
+    <a class="brand" href="#top" aria-label="Premium Web Workflow">
+      <span class="brand-mark">P</span>
+      <span>Premium Web Workflow</span>
+    </a>
+    <div class="nav-links">
+      <a href="#vault">母版</a>
+      <a href="#pipeline">流程</a>
+      <a href="#rules">规则</a>
+      <a href="#gate">门禁</a>
+    </div>
+    <a class="nav-cta" href="https://github.com/kuakuazhang/premium-web-workflow-skills">GitHub ↗</a>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div class="eyebrow"><span class="pulse" aria-hidden="true"></span> Web Design Vault Lite / V3</div>
+      <h1>让 Codex 先懂<span class="mobile-break"></span>网页，<span class="mobile-break"></span>再开始写网页。</h1>
+      <p class="hero-copy">这套 Skill 把“高级感”拆成可执行流程：先选设计母版，先生成 Hero 主视觉，再用 DOM/SVG/canvas 重建内容，最后用浏览器截图和质量门禁拒绝 PPT 感。</p>
+      <div class="hero-actions" aria-label="主要行动">
+        <a class="button primary" href="#vault">查看设计母版</a>
+        <a class="button" href="#gate">看质量门禁</a>
+      </div>
+      <div class="hero-metrics" aria-label="工作流关键指标">
+        <div class="metric"><strong>6</strong><span>内置网页视觉母版，不再靠一句“做高级”。</span></div>
+        <div class="metric"><strong>1st</strong><span>首页 Hero 作为独立交付物，默认先做主视觉。</span></div>
+        <div class="metric"><strong>4/5</strong><span>公开页面 Hero 低于这个分数就必须重做。</span></div>
+      </div>
+    </div>
+    <div class="scroll-hint">继续看流程</div>
+  </header>
+
+  <main>
+    <section id="vault">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <p class="kicker">01 / Design Vault Lite</p>
+            <h2>先选母版，不再让模型凭感觉发挥。</h2>
+          </div>
+          <p class="section-lead">每次做网页，先把参考转成设计契约：Hero 资产、媒体语法、排版节奏、动效、交互和图片边界。下面的选择器展示这套契约如何落到不同类型页面。</p>
+        </div>
+
+        <div class="vault reveal">
+          <div class="archetype-list" role="tablist" aria-label="设计母版">
+            <button class="archetype-button is-active" type="button" data-arch="apple" role="tab" aria-selected="true">
+              <b>Apple Cinematic Product</b>
+              <span>产品、官网、品牌发布。让图像和留白承担高级感。</span>
+            </button>
+            <button class="archetype-button" type="button" data-arch="motion" role="tab" aria-selected="false">
+              <b>MotionSites Liquid Video</b>
+              <span>全屏视频、液态玻璃、弱 UI、强氛围。</span>
+            </button>
+            <button class="archetype-button" type="button" data-arch="godly" role="tab" aria-selected="false">
+              <b>Godly Editorial Interactive</b>
+              <span>真实网站机制拆解，靠空间、排版和滚动叙事出效果。</span>
+            </button>
+            <button class="archetype-button" type="button" data-arch="dashboard" role="tab" aria-selected="false">
+              <b>Premium Research Dashboard</b>
+              <span>行业地图、战略报告、公司对比。像决策界面，不像 PPT 图表。</span>
+            </button>
+            <button class="archetype-button" type="button" data-arch="story" role="tab" aria-selected="false">
+              <b>Data Story Map</b>
+              <span>播客、长文、知识地图。信息架构优先，Hero 仍然高级。</span>
+            </button>
+            <button class="archetype-button" type="button" data-arch="luxury" role="tab" aria-selected="false">
+              <b>Luxury Minimal Report</b>
+              <span>董事会备忘、战略简报、少而准的高端报告页。</span>
+            </button>
+          </div>
+
+          <article class="contract" aria-live="polite">
+            <div class="contract-content">
+              <div>
+                <p class="contract-title" id="contractLabel">Selected Archetype</p>
+                <h3 id="contractTitle">Apple Cinematic Product</h3>
+                <p id="contractBody">适合产品页和公司首页。先生成或使用真实 Hero 主视觉，文字只保留一个判断和一个短解释，图像、空间和材质承担第一印象。</p>
+                <div class="contract-grid">
+                  <div class="contract-chip"><small>Hero Asset</small><b id="contractAsset">image_gen / owned product visual</b></div>
+                  <div class="contract-chip"><small>Motion</small><b id="contractMotion">slow reveal, parallax, masked transitions</b></div>
+                  <div class="contract-chip"><small>DOM Boundary</small><b id="contractDom">text, nav, CTA, specs remain HTML</b></div>
+                  <div class="contract-chip"><small>Reject</small><b id="contractReject">right-side image card, dense paragraph Hero</b></div>
+                </div>
+              </div>
+              <div class="score-ring" aria-label="建议质量分">
+                <div class="score-ring-inner">
+                  <div>
+                    <strong id="contractScore">4.6</strong>
+                    <span>Hero target</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark" id="pipeline">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <p class="kicker">02 / Workflow</p>
+            <h2>流程从“写 HTML”改成“设计生产”。</h2>
+          </div>
+          <p class="section-lead">Codex 可以继续写代码，但不能跳过视觉方向。新的顺序把最容易失败的首屏放到最前面处理。</p>
+        </div>
+
+        <div class="pipeline reveal" aria-label="网页工作流">
+          <div class="step">
+            <div class="step-num">01</div>
+            <h3>母版契约</h3>
+            <p>先确定视觉 archetype，写清 Hero 资产、媒体语法、动效和 DOM/图片边界。</p>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <h3>Hero 主视觉</h3>
+            <p>默认用 image_gen 或真实资产做首屏视觉主体；不能用大字、网格和发光冒充。</p>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <h3>真实结构</h3>
+            <p>标题、按钮、表格、图表、筛选、流程图全部变成真实 DOM/SVG/canvas。</p>
+          </div>
+          <div class="step">
+            <div class="step-num">04</div>
+            <h3>动效连接</h3>
+            <p>用滚动、悬停、筛选、状态切换建立连续体验，而不是装饰性漂浮物。</p>
+          </div>
+          <div class="step">
+            <div class="step-num">05</div>
+            <h3>截图门禁</h3>
+            <p>桌面和移动端首屏都要过关；如果还像 PPT，就先重做 Hero。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap split">
+        <div class="reveal">
+          <p class="kicker">03 / Implementation Boundary</p>
+          <h2>图像负责氛围，网页负责信息。</h2>
+          <p class="section-lead" style="margin-top: 22px;">这不是“禁止贴图”。真正的问题是把按钮、表格、图表、文字和业务逻辑都烤进图片里。新的规则要求：Hero、产品渲染、场景、材质可以是图；知识、交互和结构必须是网页。</p>
+          <div class="hero-actions" style="margin-top: 28px;">
+            <a class="button primary" href="#rules">看反 PPT 规则</a>
+            <a class="button" style="color:#111512;background:rgba(17,21,18,.06);border-color:rgba(17,21,18,.12)" href="#gate">看验收分数</a>
+          </div>
+        </div>
+        <div class="artifact-stage reveal" aria-label="网页结构示意">
+          <div class="browser-frame">
+            <div class="browser-top"></div>
+            <div class="browser-body">
+              <div>
+                <div class="mini-title"></div>
+                <div class="mini-line"></div>
+                <div class="mini-line short"></div>
+              </div>
+              <div class="mini-visual"></div>
+            </div>
+          </div>
+          <div class="phone-frame"></div>
+          <div class="quality-panel">
+            <div class="check-row"><span>Hero asset visible</span><b>pass</b></div>
+            <div class="check-row"><span>Buttons are DOM</span><b>pass</b></div>
+            <div class="check-row"><span>Mobile first view</span><b>pass</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="rules">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <p class="kicker">04 / Anti-PPT Rules</p>
+            <h2>不是更多装饰，而是更硬的失败判定。</h2>
+          </div>
+          <p class="section-lead">另一个线程可以继续使用 Build Web Apps，但它不能绕过这些判断。只要命中下面的问题，就应该重做，而不是继续往下堆卡片。</p>
+        </div>
+
+        <div class="rules-grid reveal">
+          <article class="rule">
+            <span class="tag">Failure 01</span>
+            <h3>巨大标题不是 Hero。</h3>
+            <p>首屏不能靠超大文字和密集结论撑起来。标题要短，细节移到下一屏，画面需要真实视觉主体。</p>
+          </article>
+          <article class="rule">
+            <span class="tag">Failure 02</span>
+            <h3>右图卡片会变 PPT。</h3>
+            <p>Hero 图片应该成为全屏空间、背景 plate 或空间层，而不是被困在右侧圆角框里。</p>
+          </article>
+          <article class="rule">
+            <span class="tag">Failure 03</span>
+            <h3>截图拼贴不算网页。</h3>
+            <p>参考图要被消化：按钮变按钮，表格变表格，图表变 SVG/canvas，图像只保留视觉资产。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark" id="gate">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <p class="kicker">05 / Quality Gate</p>
+            <h2>交付前先打分。低于 4 分，重做首屏。</h2>
+          </div>
+          <p class="section-lead">网页审美不能只靠“感觉”。新的 Skill 会从 Hero、视觉主体、文字密度、母版复现、真实结构、交互和移动端首屏七项检查。</p>
+        </div>
+
+        <div class="scoreboard reveal" aria-label="质量门禁分项">
+          <div class="score-item"><strong>4+</strong><span>Hero immersion</span></div>
+          <div class="score-item"><strong>4+</strong><span>Visual subject</span></div>
+          <div class="score-item"><strong>4+</strong><span>Text density</span></div>
+          <div class="score-item"><strong>4+</strong><span>Archetype fidelity</span></div>
+          <div class="score-item"><strong>4+</strong><span>DOM/SVG rebuild</span></div>
+          <div class="score-item"><strong>4+</strong><span>Useful motion</span></div>
+          <div class="score-item"><strong>4+</strong><span>Mobile viewport</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="wrap">
+        <div class="cta-panel reveal">
+          <div>
+            <p class="kicker">Install / Use</p>
+            <h2>把“做网页”变成默认高级流程，而不是每次重新解释审美。</h2>
+            <p class="section-lead" style="margin-top: 20px;">这个页面本身也是一次测试：如果它哪里还像 PPT、首屏不够沉浸、动效不够克制、移动端不够好，我们就继续把问题写回 Skill。</p>
+          </div>
+          <div class="command" aria-label="安装命令">
+            <div class="command-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            <pre>git clone https://github.com/kuakuazhang/premium-web-workflow-skills
+cd premium-web-workflow-skills
+bash install.sh</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const archetypes = {
+      apple: {
+        title: "Apple Cinematic Product",
+        body: "适合产品页和公司首页。先生成或使用真实 Hero 主视觉，文字只保留一个判断和一个短解释，图像、空间和材质承担第一印象。",
+        asset: "image_gen / owned product visual",
+        motion: "slow reveal, parallax, masked transitions",
+        dom: "text, nav, CTA, specs remain HTML",
+        reject: "right-side image card, dense paragraph Hero",
+        score: "4.6"
+      },
+      motion: {
+        title: "MotionSites Liquid Video",
+        body: "适合需要动起来的首屏。视频或 poster frame 是主角，玻璃 UI 只做轻量导航和行动入口，复制 prompt 时先复刻再改内容。",
+        asset: "owned loop / MotionSites prompt / Seedance-confirmed video",
+        motion: "loop rhythm, liquid glass hover, menu transition",
+        dom: "overlay copy and CTAs remain HTML",
+        reject: "fragile remote video without fallback",
+        score: "4.5"
+      },
+      godly: {
+        title: "Godly Editorial Interactive",
+        body: "适合高端参考复刻和编辑型网页。先拆首屏几何、字体、材质、滚动和响应式，再转译到用户自己的内容。",
+        asset: "reference-derived image_gen / code-native scene",
+        motion: "pinned sections, masks, scroll continuity",
+        dom: "layout mechanics rebuilt as frontend",
+        reject: "calling it clean without decomposition",
+        score: "4.7"
+      },
+      dashboard: {
+        title: "Premium Research Dashboard",
+        body: "适合行业地图、公司对比和公开战略报告。它必须像决策界面，有沉浸入口和真实可交互数据结构。",
+        asset: "topic metaphor via image_gen",
+        motion: "filter transitions, chart reveal, sticky summary",
+        dom: "charts, filters, tables, maps stay real",
+        reject: "static metric cards and chart screenshots",
+        score: "4.4"
+      },
+      story: {
+        title: "Data Story Map",
+        body: "适合播客、长转录和知识地图。先做信息架构，再用 Hero 图、小黑插图和真实交互对象组织学习路径。",
+        asset: "image_gen Hero + optional Xiaohei body art",
+        motion: "chapter reveal, glossary search, relation highlight",
+        dom: "matrix, glossary, tabs, diagrams stay real",
+        reject: "sidebar wiki cover and equal card stack",
+        score: "4.3"
+      },
+      luxury: {
+        title: "Luxury Minimal Report",
+        body: "适合董事会备忘和战略简报。少量强视觉、克制排版和高价值图表，比铺满卡片更有权威。",
+        asset: "single high-quality image_gen or owned plate",
+        motion: "subtle reveal, anchored navigation",
+        dom: "tables, quotes, diagrams stay selectable",
+        reject: "SaaS demo motion and decorative charts",
+        score: "4.5"
+      }
+    };
+
+    const buttons = document.querySelectorAll(".archetype-button");
+    const fields = {
+      title: document.querySelector("#contractTitle"),
+      body: document.querySelector("#contractBody"),
+      asset: document.querySelector("#contractAsset"),
+      motion: document.querySelector("#contractMotion"),
+      dom: document.querySelector("#contractDom"),
+      reject: document.querySelector("#contractReject"),
+      score: document.querySelector("#contractScore")
+    };
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const data = archetypes[button.dataset.arch];
+        buttons.forEach((item) => {
+          item.classList.remove("is-active");
+          item.setAttribute("aria-selected", "false");
+        });
+        button.classList.add("is-active");
+        button.setAttribute("aria-selected", "true");
+        fields.title.textContent = data.title;
+        fields.body.textContent = data.body;
+        fields.asset.textContent = data.asset;
+        fields.motion.textContent = data.motion;
+        fields.dom.textContent = data.dom;
+        fields.reject.textContent = data.reject;
+        fields.score.textContent = data.score;
+      });
+    });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach((item) => revealObserver.observe(item));
+  </script>
+</body>
+</html>

@@ -14,20 +14,22 @@ This package contains five skills:
 
 The workflow pushes Codex to:
 
-1. Treat the Hero/first viewport as a separate deliverable before writing the rest of the page.
-2. Generate or source a strong Hero visual asset when no premium asset exists yet.
-3. Use MotionSites in two layers:
+1. Start from a Web Design Vault Lite contract instead of vague "make it premium" taste words.
+2. Choose a visual archetype such as Apple Cinematic, MotionSites Liquid Video, Godly Editorial, Premium Research Dashboard, Data Story Map, or Luxury Minimal Report.
+3. Treat the Hero/first viewport as a separate deliverable before writing the rest of the page.
+4. Generate or source a strong Hero visual asset when no premium asset exists yet.
+5. Use MotionSites in two layers:
    - **Direct Reuse Mode**: choose a design on `https://motionsites.ai/`, paste the official `Copy` prompt, reproduce it first, then adapt.
    - **Reference Mode**: if no prompt is selected, borrow only design mechanics such as Hero composition, motion, image role, glass effects, and section rhythm.
-4. Use Godly as a deep real-site reference source when no direct prompt exists, especially for Hero, motion, and premium site mechanics.
-5. Keep important text, buttons, nav, tables, charts, and diagrams as real DOM/SVG/canvas instead of flattened screenshots.
-6. Use Codex built-in `image_gen` / GPT Image as the default bitmap image generation path for Hero atmosphere, renders, textures, visual scenes, and static fallbacks; do not default to SVG Hero art.
-7. Use Seedance 2.0 only when a page needs a custom video asset, such as replacing a MotionSites demo video with the user's actual product/scene motion.
-8. Use Ian Xiaohei 1.0 illustrations for middle/body logic explanation, and Ian Xiaohei 2.0 scenes for real-object situation/story moments; neither is the main premium Hero system.
-9. Add meaningful motion and browser-verify desktop/mobile screenshots.
-10. Localize critical remote videos/images when a page will be kept or deployed, and add fallback visuals so a dead external URL does not break the Hero.
-11. Treat Build Web Apps / `frontend-app-builder` as implementation support, not as a replacement for this visual workflow.
-12. Reject giant-text/dense-paragraph Heroes that lack a real visual subject.
+6. Use Godly as a deep real-site reference source when no direct prompt exists, especially for Hero, motion, and premium site mechanics.
+7. Keep important text, buttons, nav, tables, charts, and diagrams as real DOM/SVG/canvas instead of flattened screenshots.
+8. Use Codex built-in `image_gen` / GPT Image as the default bitmap image generation path for Hero atmosphere, renders, textures, visual scenes, and static fallbacks; do not default to SVG Hero art.
+9. Use Seedance 2.0 only when a page needs a custom video asset, such as replacing a MotionSites demo video with the user's actual product/scene motion.
+10. Use Ian Xiaohei 1.0 illustrations for middle/body logic explanation, and Ian Xiaohei 2.0 scenes for real-object situation/story moments; neither is the main premium Hero system.
+11. Add meaningful motion and browser-verify desktop/mobile screenshots.
+12. Localize critical remote videos/images when a page will be kept or deployed, and add fallback visuals so a dead external URL does not break the Hero.
+13. Treat Build Web Apps / `frontend-app-builder` as implementation support, not as a replacement for this visual workflow.
+14. Reject giant-text/dense-paragraph Heroes that lack a real visual subject.
 
 ## Install
 
@@ -50,6 +52,16 @@ cp -R skills/ian-xiaohei-scenes "$HOME/.codex/skills/"
 
 Restart Codex or open a new thread after installing so the skills appear in the available skill list.
 
+## Showcase Page
+
+This repository includes a promotional showcase page built with the workflow itself:
+
+```text
+showcase/premium-web-workflow/index.html
+```
+
+It demonstrates the new Web Design Vault Lite contract, archetype selector, Hero asset gate, anti-PPT rules, and quality scoring gate.
+
 ## Recommended Prompt To Use
 
 For direct reuse:
@@ -67,7 +79,7 @@ For page review:
 For normal webpage creation:
 
 ```text
-做一个公司官网首页，按 premium-web-workflow 默认流程走。先做沉浸式 Hero 方案和视觉资产，不要先排文字内容。如果能找到合适的 MotionSites 直接复用模板，先让我选；如果没有，就进入参考模式。
+做一个公司官网首页，按 premium-web-workflow 默认流程走。先读取 Web Design Vault Lite，选一个视觉母版并形成简短 Design Contract，再做沉浸式 Hero 方案和视觉资产，不要先排文字内容。如果能找到合适的 MotionSites 直接复用模板，先让我选；如果没有，就进入参考模式。
 ```
 
 For Godly deep reference:
@@ -79,7 +91,7 @@ For Godly deep reference:
 For visual dashboards:
 
 ```text
-做一个可视化看板，默认激活 premium-web-workflow。如果是公开展示/行业地图，就先做 Hero-first 沉浸式首屏；如果是内部运营看板，就做成高级、密集、可交互的决策界面，不要做成 PPT 图表卡片。
+做一个可视化看板，默认激活 premium-web-workflow。先按 Web Design Vault Lite 判断是 Premium Research Dashboard、Data Story Map 还是内部 command surface。如果是公开展示/行业地图，就先做 Hero-first 沉浸式首屏；如果是内部运营看板，就做成高级、密集、可交互的决策界面，不要做成 PPT 图表卡片。
 ```
 
 If another thread jumps straight to `frontend-app-builder`:

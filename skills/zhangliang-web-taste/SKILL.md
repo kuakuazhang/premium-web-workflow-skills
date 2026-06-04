@@ -25,6 +25,7 @@ The user dislikes pages that feel like:
 The user prefers pages that feel like:
 
 - a real website with a strong first-viewport signal
+- a page built from a chosen visual archetype/design contract, not generic "高级感"
 - immersive Hero composition where image, type, and space belong together
 - a generated or owned Hero visual asset when no strong asset exists yet
 - visual dashboards that feel like designed decision surfaces, not PPT charts pasted into cards
@@ -56,6 +57,30 @@ When a MotionSites prompt or similar premium prompt is available:
 - If replacing a demo video with Seedance or another generator, preserve the original video's size, crop, duration, loop rhythm, motion intensity, and text-safe area. Do not throw away a good composition just because the asset changed.
 
 Good output is not "this resembles a MotionSites template." Good output is "this uses MotionSites-level craft for the user's actual page."
+
+## Design Contract Taste Gate
+
+When `premium-web-workflow` selects a Web Design Vault Lite archetype, enforce it as a taste contract.
+
+The user does not want a thread to say "I used the skill" and then produce a normal static report. The visible page must prove the contract through composition, asset strategy, motion, and density.
+
+Before accepting a design direction, check:
+
+- Is the selected archetype visible in the first viewport, or only named in a status message?
+- Does the Hero have the promised asset path: `image_gen`, owned media, MotionSites direct reuse, confirmed video, or a justified code-native scene?
+- Did the page inherit real design mechanics: crop, spacing, typography, material, motion, interaction, and responsive behavior?
+- Is there a clear DOM/SVG/canvas vs raster boundary, or did it collapse into pasted images and static cards?
+- Would a viewer describe the first screen as a website, product surface, editorial experience, or decision interface rather than a PPT cover?
+
+If the archetype is not visible, treat it as a failure and revise the first viewport before touching lower sections.
+
+Preferred archetype mapping:
+
+- Company homepage / product page: `Apple Cinematic Product` or `MotionSites Liquid Video`
+- Public strategic report / industry map / comparison: `Premium Research Dashboard` or `Luxury Minimal Report`
+- Podcast / long transcript / learning map: `Data Story Map` with a premium image_gen Hero
+- Experimental/high-craft reference page: `Godly Editorial Interactive`
+- Body illustration rhythm: Xiaohei 1.0 for logic, Xiaohei 2.0 for situation/story; never as the main Hero
 
 ## Hero Rules
 

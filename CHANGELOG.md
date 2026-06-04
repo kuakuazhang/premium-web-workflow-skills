@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-06-04 - Web Design Vault Lite and showcase page
+
+- Added `references/web-design-vault-lite.md` to turn premium references into executable design contracts.
+- Added archetype routing for Apple Cinematic Product, MotionSites Liquid Video, Godly Editorial Interactive, Premium Research Dashboard, Data Story Map, and Luxury Minimal Report.
+- Updated `premium-web-workflow` so polished webpage work starts with an archetype/design contract before Hero planning and implementation.
+- Updated `zhangliang-web-taste` with a Design Contract Taste Gate to reject pages where the archetype is named but not visible.
+- Added a promotional showcase webpage for the skill package so the workflow can be reviewed against its own standards.
+
 ## 2026-06-04 - Ian Xiaohei Scenes 2.0 integration
 
 - Added `ian-xiaohei-scenes` as a fifth bundled third-party skill.

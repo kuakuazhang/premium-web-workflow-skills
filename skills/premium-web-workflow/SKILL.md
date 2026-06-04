@@ -15,6 +15,7 @@ Treat webpage work as a design-production pipeline, not a text-to-HTML task:
 
 ```
 brief / content
+  -> Web Design Vault Lite archetype + design contract
   -> Hero-first immersion plan
   -> bespoke hero visual asset or motion scene
   -> section-level visual references
@@ -47,6 +48,36 @@ I will use frontend-app-builder for implementation, but premium-web-workflow gov
 ## Personal Taste Overlay
 
 If the `zhangliang-web-taste` skill is available, use it together with this workflow for the user's webpage design, redesign, critique, and review tasks. It captures the user's specific anti-PPT taste, Hero expectations, image-asset boundary, and review criteria.
+
+## Web Design Vault Lite Gate
+
+For polished webpages, public-facing visual reports, public/presentation dashboards, company pages, landing pages, strategic HTML reports, and redesigns, read `references/web-design-vault-lite.md` before implementation.
+
+Do not treat "high-end", "Apple-like", "Awwwards", "Godly", or "MotionSites-style" as sufficient design direction. Convert the brief into a compact design contract first.
+
+Choose one primary archetype:
+
+- `Apple Cinematic Product`
+- `MotionSites Liquid Video`
+- `Godly Editorial Interactive`
+- `Premium Research Dashboard`
+- `Data Story Map`
+- `Luxury Minimal Report`
+
+Optionally add one secondary influence when useful. Then define:
+
+- why this archetype fits the user's page
+- Hero asset path: `image_gen`, owned image/video, Seedance-confirmed video, MotionSites direct reuse, or code-native scene
+- Hero composition: subject, text-safe area, nav, CTA, and next-section hint
+- media grammar: crop, lighting, density, materials, and negative prompts
+- typography/layout/motion rhythm
+- interaction inventory
+- DOM/SVG/canvas vs raster boundary
+- top failure risks and browser verification targets
+
+For routine tasks, this contract can be short and internal. For ambiguous or high-risk public pages, show the user the contract briefly before coding. If the user provides a premium reference, follow the Reference Decomposition Protocol in `web-design-vault-lite.md` before implementing.
+
+Hard rule: if the page is public-facing or presentation-oriented, do not proceed with a text-only or SVG-only Hero unless the design contract explicitly justifies a code-native scene and the first viewport has a real visual subject.
 
 ## Hero-First Immersion Gate
 
@@ -235,6 +266,13 @@ If the first generated image contains English text, a big title, PPT layout, too
 
 Use this order for new website or landing-page work:
 
+0. **Web Design Vault Lite Contract**
+   - Read `references/web-design-vault-lite.md`.
+   - Choose one primary archetype and optionally one secondary influence.
+   - Define the Hero asset path, media grammar, layout rhythm, motion grammar, interaction inventory, and DOM/SVG/canvas vs raster boundary.
+   - If using Godly, MotionSites, Variant, Impeccable, or another premium reference, decompose the reference before coding.
+   - Keep the contract short, but let it constrain the implementation.
+
 1. **Hero-First Immersion Plan**
    - Define what the first viewport should make the user feel and understand within 3 seconds.
    - Choose the Hero type: full-bleed visual scene, video background, spatial product/object stage, animated canvas/WebGL/SVG scene, editorial image-led Hero, or MotionSites direct reuse.
@@ -355,6 +393,7 @@ When a section reference image exists, rebuild it by decomposition. Do not guess
    - Verify the page is not blank, the hero is visible, text does not overlap, animations run smoothly, and the result resembles the reference images.
    - On mobile, do not accept "it stacks" as sufficient. The first viewport must still show the brand/product/topic signal and the hero, not only a tall menu or table of contents.
    - For canvas, WebGL, video, or GSAP-heavy pages, visually inspect screenshots and confirm the primary scene is actually rendering.
+   - Score the page with the Quality Gate in `references/web-design-vault-lite.md`. If the public Hero scores below 4/5, fix the Hero before polishing body sections.
 
 ## Knowledge / Transcript Visualization Mode
 
