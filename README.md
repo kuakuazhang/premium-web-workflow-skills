@@ -1,6 +1,6 @@
 # Premium Web Workflow Skills
 
-Codex skills for building higher-craft webpages and visual dashboards instead of generic AI/PPT-like pages.
+Codex skills for building higher-craft webpages, static HTML visual reports, and visual dashboards instead of generic AI/PPT-like pages.
 
 This package contains four skills:
 
@@ -25,6 +25,7 @@ The workflow pushes Codex to:
 8. Use Ian Xiaohei illustrations only for middle/body explanatory moments in Chinese knowledge pages, not as the main premium Hero system.
 9. Add meaningful motion and browser-verify desktop/mobile screenshots.
 10. Localize critical remote videos/images when a page will be kept or deployed, and add fallback visuals so a dead external URL does not break the Hero.
+11. Treat Build Web Apps / `frontend-app-builder` as implementation support, not as a replacement for this visual workflow.
 
 ## Install
 
@@ -76,6 +77,12 @@ For visual dashboards:
 
 ```text
 做一个可视化看板，默认激活 premium-web-workflow。如果是公开展示/行业地图，就先做 Hero-first 沉浸式首屏；如果是内部运营看板，就做成高级、密集、可交互的决策界面，不要做成 PPT 图表卡片。
+```
+
+If another thread jumps straight to `frontend-app-builder`:
+
+```text
+你可以用 frontend-app-builder 来落地代码，但它不能替代 premium-web-workflow。这个任务不是普通静态 HTML 报告，而是可视化网页/战略看板。请先按 premium-web-workflow 做设计入口：Hero-first、必要时用 Godly Deep Reference、真实 DOM/SVG/canvas 图表、交互状态和浏览器截图验证，然后再用 frontend-app-builder 实现。
 ```
 
 For Chinese longform/knowledge illustrations:

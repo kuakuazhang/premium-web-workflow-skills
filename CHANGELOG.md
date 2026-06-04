@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-06-04 - Build Web Apps bridge and static report triggers
+
+- Added trigger coverage for 静态HTML, 静态报告, 单文件HTML, 单文件报告, 战略看板, and 可视化网页.
+- Added a Build Web Apps bridge rule: `frontend-app-builder` can implement, but `premium-web-workflow` governs design and quality.
+- Clarified that "static HTML report" is a delivery format, not a reason to skip Hero-first and premium visual workflow.
+
 ## 2026-06-04 - Godly deep reference protocol
 
 - Added Godly as a deep real-site reference layer for premium website effects.
