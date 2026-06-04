@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-06-04 - Godly deep reference protocol
+
+- Added Godly as a deep real-site reference layer for premium website effects.
+- Added `references/godly-deep-reference.md` with analysis categories, replication brief template, 80-90% match requirements, and non-copy boundaries.
+- Updated the default workflow to produce a detailed replication brief before implementing Godly-inspired pages.
+
 ## 2026-06-03 - Xiaohei handoff recovery rules
 
 - Added explicit recovery instructions for threads that started before `ian-xiaohei-illustrations` appeared in their available skill list.

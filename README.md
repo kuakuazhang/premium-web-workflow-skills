@@ -18,12 +18,13 @@ The workflow pushes Codex to:
 3. Use MotionSites in two layers:
    - **Direct Reuse Mode**: choose a design on `https://motionsites.ai/`, paste the official `Copy` prompt, reproduce it first, then adapt.
    - **Reference Mode**: if no prompt is selected, borrow only design mechanics such as Hero composition, motion, image role, glass effects, and section rhythm.
-4. Keep important text, buttons, nav, tables, charts, and diagrams as real DOM/SVG/canvas instead of flattened screenshots.
-5. Use generated or local assets for Hero atmosphere, renders, textures, and visual scenes when appropriate.
-6. Use Seedance 2.0 only when a page needs a custom video asset, such as replacing a MotionSites demo video with the user's actual product/scene motion.
-7. Use Ian Xiaohei illustrations only for middle/body explanatory moments in Chinese knowledge pages, not as the main premium Hero system.
-8. Add meaningful motion and browser-verify desktop/mobile screenshots.
-9. Localize critical remote videos/images when a page will be kept or deployed, and add fallback visuals so a dead external URL does not break the Hero.
+4. Use Godly as a deep real-site reference source when no direct prompt exists, especially for Hero, motion, and premium site mechanics.
+5. Keep important text, buttons, nav, tables, charts, and diagrams as real DOM/SVG/canvas instead of flattened screenshots.
+6. Use generated or local assets for Hero atmosphere, renders, textures, and visual scenes when appropriate.
+7. Use Seedance 2.0 only when a page needs a custom video asset, such as replacing a MotionSites demo video with the user's actual product/scene motion.
+8. Use Ian Xiaohei illustrations only for middle/body explanatory moments in Chinese knowledge pages, not as the main premium Hero system.
+9. Add meaningful motion and browser-verify desktop/mobile screenshots.
+10. Localize critical remote videos/images when a page will be kept or deployed, and add fallback visuals so a dead external URL does not break the Hero.
 
 ## Install
 
@@ -63,6 +64,12 @@ For normal webpage creation:
 
 ```text
 做一个公司官网首页，按 premium-web-workflow 默认流程走。先做沉浸式 Hero 方案和视觉资产，不要先排文字内容。如果能找到合适的 MotionSites 直接复用模板，先让我选；如果没有，就进入参考模式。
+```
+
+For Godly deep reference:
+
+```text
+请按 premium-web-workflow 的 Godly Deep Reference Layer 来做。先从 https://godly.website/ 或我给的 Godly 参考里选 2-3 个真实网站，深度拆解 Hero 几何、视觉资产、字体、色彩材质、动效、交互状态和移动端，然后写成可执行的复刻 brief，再开始实现。目标是复刻效果和机制，不复制品牌素材/文字/代码。
 ```
 
 For visual dashboards:

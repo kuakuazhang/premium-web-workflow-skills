@@ -82,6 +82,17 @@ When the visual direction is weak, the user asks for a cooler Hero, or the page 
 - For production use, localize critical remote assets such as video, images, model files, and fonts when allowed; add fallback poster/CSS backgrounds so the page does not black-screen if an external URL fails.
 - If a MotionSites page has the right visual effect but the wrong demo video content, keep the page mechanics and replace only the video asset. Preserve the original video's aspect ratio, crop, duration, loop behavior, animation rhythm, overlay treatment, and text-safe areas.
 
+## Godly Deep Reference Layer
+
+Use Godly when the task needs real-world premium website references rather than a directly copied prompt.
+
+- Read `references/godly-deep-reference.md` when the user mentions `godly.website`, asks to use a real website reference, wants to replicate a specific effect from a beautiful site, or says the page should look like a top-tier real website.
+- Godly is a curated inspiration source, not an open-source template library. Use it to find and inspect references, then extract design mechanics.
+- For a 80-90% effect match, do not summarize the reference as "clean", "premium", or "animated." Produce a detailed replication brief that covers layout geometry, visual assets, typography, color/materials, motion, interaction states, responsive behavior, and implementation choices.
+- If the user provides a specific Godly entry or original site URL, inspect that exact page in browser. Capture or observe desktop and mobile first viewports, important scroll states, hover states, and motion if possible.
+- Do not copy proprietary assets, logos, text, videos, or full page structure as-is. Rebuild the mechanics for the user's content and brand.
+- Use Godly after MotionSites Direct Reuse if no copied prompt exists, or before custom image generation when the visual direction needs real-site calibration.
+
 ## Optional Video Asset Provider
 
 If the `seedance-video-asset` skill is available, use it when the webpage needs a custom generated video asset, especially for a premium Hero background or when replacing a MotionSites demo video with the user's own product/scene animation.
@@ -164,6 +175,7 @@ Use this order for new website or landing-page work:
 
 3. **Reference Pattern Selection**
    - If no reusable prompt is selected, choose 1-3 reference patterns from high-end design references, MotionSites-style patterns, or the user's provided references.
+   - When using Godly or another real-site reference, follow `references/godly-deep-reference.md` and produce a detailed replication brief before coding.
    - Summarize the chosen pattern in implementation terms: layout, image role, type scale, motion, interaction, and responsive behavior.
    - Do not copy prompt text verbatim into the final page brief. Distill and adapt it.
 
