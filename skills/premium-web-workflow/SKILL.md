@@ -172,14 +172,22 @@ For Hero images specifically, `image_gen` is the default provider. Do not hand-r
 
 ## Editorial Illustration Mode
 
-If the `ian-xiaohei-illustrations` skill is available, use it as an optional body-section illustration provider for Chinese longform, knowledge, report, podcast, methodology, and industry-explainer webpages.
+If `ian-xiaohei-illustrations` or `ian-xiaohei-scenes` is available, use them as optional body-section illustration providers for Chinese longform, knowledge, report, podcast, methodology, project-story, and industry-explainer webpages.
 
-Use Ian Xiaohei illustrations for:
+Use Ian Xiaohei 1.0 `ian-xiaohei-illustrations` for:
 
 - a middle-section visual break in a dense knowledge page
 - one abstract claim, workflow, contrast, state, or metaphor that needs a memorable explanation
 - Chinese article-style inline illustrations that keep the page from becoming a PPT/report stack
 - small editorial moments after the Hero, between diagrams, or near quotes/explainers
+- pure hand-drawn logic/process/methodology explanation
+
+Use Ian Xiaohei 2.0 `ian-xiaohei-scenes` for:
+
+- user situations, work pressure, AI-era anxiety, creator/product/team pain points
+- project retrospectives, personal experience, product evolution, growth path, or content asset stories
+- real-object small scenes where Xiaohei physically interacts with objects
+- long-scroll story images when the user asks for 彩蛋模式, 长卷故事图, 超横版, 个人经历, 项目复盘, 产品演化, or 成长路径
 
 Do not use it for:
 
@@ -192,11 +200,12 @@ Workflow:
 
 1. First design the Hero using Hero-first rules.
 2. After the knowledge architecture is clear, identify 1-5 "cognitive anchors" that deserve editorial illustration.
-3. Route those anchors through `ian-xiaohei-illustrations` as separate 16:9 illustrations.
-4. Place the generated images as body illustrations with real DOM captions/explanations nearby.
-5. Keep attribution clear if redistributing the skill package: Ian Xiaohei is a third-party visual language by Ian / helloianneo.
+3. Route logic/process/methodology anchors through `ian-xiaohei-illustrations` as separate 16:9 illustrations.
+4. Route situation/story/product-evolution anchors through `ian-xiaohei-scenes`; use standard 16:9 scenes by default and long-scroll mode only when the content is a project/person/product story.
+5. Place the generated images as body illustrations with real DOM captions/explanations nearby.
+6. Keep attribution clear if redistributing the skill package: Ian Xiaohei is a third-party visual language by Ian / helloianneo.
 
-Rule of thumb: Xiaohei can make the body smarter and more memorable; it should not carry the website's premium first impression.
+Rule of thumb: Xiaohei 1.0 explains structure; Xiaohei 2.0 makes situations and stories felt. Neither should carry the website's premium first impression.
 
 ### Xiaohei Handoff Rules
 
@@ -204,10 +213,11 @@ When the user asks another thread to use Xiaohei illustrations, the agent may no
 
 Use this exact recovery order:
 
-1. Check whether `ian-xiaohei-illustrations` appears in the available skill list.
+1. Check whether `ian-xiaohei-illustrations` or `ian-xiaohei-scenes` appears in the available skill list.
 2. If it appears, read and follow its `SKILL.md`.
 3. If it does not appear but this package is installed locally, read:
    `/Users/kukuazhang/.codex/skills/ian-xiaohei-illustrations/SKILL.md`
+   or `/Users/kukuazhang/.codex/skills/ian-xiaohei-scenes/SKILL.md`
 4. If the local file is missing, ask the user to restart Codex or install the latest `premium-web-workflow-skills` package. Do not continue generating "Xiaohei-style" images from memory.
 
 Before generating images, output a short shot list:
@@ -219,7 +229,7 @@ Before generating images, output a short shot list:
 
 For webpages, prefer no readable text inside the image unless the skill explicitly calls for short handwritten Chinese labels. If labels are needed, keep them very short and keep the real explanation as DOM text beside the image.
 
-If the first generated image contains English text, a big title, PPT layout, too many labels, or Xiaohei is only decorative, regenerate using the QA checklist from `ian-xiaohei-illustrations` instead of settling for the wrong asset.
+If the first generated image contains English text, a big title, PPT layout, too many labels, object clutter, copied master composition, or Xiaohei is only decorative, regenerate using the QA checklist from the selected Xiaohei skill instead of settling for the wrong asset.
 
 ## Default Workflow
 

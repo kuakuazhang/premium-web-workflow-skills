@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-06-04 - Ian Xiaohei Scenes 2.0 integration
+
+- Added `ian-xiaohei-scenes` as a fifth bundled third-party skill.
+- Included its required `assets/examples/` master images, references, LICENSE, and NOTICE.
+- Added 1.0 vs 2.0 routing: `ian-xiaohei-illustrations` for logic/process explanation, `ian-xiaohei-scenes` for real-object situations, stories, project retrospectives, and long-scroll scenes.
+
 ## 2026-06-04 - Default bitmap Hero image rule
 
 - Clarified that Hero images default to Codex built-in `image_gen` / GPT Image bitmap output.

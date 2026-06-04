@@ -123,7 +123,9 @@ For long transcripts, research reports, or learning pages:
 - Start with information architecture: claims, actors, timelines, terms, decision recipes, tensions.
 - Then design the first viewport as a premium immersive Hero, using a generated or owned visual asset unless explicitly skipped.
 - Then make real interactive knowledge objects: SVG diagrams, matrices, tabs, glossary, chapter map, filters.
-- Use Ian Xiaohei-style illustrations only as body-section explanation breaks for selected cognitive anchors. They should make one idea memorable, not become the page's main design system.
+- Use Ian Xiaohei 1.0 only as body-section explanation breaks for logic/process anchors.
+- Use Ian Xiaohei 2.0 scenes only for body-section situation/story/product-evolution moments.
+- Xiaohei illustrations should make one idea memorable, not become the page's main design system.
 - Still make the Hero visually premium. A knowledge page can be useful without looking like a report cover.
 - Do not let the whole page become a sequence of equal cards. Use varied section rhythm.
 

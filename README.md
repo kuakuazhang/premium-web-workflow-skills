@@ -2,12 +2,13 @@
 
 Codex skills for building higher-craft webpages, static HTML visual reports, and visual dashboards instead of generic AI/PPT-like pages.
 
-This package contains four skills:
+This package contains five skills:
 
 - `premium-web-workflow`: the main workflow for website, landing page, homepage, Hero, redesign, animation, and visual frontend work.
 - `zhangliang-web-taste`: a personal taste layer that catches common AI-webpage/dashboard failures such as PPT-like hero sections, boxed right-side images, screenshot-collage sections, weak motion, static chart screenshots, and generic card grids.
 - `seedance-video-asset`: an optional video-asset workflow for generating custom Hero/background videos through Volcengine Seedance 2.0, with cost confirmation and secret-safety rules.
 - `ian-xiaohei-illustrations`: a third-party Ian Xiaohei article-illustration skill, included with attribution, for hand-drawn Chinese explanatory illustrations inside longform/knowledge webpages.
+- `ian-xiaohei-scenes`: a third-party Ian Xiaohei 2.0 scenes skill, included with attribution and example masters, for real-object article illustrations and long-scroll story images.
 
 ## What It Does
 
@@ -22,7 +23,7 @@ The workflow pushes Codex to:
 5. Keep important text, buttons, nav, tables, charts, and diagrams as real DOM/SVG/canvas instead of flattened screenshots.
 6. Use Codex built-in `image_gen` / GPT Image as the default bitmap image generation path for Hero atmosphere, renders, textures, visual scenes, and static fallbacks; do not default to SVG Hero art.
 7. Use Seedance 2.0 only when a page needs a custom video asset, such as replacing a MotionSites demo video with the user's actual product/scene motion.
-8. Use Ian Xiaohei illustrations only for middle/body explanatory moments in Chinese knowledge pages, not as the main premium Hero system.
+8. Use Ian Xiaohei 1.0 illustrations for middle/body logic explanation, and Ian Xiaohei 2.0 scenes for real-object situation/story moments; neither is the main premium Hero system.
 9. Add meaningful motion and browser-verify desktop/mobile screenshots.
 10. Localize critical remote videos/images when a page will be kept or deployed, and add fallback visuals so a dead external URL does not break the Hero.
 11. Treat Build Web Apps / `frontend-app-builder` as implementation support, not as a replacement for this visual workflow.
@@ -44,6 +45,7 @@ cp -R skills/premium-web-workflow "$HOME/.codex/skills/"
 cp -R skills/zhangliang-web-taste "$HOME/.codex/skills/"
 cp -R skills/seedance-video-asset "$HOME/.codex/skills/"
 cp -R skills/ian-xiaohei-illustrations "$HOME/.codex/skills/"
+cp -R skills/ian-xiaohei-scenes "$HOME/.codex/skills/"
 ```
 
 Restart Codex or open a new thread after installing so the skills appear in the available skill list.
@@ -98,6 +100,12 @@ For Chinese longform/knowledge illustrations:
 做一个中文知识型网页，首页按 Hero-first 做沉浸式首屏；中段如果有抽象判断或流程，请调用 ian-xiaohei-illustrations 生成 2-4 张小黑式正文解释插图，作为穿插内容，不要用它替代图表/按钮/交互组件。
 ```
 
+For Xiaohei 2.0 real-object scenes:
+
+```text
+做一个中文知识型网页，首页仍按 Hero-first 和 image_gen 做高级主视觉；正文中段如果要表达用户处境、AI 时代焦虑、项目复盘、产品演化或故事转折，请调用 ian-xiaohei-scenes 生成小黑 2.0 实物场景正文图。1.0 负责拆逻辑/流程，2.0 负责真实物件小现场/长卷故事。
+```
+
 If another thread does not recognize Xiaohei immediately:
 
 ```text
@@ -144,6 +152,8 @@ See `CHANGELOG.md`. GitHub also shows every committed iteration through the comm
 ## Third-Party Attribution
 
 `ian-xiaohei-illustrations` is created by Ian / helloianneo and is included under the MIT License with NOTICE. The recurring "小黑" character is Ian's visual language for Chinese article illustrations. See `THIRD_PARTY_NOTICES.md`.
+
+`ian-xiaohei-scenes` is also created by Ian / helloianneo and is included under the MIT License with NOTICE and its required example masters.
 
 ## Notes
 
