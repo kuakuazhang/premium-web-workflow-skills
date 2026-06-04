@@ -1,45 +1,31 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Premium Web Workflow | 参考先行，网页成型</title>
-  <meta name="description" content="Premium Web Workflow 是一套给 Codex 使用的网页设计 Skill：先明确参考，再设计主视觉、真实结构、中文标题和截图验收。" />
+  <title>Premium Web Workflow | Reference First</title>
+  <meta name="description" content="A cinematic MotionSites-style showcase for the Premium Web Workflow Codex skill." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      color-scheme: light;
-      --paper: #f4efe4;
-      --paper-2: #fffaf0;
-      --ink: #11110f;
-      --muted: rgba(17, 17, 15, .62);
-      --faint: rgba(17, 17, 15, .12);
-      --line: rgba(17, 17, 15, .2);
-      --red: #f0441d;
-      --blue: #2559e6;
-      --sand: #d8c7a4;
-      --shadow: 0 24px 70px rgba(39, 31, 18, .16);
-      --max: 1200px;
-    }
-
     * {
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: #000;
+      color: #fff;
+      font-family: "Inter", sans-serif;
     }
 
     body {
-      margin: 0;
-      overflow-x: hidden;
-      background:
-        linear-gradient(rgba(17,17,15,.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(17,17,15,.035) 1px, transparent 1px),
-        var(--paper);
-      background-size: 22px 22px;
-      color: var(--ink);
-      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-      letter-spacing: 0;
+      min-height: 100svh;
     }
 
     a {
@@ -48,1077 +34,647 @@
     }
 
     button {
+      border: 0;
+      color: inherit;
       font: inherit;
     }
 
-    .topbar {
-      position: fixed;
-      inset: 18px 20px auto;
-      z-index: 20;
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      gap: 18px;
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 12px 0;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      background: rgba(244, 239, 228, .72);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+    .page {
+      position: relative;
+      width: 100%;
+      min-height: 100svh;
+      overflow: hidden;
+      background: #000;
     }
 
-    .brand {
+    .background-video {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: #000;
+    }
+
+    .video-fallback {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(circle at 68% 26%, rgba(255, 255, 255, .24), transparent 27%),
+        radial-gradient(circle at 28% 72%, rgba(120, 120, 120, .28), transparent 34%),
+        linear-gradient(135deg, #070707 0%, #151515 44%, #050505 100%);
+    }
+
+    .bottom-blur {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      mask-image: linear-gradient(to top, black 0%, transparent 45%);
+      -webkit-mask-image: linear-gradient(to top, black 0%, transparent 45%);
+    }
+
+    .liquid-glass {
+      position: relative;
+      overflow: hidden;
+      border: none;
+      background: rgba(255, 255, 255, .01);
+      background-blend-mode: luminosity;
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, .1);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+
+    .liquid-glass::before {
+      content: "";
+      pointer-events: none;
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1.4px;
+      background: linear-gradient(180deg, rgba(255,255,255,.45) 0%, rgba(255,255,255,.15) 20%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,.15) 80%, rgba(255,255,255,.45) 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+
+    @keyframes blurFadeUp {
+      from {
+        opacity: 0;
+        filter: blur(20px);
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes mobileLinkIn {
+      from {
+        opacity: 0;
+        transform: translateX(-18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .animate-blur-fade-up {
+      opacity: 0;
+      animation: blurFadeUp 1s ease-out forwards;
+    }
+
+    .nav {
+      position: relative;
+      z-index: 50;
       display: flex;
       align-items: center;
-      gap: 10px;
-      min-width: 0;
+      justify-content: space-between;
+      padding: 24px 48px;
+    }
+
+    .logo {
+      height: 40px;
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
       font-size: 13px;
-      font-weight: 800;
-      letter-spacing: .02em;
+      font-weight: 700;
+      letter-spacing: .06em;
       text-transform: uppercase;
     }
 
-    .brand-mark {
+    .logo-mark {
       display: grid;
-      width: 28px;
-      height: 28px;
+      width: 34px;
+      height: 34px;
       place-items: center;
-      border: 1px solid var(--ink);
-      border-radius: 50%;
-      background: var(--red);
-      color: var(--paper-2);
-      font-weight: 900;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .92);
+      color: #000;
+      font-weight: 700;
     }
 
     .nav-links {
       display: flex;
-      justify-content: center;
-      gap: 22px;
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 700;
+      align-items: center;
+      gap: 28px;
+      color: rgba(255, 255, 255, .82);
+      font-size: 14px;
+      font-weight: 500;
     }
 
     .nav-links a {
-      padding: 4px 0;
-      border-bottom: 1px solid transparent;
-      transition: color .2s ease, border-color .2s ease;
+      transition: color .2s ease;
     }
 
     .nav-links a:hover {
-      color: var(--ink);
-      border-color: var(--ink);
+      color: rgba(255, 255, 255, 1);
     }
 
-    .github-link {
-      justify-self: end;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      width: fit-content;
-      padding: 9px 13px;
-      border: 1px solid var(--ink);
-      border-radius: 999px;
-      background: var(--ink);
-      color: var(--paper-2);
-      font-size: 12px;
-      font-weight: 800;
-      transition: transform .2s ease, background .2s ease;
-    }
-
-    .github-link:hover {
-      transform: translateY(-1px);
-      background: var(--blue);
-    }
-
-    .wrap {
-      width: min(calc(100% - 44px), var(--max));
-      margin: 0 auto;
-    }
-
-    .hero {
-      min-height: 100svh;
-      padding: 112px 0 38px;
-      display: grid;
-      align-items: center;
-    }
-
-    .hero-edition {
-      display: grid;
-      grid-template-columns: 170px 1fr 230px;
-      gap: 22px;
-      align-items: start;
-      margin-bottom: 18px;
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    .hero-edition::before,
-    .hero-edition::after {
-      content: "";
-      display: block;
-      height: 1px;
-      margin-top: .65em;
-      background: var(--line);
-    }
-
-    .hero-layout {
-      display: grid;
-      grid-template-columns: minmax(540px, .95fr) minmax(360px, 1.05fr);
-      grid-template-areas:
-        "title image"
-        "copy image"
-        "actions image";
-      gap: 24px 34px;
-      align-items: end;
-    }
-
-    h1 {
-      grid-area: title;
-      margin: 0;
-      font-size: clamp(72px, 7.8vw, 112px);
-      line-height: .88;
-      font-weight: 900;
-      letter-spacing: 0;
-    }
-
-    .headline-line {
-      display: block;
-      white-space: nowrap;
-    }
-
-    .headline-line + .headline-line {
-      margin-top: .06em;
-    }
-
-    .hero-copy {
-      grid-area: copy;
-      max-width: 460px;
-      margin: 0;
-      color: rgba(17, 17, 15, .72);
-      font-size: clamp(16px, 1.5vw, 19px);
-      line-height: 1.7;
-      font-weight: 650;
-    }
-
-    .hero-actions {
-      grid-area: actions;
+    .nav-actions {
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 8px;
+      align-items: center;
+      gap: 12px;
     }
 
-    .button {
+    .pill-button,
+    .circle-button,
+    .menu-button {
+      cursor: pointer;
       display: inline-flex;
-      min-height: 44px;
       align-items: center;
       justify-content: center;
-      padding: 11px 17px;
-      border: 1px solid var(--ink);
+      transition: color .2s ease, background .2s ease, transform .2s ease;
+    }
+
+    .pill-button:hover,
+    .circle-button:hover,
+    .menu-button:hover {
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, .06);
+    }
+
+    .pill-button {
+      min-height: 40px;
+      gap: 9px;
+      padding: 8px 22px;
       border-radius: 999px;
-      background: transparent;
-      color: var(--ink);
       font-size: 14px;
-      font-weight: 850;
-      transition: transform .2s ease, background .2s ease, color .2s ease;
+      font-weight: 500;
     }
 
-    .button:hover {
-      transform: translateY(-2px);
-      background: var(--ink);
-      color: var(--paper-2);
+    .circle-button,
+    .menu-button {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
     }
 
-    .button.primary {
-      background: var(--red);
-      color: var(--paper-2);
-      border-color: var(--red);
-    }
-
-    .button.primary:hover {
-      background: var(--blue);
-      border-color: var(--blue);
-    }
-
-    .hero-plate {
-      grid-area: image;
+    .menu-button {
+      display: none;
       position: relative;
-      margin: 0;
-      border: 1px solid rgba(17, 17, 15, .28);
-      background: var(--paper-2);
-      box-shadow: var(--shadow);
-      transform: rotate(-1.2deg);
-      overflow: hidden;
     }
 
-    .hero-plate img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      filter: saturate(.95) contrast(1.02);
-    }
-
-    .plate-caption {
+    .menu-button svg {
       position: absolute;
-      left: 16px;
-      right: 16px;
-      bottom: 14px;
-      display: flex;
-      justify-content: space-between;
-      gap: 14px;
-      color: rgba(17, 17, 15, .68);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: .08em;
-      text-transform: uppercase;
+      transition: transform .5s ease-out, opacity .5s ease-out;
     }
 
-    .proof-strip {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      margin-top: 34px;
-      border-top: 1px solid var(--ink);
-      border-bottom: 1px solid var(--ink);
-    }
-
-    .proof-item {
-      min-height: 112px;
-      padding: 18px 18px 16px;
-      border-right: 1px solid var(--line);
-    }
-
-    .proof-item:last-child {
-      border-right: 0;
-    }
-
-    .proof-item strong {
-      display: block;
-      font-size: 32px;
-      line-height: 1;
-      font-weight: 900;
-    }
-
-    .proof-item span {
-      display: block;
-      margin-top: 16px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.45;
-      font-weight: 650;
-    }
-
-    section {
-      padding: 92px 0;
-    }
-
-    .section-head {
-      display: grid;
-      grid-template-columns: 170px minmax(0, 1fr) minmax(260px, 380px);
-      gap: 26px;
-      align-items: start;
-      margin-bottom: 36px;
-      border-top: 1px solid var(--ink);
-      padding-top: 18px;
-    }
-
-    .kicker {
-      margin: 0;
-      color: var(--red);
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    h2 {
-      margin: 0;
-      font-size: clamp(38px, 5.5vw, 78px);
-      line-height: .9;
-      font-weight: 900;
-    }
-
-    .section-lead {
-      margin: 0;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.72;
-      font-weight: 620;
-    }
-
-    .reference-board {
-      display: grid;
-      grid-template-columns: minmax(320px, .86fr) minmax(0, 1.14fr);
-      gap: 18px;
-    }
-
-    .reference-list {
-      display: grid;
-      gap: 10px;
-    }
-
-    .reference-button {
-      width: 100%;
-      cursor: pointer;
-      border: 1px solid rgba(17, 17, 15, .18);
-      background: rgba(255, 250, 240, .56);
-      padding: 18px;
-      text-align: left;
-      transition: transform .2s ease, background .2s ease, border-color .2s ease;
-    }
-
-    .reference-button:hover,
-    .reference-button.is-active {
-      transform: translateX(6px);
-      border-color: var(--ink);
-      background: var(--paper-2);
-    }
-
-    .reference-button b {
-      display: block;
-      margin-bottom: 7px;
-      font-size: 18px;
-    }
-
-    .reference-button span {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.45;
-      font-weight: 650;
-    }
-
-    .contract-sheet {
-      position: relative;
-      min-height: 520px;
-      padding: 30px;
-      border: 1px solid var(--ink);
-      background:
-        linear-gradient(90deg, transparent 0 24px, rgba(37, 89, 230, .12) 24px 25px, transparent 25px),
-        linear-gradient(var(--paper-2), var(--paper-2));
-      box-shadow: var(--shadow);
-    }
-
-    .contract-sheet::before {
-      content: "";
-      position: absolute;
-      inset: 14px;
-      border: 1px solid rgba(17, 17, 15, .1);
-      pointer-events: none;
-    }
-
-    .contract-label {
-      margin: 0 0 18px;
-      color: var(--red);
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    .contract-sheet h3 {
-      margin: 0;
-      max-width: 580px;
-      font-size: clamp(36px, 5vw, 68px);
-      line-height: .92;
-      font-weight: 900;
-    }
-
-    .contract-body {
-      max-width: 560px;
-      margin: 22px 0 0;
-      color: var(--muted);
-      font-size: 17px;
-      line-height: 1.68;
-      font-weight: 650;
-    }
-
-    .contract-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1px;
-      margin-top: 34px;
-      border: 1px solid rgba(17, 17, 15, .2);
-      background: rgba(17, 17, 15, .18);
-    }
-
-    .contract-cell {
-      min-height: 112px;
-      padding: 16px;
-      background: rgba(255, 250, 240, .78);
-    }
-
-    .contract-cell small {
-      display: block;
-      margin-bottom: 18px;
-      color: var(--blue);
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-    }
-
-    .contract-cell b {
-      font-size: 15px;
-      line-height: 1.38;
-    }
-
-    .process {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 0;
-      border-top: 1px solid var(--ink);
-      border-bottom: 1px solid var(--ink);
-    }
-
-    .process-step {
-      min-height: 280px;
-      padding: 20px;
-      border-right: 1px solid var(--line);
-      background: rgba(255, 250, 240, .36);
-      transition: background .2s ease, transform .2s ease;
-    }
-
-    .process-step:last-child {
-      border-right: 0;
-    }
-
-    .process-step:hover {
-      background: var(--paper-2);
-      transform: translateY(-4px);
-    }
-
-    .process-step strong {
-      display: block;
-      color: var(--red);
-      font-size: 13px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    .process-step h3 {
-      margin: 70px 0 14px;
-      font-size: 25px;
-      line-height: 1.02;
-    }
-
-    .process-step p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.55;
-      font-weight: 620;
-    }
-
-    .image-boundary {
-      display: grid;
-      grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr);
-      gap: 34px;
-      align-items: center;
-    }
-
-    .poster-stack {
-      position: relative;
-      min-height: 520px;
-    }
-
-    .poster {
-      position: absolute;
-      border: 1px solid var(--ink);
-      background: var(--paper-2);
-      box-shadow: var(--shadow);
-    }
-
-    .poster.one {
-      inset: 20px 120px 110px 20px;
-      transform: rotate(-4deg);
-      background:
-        linear-gradient(135deg, transparent 0 64%, rgba(240, 68, 29, .95) 64% 76%, transparent 76%),
-        var(--paper-2);
-    }
-
-    .poster.two {
-      inset: 120px 20px 20px 150px;
-      transform: rotate(3deg);
-      background:
-        linear-gradient(90deg, rgba(37, 89, 230, .95) 0 36%, transparent 36%),
-        linear-gradient(var(--paper-2), var(--paper-2));
-    }
-
-    .poster.three {
-      left: 70px;
-      right: 74px;
-      top: 178px;
-      height: 120px;
-      transform: rotate(-1deg);
-      background:
-        repeating-linear-gradient(90deg, rgba(17,17,15,.8) 0 34px, transparent 34px 52px),
-        var(--paper-2);
-    }
-
-    .rules {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      border-top: 1px solid var(--ink);
-      border-left: 1px solid var(--ink);
-    }
-
-    .rule {
-      min-height: 260px;
-      padding: 22px;
-      border-right: 1px solid var(--ink);
-      border-bottom: 1px solid var(--ink);
-      background: rgba(255, 250, 240, .4);
-    }
-
-    .rule:nth-child(2) {
-      background: var(--ink);
-      color: var(--paper-2);
-    }
-
-    .rule small {
-      display: block;
-      color: var(--red);
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    .rule:nth-child(2) small {
-      color: #ffb19f;
-    }
-
-    .rule h3 {
-      margin: 78px 0 14px;
-      font-size: 28px;
-      line-height: 1.02;
-    }
-
-    .rule p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.55;
-      font-weight: 620;
-    }
-
-    .rule:nth-child(2) p {
-      color: rgba(255, 250, 240, .68);
-    }
-
-    .quality-ledger {
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      border: 1px solid var(--ink);
-      background: var(--paper-2);
-      box-shadow: var(--shadow);
-    }
-
-    .score-table {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      border-right: 1px solid var(--ink);
-    }
-
-    .score {
-      min-height: 142px;
-      padding: 18px;
-      border-right: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .score:nth-child(2n) {
-      border-right: 0;
-    }
-
-    .score strong {
-      display: block;
-      color: var(--blue);
-      font-size: 34px;
-      line-height: 1;
-    }
-
-    .score span {
-      display: block;
-      margin-top: 28px;
-      color: var(--muted);
-      font-weight: 700;
-    }
-
-    .ledger-note {
-      display: grid;
-      align-content: end;
-      padding: 28px;
-      background:
-        linear-gradient(135deg, transparent 0 62%, rgba(240, 68, 29, .93) 62% 76%, transparent 76%),
-        var(--paper-2);
-    }
-
-    .ledger-note h3 {
-      margin: 0;
-      font-size: clamp(36px, 5vw, 64px);
-      line-height: .92;
-    }
-
-    .ledger-note p {
-      margin: 22px 0 0;
-      color: var(--muted);
-      line-height: 1.62;
-      font-weight: 650;
-    }
-
-    .cta {
-      padding-bottom: 120px;
-    }
-
-    .cta-panel {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 360px;
-      gap: 34px;
-      align-items: end;
-      padding: 34px;
-      border: 1px solid var(--ink);
-      background: var(--ink);
-      color: var(--paper-2);
-    }
-
-    .cta-panel h2 {
-      color: var(--paper-2);
-    }
-
-    .cta-panel .section-lead {
-      max-width: 650px;
-      color: rgba(255, 250, 240, .66);
-      margin-top: 20px;
-    }
-
-    .command {
-      border: 1px solid rgba(255, 250, 240, .2);
-      background: rgba(255, 250, 240, .07);
-    }
-
-    .command pre {
-      margin: 0;
-      padding: 18px;
-      color: rgba(255, 250, 240, .8);
-      white-space: pre-wrap;
-      font: 13px/1.55 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    }
-
-    .reveal {
+    .menu-button .icon-close {
       opacity: 0;
-      transform: translateY(20px);
-      transition: opacity .7s ease, transform .7s ease;
+      transform: rotate(-180deg) scale(.5);
     }
 
-    .reveal.in {
+    .menu-button.is-open .icon-menu {
+      opacity: 0;
+      transform: rotate(180deg) scale(.5);
+    }
+
+    .menu-button.is-open .icon-close {
       opacity: 1;
+      transform: rotate(0) scale(1);
+    }
+
+    .mobile-menu {
+      position: absolute;
+      top: 72px;
+      left: 0;
+      right: 0;
+      z-index: 40;
+      padding: 14px 18px 18px;
+      border-top: 1px solid rgba(31, 41, 55, 1);
+      border-bottom: 1px solid rgba(31, 41, 55, 1);
+      background: rgba(17, 24, 39, .95);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, .45);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-16px);
+      transition: opacity .5s ease-out, transform .5s ease-out;
+    }
+
+    .mobile-menu.is-open {
+      opacity: 1;
+      pointer-events: auto;
       transform: translateY(0);
     }
 
-    @media (max-width: 980px) {
-      .topbar {
-        grid-template-columns: 1fr auto;
+    .mobile-menu a {
+      display: block;
+      padding: 12px;
+      border-radius: 10px;
+      color: rgba(255, 255, 255, .84);
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .mobile-menu.is-open a {
+      animation: mobileLinkIn .45s ease-out both;
+    }
+
+    .mobile-menu a:hover {
+      background: rgba(31, 41, 55, .5);
+      color: #fff;
+    }
+
+    .mobile-actions {
+      display: none;
+      gap: 10px;
+      margin-top: 10px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, .1);
+    }
+
+    .hero {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      min-height: calc(100svh - 88px);
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 48px 64px;
+    }
+
+    .hero-inner {
+      display: flex;
+      align-items: flex-end;
+      gap: 32px;
+      width: 100%;
+    }
+
+    .hero-copy {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 32px;
+      color: rgba(255, 255, 255, .88);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .meta-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .meta-item .filled {
+      fill: #fff;
+    }
+
+    h1 {
+      max-width: 970px;
+      margin: 0 0 24px;
+      font-size: clamp(42px, 7vw, 104px);
+      font-weight: 400;
+      letter-spacing: -.04em;
+      line-height: .92;
+    }
+
+    .title-line {
+      display: block;
+    }
+
+    .description {
+      max-width: 680px;
+      margin: 0 0 48px;
+      color: rgb(156, 163, 175);
+      font-size: clamp(17px, 1.7vw, 22px);
+      line-height: 1.55;
+      font-weight: 400;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .primary-button {
+      cursor: pointer;
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 32px;
+      border-radius: 999px;
+      background: #fff;
+      color: #000;
+      font-size: 16px;
+      font-weight: 500;
+      transition: background .2s ease, transform .2s ease;
+    }
+
+    .primary-button svg {
+      fill: #000;
+    }
+
+    .primary-button:hover {
+      transform: translateY(-1px);
+      background: rgb(229, 231, 235);
+    }
+
+    .secondary-button {
+      cursor: pointer;
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 32px;
+      border-radius: 999px;
+      font-size: 16px;
+      font-weight: 500;
+      transition: background .2s ease, transform .2s ease;
+    }
+
+    .secondary-button:hover {
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, .06);
+    }
+
+    .arrow-row {
+      display: flex;
+      flex-shrink: 0;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+
+    .arrow-button {
+      cursor: pointer;
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 999px;
+      color: rgba(255, 255, 255, .92);
+      font-size: 15px;
+      font-weight: 500;
+      transition: background .2s ease, transform .2s ease;
+    }
+
+    .arrow-button:hover {
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, .06);
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    svg {
+      display: block;
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
+    @media (max-width: 1023px) {
+      .nav {
+        padding: 20px 24px;
       }
 
       .nav-links {
         display: none;
       }
 
-      .hero-layout,
-      .section-head,
-      .reference-board,
-      .image-boundary,
-      .quality-ledger,
-      .cta-panel {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-layout {
-        grid-template-areas:
-          "title"
-          "image"
-          "copy"
-          "actions";
-      }
-
-      .hero-plate {
-        transform: rotate(0);
-      }
-
-      .proof-strip,
-      .process,
-      .rules {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .score-table {
-        border-right: 0;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .topbar {
-        inset: 12px 14px auto;
-      }
-
-      .brand span {
-        max-width: 190px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-
-      .github-link {
-        display: none;
-      }
-
-      .wrap {
-        width: min(calc(100% - 28px), var(--max));
+      .menu-button {
+        display: inline-flex;
       }
 
       .hero {
-        padding-top: 96px;
+        min-height: calc(100svh - 80px);
+        padding: 0 24px 44px;
       }
 
-      .hero-edition {
-        grid-template-columns: 1fr;
-        gap: 10px;
-      }
-
-      .hero-edition::before,
-      .hero-edition::after {
-        display: none;
-      }
-
-      h1 {
-        font-size: clamp(54px, 17vw, 78px);
-      }
-
-      .hero-copy,
-      .section-lead,
-      .contract-body {
-        font-size: 15px;
-      }
-
-      .plate-caption {
-        position: static;
+      .hero-inner {
         flex-direction: column;
-        gap: 4px;
-        padding: 9px 10px 10px;
-        font-size: 9px;
+        align-items: flex-start;
       }
 
-      .proof-strip,
-      .process,
-      .rules,
-      .contract-grid,
-      .score-table {
-        grid-template-columns: 1fr;
-      }
-
-      .proof-item,
-      .process-step,
-      .rule,
-      .score {
-        border-right: 0;
-      }
-
-      .section-head {
-        gap: 16px;
-      }
-
-      .poster-stack {
-        min-height: 390px;
-      }
-
-      .poster.one {
-        inset: 0 58px 130px 0;
-      }
-
-      .poster.two {
-        inset: 128px 0 0 92px;
-      }
-
-      .poster.three {
-        left: 26px;
-        right: 20px;
-        top: 154px;
+      .arrow-row {
+        justify-content: flex-start;
       }
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        scroll-behavior: auto !important;
-        transition-duration: .01ms !important;
+    @media (max-width: 639px) {
+      .nav {
+        padding: 16px;
+      }
+
+      .logo {
+        height: 32px;
+      }
+
+      .logo-mark {
+        width: 30px;
+        height: 30px;
+      }
+
+      .nav-actions .desktop-action {
+        display: none;
+      }
+
+      .mobile-actions {
+        display: flex;
+      }
+
+      .mobile-actions .pill-button {
+        flex: 1;
+      }
+
+      .hero {
+        min-height: calc(100svh - 64px);
+        padding: 0 16px 32px;
+      }
+
+      .meta-row {
+        column-gap: 12px;
+        row-gap: 9px;
+        margin-bottom: 24px;
+        font-size: 12px;
+      }
+
+      .meta-item:last-child {
+        flex-basis: 100%;
+      }
+
+      h1 {
+        margin-bottom: 18px;
+        font-size: clamp(36px, 11vw, 48px);
+        line-height: .96;
+      }
+
+      .description {
+        margin-bottom: 28px;
+        font-size: 16px;
+      }
+
+      .primary-button,
+      .secondary-button,
+      .arrow-button {
+        min-height: 44px;
+        padding: 11px 22px;
+        font-size: 14px;
       }
     }
   </style>
 </head>
 <body>
-  <nav class="topbar" aria-label="主导航">
-    <a class="brand" href="#top" aria-label="Premium Web Workflow">
-      <span class="brand-mark">P</span>
-      <span>Premium Web Workflow</span>
-    </a>
-    <div class="nav-links">
-      <a href="#references">参考</a>
-      <a href="#process">流程</a>
-      <a href="#rules">规则</a>
-      <a href="#quality">验收</a>
+  <div class="page">
+    <div class="video-fallback" aria-hidden="true"></div>
+    <video
+      class="background-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260406_094145_4a271a6c-3869-4f1c-8aa7-aeb0cb227994.mp4"
+    ></video>
+    <div class="bottom-blur" aria-hidden="true"></div>
+    <nav class="nav" aria-label="Primary">
+      <a class="logo animate-blur-fade-up" href="https://github.com/kuakuazhang/premium-web-workflow-skills" style="animation-delay:0ms">
+        <span class="logo-mark">P</span>
+        <span>Premium Web Workflow</span>
+      </a>
+
+      <div class="nav-links" aria-label="Sections">
+        <a class="animate-blur-fade-up" href="#reference" style="animation-delay:100ms">References</a>
+        <a class="animate-blur-fade-up" href="#hero" style="animation-delay:150ms">Hero Gate</a>
+        <a class="animate-blur-fade-up" href="#motion" style="animation-delay:200ms">Motion</a>
+        <a class="animate-blur-fade-up" href="#review" style="animation-delay:250ms">Review</a>
+        <a class="animate-blur-fade-up" href="#install" style="animation-delay:300ms">Install</a>
+      </div>
+
+      <div class="nav-actions">
+        <a class="pill-button liquid-glass desktop-action animate-blur-fade-up" href="https://github.com/kuakuazhang/premium-web-workflow-skills" style="animation-delay:350ms">
+          <span>GitHub</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>
+        </a>
+        <button class="circle-button liquid-glass desktop-action animate-blur-fade-up" type="button" aria-label="Profile" style="animation-delay:400ms">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+        <button class="menu-button liquid-glass animate-blur-fade-up" type="button" aria-label="Open menu" aria-expanded="false" style="animation-delay:350ms">
+          <svg class="icon-menu" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
+          <svg class="icon-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+    </nav>
+
+    <div class="mobile-menu" aria-label="Mobile navigation">
+      <a href="#reference" style="animation-delay:50ms">References</a>
+      <a href="#hero" style="animation-delay:100ms">Hero Gate</a>
+      <a href="#motion" style="animation-delay:150ms">Motion</a>
+      <a href="#review" style="animation-delay:200ms">Review</a>
+      <a href="#install" style="animation-delay:250ms">Install</a>
+      <div class="mobile-actions">
+        <a class="pill-button liquid-glass" href="https://github.com/kuakuazhang/premium-web-workflow-skills">GitHub</a>
+        <button class="circle-button liquid-glass" type="button" aria-label="Profile">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+      </div>
     </div>
-    <a class="github-link" href="https://github.com/kuakuazhang/premium-web-workflow-skills">GitHub ↗</a>
-  </nav>
 
-  <header class="hero" id="top">
-    <div class="wrap">
-      <div class="hero-edition">
-        <span>Agent-selected reference</span>
-        <span>Light editorial operating system</span>
-        <span>No dark tech mold</span>
-      </div>
-      <div class="hero-layout">
-        <h1>
-          <span class="headline-line">参考先行</span>
-          <span class="headline-line">网页成型</span>
-        </h1>
-        <p class="hero-copy">这次用明亮编辑型风格测试 Skill：先交代参考路径，再把主视觉、标题节奏、真实结构和截图验收做成网页。</p>
-        <div class="hero-actions" aria-label="主要行动">
-          <a class="button primary" href="#references">查看参考契约</a>
-          <a class="button" href="#quality">检查验收门禁</a>
-        </div>
-        <figure class="hero-plate">
-          <img src="./assets/hero-editorial-atlas.png" alt="明亮编辑型设计工作台拼贴：参考卡片、浏览器框、色块、尺规和质量检查纸张" />
-          <figcaption class="plate-caption"><span>Generated visual plate</span><span>real HTML overlays</span></figcaption>
-        </figure>
-      </div>
-      <div class="proof-strip" aria-label="这次的设计约束">
-        <div class="proof-item"><strong>01</strong><span>参考路径先说清楚，不再假装已经复刻某个站。</span></div>
-        <div class="proof-item"><strong>02</strong><span>Hero 不走暗色右图模板，改成编辑型画册版面。</span></div>
-        <div class="proof-item"><strong>03</strong><span>中文大标题全部手工断行，不靠浏览器换行。</span></div>
-        <div class="proof-item"><strong>04</strong><span>图像只负责视觉气质，文字和结构保留为真实网页。</span></div>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <section id="references">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <p class="kicker">01 / Reference</p>
-          <h2><span class="headline-line">先说参考</span><span class="headline-line">再动代码</span></h2>
-          <p class="section-lead">这版不是 MotionSites 直接复刻，也不是 Godly 某个页面的 1:1 还原。它是 Agent-selected reference：明亮编辑型操作系统，用纸张、索引、版面和真实图层替代暗色科技模板。</p>
-        </div>
-
-        <div class="reference-board reveal">
-          <div class="reference-list" role="tablist" aria-label="参考契约选择">
-            <button class="reference-button is-active" type="button" data-ref="editorial" role="tab" aria-selected="true">
-              <b>Light Editorial OS</b>
-              <span>明亮纸张、强网格、红蓝点缀、索引式版面。用于打破暗色科技套路。</span>
-            </button>
-            <button class="reference-button" type="button" data-ref="motionsites" role="tab" aria-selected="false">
-              <b>MotionSites Direct</b>
-              <span>需要你给官方 Copy prompt。先复刻机制，再替换内容和资产。</span>
-            </button>
-            <button class="reference-button" type="button" data-ref="godly" role="tab" aria-selected="false">
-              <b>Godly Deep Reference</b>
-              <span>先拆真实网站几何、动效、字体、响应式，再转译到当前主题。</span>
-            </button>
-            <button class="reference-button" type="button" data-ref="experiment" role="tab" aria-selected="false">
-              <b>No-reference Experiment</b>
-              <span>可以快速试，但必须承认不是参考复刻，不能事后包装成高级参考。</span>
-            </button>
+    <main class="hero">
+      <div class="hero-inner">
+        <section class="hero-copy" aria-label="Hero">
+          <div class="meta-row animate-blur-fade-up" style="animation-delay:300ms">
+            <span class="meta-item">
+              <svg class="filled" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1-5 4.87 1.18 6.88L12 17.77 5.82 21l1.18-6.88-5-4.87 6.91-1Z"/></svg>
+              <span>4.8/5 Hero Gate</span>
+            </span>
+            <span class="meta-item">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              <span>90 sec review</span>
+            </span>
+            <span class="meta-item">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
+              <span>Reference-led V4</span>
+            </span>
           </div>
 
-          <article class="contract-sheet" aria-live="polite">
-            <p class="contract-label" id="contractLabel">Selected contract</p>
-            <h3 id="contractTitle"><span class="headline-line">明亮编辑</span><span class="headline-line">工作流</span></h3>
-            <p class="contract-body" id="contractBody">目标是让页面像一本设计手册，而不是一张深色发布会封面。图像是横向拼贴版面，标题和解释全部使用真实 HTML。</p>
-            <div class="contract-grid">
-              <div class="contract-cell"><small>Reference basis</small><b id="contractBasis">agent-selected reference</b></div>
-              <div class="contract-cell"><small>Hero asset</small><b id="contractAsset">image_gen editorial plate</b></div>
-              <div class="contract-cell"><small>Headline rhythm</small><b id="contractHeadline">短句 / 手工断行 / 无标点</b></div>
-              <div class="contract-cell"><small>Reject</small><b id="contractReject">暗色右图模板、指标条复用</b></div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
+          <h1 class="animate-blur-fade-up" style="animation-delay:400ms"><span class="title-line">Reference First.</span><span class="title-line">Build Better.</span></h1>
+          <p class="description animate-blur-fade-up" style="animation-delay:500ms">
+            A Codex web workflow that starts from a chosen premium reference, then turns the mechanics into hero assets, real HTML structure, motion, and screenshot gates.
+          </p>
 
-    <section id="process">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <p class="kicker">02 / Process</p>
-          <h2><span class="headline-line">不靠灵感</span><span class="headline-line">靠流程</span></h2>
-          <p class="section-lead">新版测试页面把“开工前的参考说明”和“排版后的截图复核”作为真实页面内容展示出来，让流程本身可见。</p>
-        </div>
-
-        <div class="process reveal" aria-label="网页工作流">
-          <article class="process-step"><strong>Step 01</strong><h3>声明参考</h3><p>先说明是用户选择、Agent 选择，还是无参考实验。</p></article>
-          <article class="process-step"><strong>Step 02</strong><h3>生成主图</h3><p>使用 image_gen 做明亮编辑型主视觉，不把文字烤进图里。</p></article>
-          <article class="process-step"><strong>Step 03</strong><h3>设计标题</h3><p>中文大标题先改文案，再手工断行，不靠自然换行。</p></article>
-          <article class="process-step"><strong>Step 04</strong><h3>重建结构</h3><p>按钮、选择器、质量表格和流程全部是 DOM，而不是图片。</p></article>
-          <article class="process-step"><strong>Step 05</strong><h3>截图验收</h3><p>桌面和移动端都要看，发现同模子就重做构图。</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap image-boundary">
-        <div class="poster-stack reveal" aria-label="图片和网页边界示意">
-          <div class="poster one"></div>
-          <div class="poster two"></div>
-          <div class="poster three"></div>
-        </div>
-        <div class="reveal">
-          <p class="kicker">03 / Boundary</p>
-          <h2><span class="headline-line">图像定气质</span><span class="headline-line">结构进网页</span></h2>
-          <p class="section-lead" style="margin-top:22px">Hero 拼贴、材质、摄影和视觉氛围可以是图片；标题、说明、按钮、表格、规则、评分和流程必须是网页结构。这样才不是把 PPT 截图贴成网页。</p>
-          <div class="hero-actions" style="margin-top:26px">
-            <a class="button primary" href="#rules">看失败规则</a>
-            <a class="button" href="#quality">看验收表</a>
+          <div class="cta-row">
+            <a class="primary-button animate-blur-fade-up" href="https://github.com/kuakuazhang/premium-web-workflow-skills" style="animation-delay:600ms">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 3 14 9-14 9z"/></svg>
+              <span>Install Skill</span>
+            </a>
+            <a class="secondary-button liquid-glass animate-blur-fade-up" href="https://motionsites.ai/" style="animation-delay:700ms">
+              <span>Choose Reference</span>
+            </a>
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <section id="rules">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <p class="kicker">04 / Anti-mold</p>
-          <h2><span class="headline-line">先换构图</span><span class="headline-line">再谈精修</span></h2>
-          <p class="section-lead">如果页面已经落回固定模子，继续调字号、阴影和圆角没有意义。必须先换参考、换版式、换信息组织方式。</p>
-        </div>
-        <div class="rules reveal">
-          <article class="rule"><small>Failure 01</small><h3>参考不明</h3><p>没有告诉用户参考来自哪里，却直接开干，容易滑回默认审美。</p></article>
-          <article class="rule"><small>Failure 02</small><h3>模子复用</h3><p>左侧大标题、右侧视觉块、底部指标条反复出现，本质是同一张皮。</p></article>
-          <article class="rule"><small>Failure 03</small><h3>标题失控</h3><p>中文长句自动换行、标点悬挂、下面 section 仍然像报告标题。</p></article>
+        <div class="arrow-row" aria-label="Reference mode navigation">
+          <button class="arrow-button liquid-glass animate-blur-fade-up" type="button" style="animation-delay:800ms">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+            <span>Godly</span>
+          </button>
+          <button class="arrow-button liquid-glass animate-blur-fade-up" type="button" style="animation-delay:900ms">
+            <span>MotionSites</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
         </div>
       </div>
-    </section>
-
-    <section id="quality">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <p class="kicker">05 / Quality</p>
-          <h2><span class="headline-line">看截图</span><span class="headline-line">再交付</span></h2>
-          <p class="section-lead">这次的验收不只看 Hero 是否有图，还要看是否真的换了参考、换了构图、换了标题节奏。</p>
-        </div>
-        <div class="quality-ledger reveal">
-          <div class="score-table" aria-label="质量门禁分项">
-            <div class="score"><strong>01</strong><span>参考来源清楚</span></div>
-            <div class="score"><strong>02</strong><span>Hero 构图不同</span></div>
-            <div class="score"><strong>03</strong><span>中文标题工整</span></div>
-            <div class="score"><strong>04</strong><span>图文边界明确</span></div>
-            <div class="score"><strong>05</strong><span>交互真实可点</span></div>
-            <div class="score"><strong>06</strong><span>移动端不崩</span></div>
-          </div>
-          <div class="ledger-note">
-            <h3><span class="headline-line">不满意</span><span class="headline-line">就回炉</span></h3>
-            <p>如果截图看起来仍然像旧模板，就不要继续补装饰。回到参考选择和 Hero 构图，重新开始。</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta">
-      <div class="wrap">
-        <div class="cta-panel reveal">
-          <div>
-            <p class="kicker">Install / Use</p>
-            <h2><span class="headline-line">带着参考</span><span class="headline-line">再让它做</span></h2>
-            <p class="section-lead">这个页面是一次新风格测试。下一轮如果继续优化，应先选一个具体 Godly、MotionSites、Variant 或 Impeccable 参考，再做更高保真的复刻。</p>
-          </div>
-          <div class="command" aria-label="安装命令">
-            <pre>git clone https://github.com/kuakuazhang/premium-web-workflow-skills
-cd premium-web-workflow-skills
-bash install.sh</pre>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+    </main>
+  </div>
 
   <script>
-    const contracts = {
-      editorial: {
-        title: ["明亮编辑", "工作流"],
-        body: "目标是让页面像一本设计手册，而不是一张深色发布会封面。图像是横向拼贴版面，标题和解释全部使用真实 HTML。",
-        basis: "agent-selected reference",
-        asset: "image_gen editorial plate",
-        headline: "短句 / 手工断行 / 无标点",
-        reject: "暗色右图模板、指标条复用"
-      },
-      motionsites: {
-        title: ["复制机制", "再换内容"],
-        body: "适合用户提供官方 Copy prompt 的场景。先复刻运动、比例、玻璃层和视频节奏，再替换品牌、文案和资产。",
-        basis: "user-selected reference",
-        asset: "official prompt media or local replacement",
-        headline: "保留原构图节奏",
-        reject: "没 prompt 却声称复刻"
-      },
-      godly: {
-        title: ["拆真实站", "转译机制"],
-        body: "适合想做顶级网站质感时使用。先拆几何、字体、材质、动效和移动端，再决定如何转译到当前主题。",
-        basis: "agent/user-selected site",
-        asset: "reference-calibrated image_gen",
-        headline: "按参考节奏定行",
-        reject: "只说高级不拆细节"
-      },
-      experiment: {
-        title: ["可以实验", "别装复刻"],
-        body: "适合快速探索，但要明确不是参考复刻。若结果像旧模子，应回到参考选择，不要继续堆装饰。",
-        basis: "no-reference experiment",
-        asset: "original generated visual",
-        headline: "截图后再校正",
-        reject: "事后包装成 Godly 风"
-      }
-    };
+    const menuButton = document.querySelector(".menu-button");
+    const mobileMenu = document.querySelector(".mobile-menu");
 
-    const buttons = document.querySelectorAll(".reference-button");
-    const title = document.querySelector("#contractTitle");
-    const body = document.querySelector("#contractBody");
-    const basis = document.querySelector("#contractBasis");
-    const asset = document.querySelector("#contractAsset");
-    const headline = document.querySelector("#contractHeadline");
-    const reject = document.querySelector("#contractReject");
-
-    buttons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const data = contracts[button.dataset.ref];
-        buttons.forEach((item) => {
-          item.classList.remove("is-active");
-          item.setAttribute("aria-selected", "false");
-        });
-        button.classList.add("is-active");
-        button.setAttribute("aria-selected", "true");
-        title.innerHTML = `<span class="headline-line">${data.title[0]}</span><span class="headline-line">${data.title[1]}</span>`;
-        body.textContent = data.body;
-        basis.textContent = data.basis;
-        asset.textContent = data.asset;
-        headline.textContent = data.headline;
-        reject.textContent = data.reject;
-      });
+    menuButton.addEventListener("click", () => {
+      const isOpen = menuButton.classList.toggle("is-open");
+      mobileMenu.classList.toggle("is-open", isOpen);
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
     });
 
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("in");
-          revealObserver.unobserve(entry.target);
-        }
+    mobileMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        menuButton.classList.remove("is-open");
+        mobileMenu.classList.remove("is-open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open menu");
       });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll(".reveal").forEach((item) => revealObserver.observe(item));
+    });
   </script>
 </body>
 </html>
