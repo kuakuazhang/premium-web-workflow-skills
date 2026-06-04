@@ -11,10 +11,13 @@ Before implementation, define a compact design contract:
 ```text
 Design Contract
 - Archetype:
+- Reference basis: user-selected reference / agent-selected reference / no-reference experiment
+- Reference source or archetype: MotionSites prompt, Godly site, Variant/Impeccable example, Apple cinematic, etc.
 - Why this archetype fits:
 - Why the obvious alternatives are weaker:
 - Hero asset path: image_gen / owned image / owned video / Seedance-confirmed video / MotionSites direct reuse / code-native scene
 - Hero composition: subject, text-safe area, nav position, CTA placement, next-section hint
+- Display headline rhythm: exact words, manual line breaks, punctuation policy
 - Media grammar: image/video crop, lighting, material, density, negative prompts
 - Typography rhythm:
 - Layout rhythm:
@@ -166,6 +169,18 @@ Recommend the archetype silently for routine tasks. Ask the user only when:
 
 For normal execution, do not stop after naming the archetype. The contract must affect actual implementation choices.
 
+## Reference Accountability
+
+If the user has been discussing premium references, do not skip reference selection silently.
+
+Before coding, choose one:
+
+- `user-selected reference`: the user picked a MotionSites prompt, Godly page, Variant entry, Impeccable example, or original site URL
+- `agent-selected reference`: the agent names a concrete reference direction before implementation
+- `no-reference experiment`: the agent proceeds without a real reference and says so plainly
+
+If the page ends up looking like the agent's usual mold, the first correction is to revisit this field and choose a stronger reference basis.
+
 ## Hero Asset Gate
 
 For public/presentation pages, the Hero asset path must be real:
@@ -208,6 +223,7 @@ Before delivery, score the page quickly:
 
 - Hero immersion: 1-5
 - Visual subject strength: 1-5
+- Display headline rhythm: 1-5
 - Text density discipline: 1-5
 - Reference/archetype fidelity: 1-5
 - DOM/SVG/canvas reconstruction: 1-5
@@ -219,7 +235,9 @@ If any public-facing Hero scores below 4, fix the Hero before polishing lower se
 Automatic failures:
 
 - the first viewport can be described as a PPT cover
+- no concrete reference was selected even though the user asked for reference-led premium work
 - Hero has no real asset or code-native subject
+- display headline wraps like an accidental sentence instead of designed typography
 - primary copy area is a dense paragraph
 - important UI/text/chart content is baked into images
 - mobile first viewport shows only nav/table of contents/oversized text

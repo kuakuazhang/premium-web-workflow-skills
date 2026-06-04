@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-06-04 - Reference accountability and headline rhythm
+
+- Updated the showcase page Hero and major section headings to use short manual Chinese display lines.
+- Added a Reference Accountability Gate so agents must state whether work is user-selected reference, agent-selected reference, or no-reference experiment.
+- Added rules to catch repeated default Hero molds such as left-heavy title blocks, right-side visual mass, repeated metric strips, and reused dark green styling.
+- Added Chinese display headline guidance: rewrite long sentence headings before CSS tuning, avoid punctuation in display-scale H1, and screenshot-check desktop/mobile wrapping.
+- Updated Web Design Vault Lite contracts to include reference basis and display headline rhythm.
+
 ## 2026-06-04 - Web Design Vault Lite and showcase page
 
 - Added `references/web-design-vault-lite.md` to turn premium references into executable design contracts.

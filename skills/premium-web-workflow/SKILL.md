@@ -79,6 +79,20 @@ For routine tasks, this contract can be short and internal. For ambiguous or hig
 
 Hard rule: if the page is public-facing or presentation-oriented, do not proceed with a text-only or SVG-only Hero unless the design contract explicitly justifies a code-native scene and the first viewport has a real visual subject.
 
+### Reference Accountability Gate
+
+For high-stakes or public-facing webpages, do not silently "just start" from the agent's own default taste. Before coding, make the reference basis explicit.
+
+Use one of these paths:
+
+- **User-selected reference**: ask the user to choose from MotionSites, Godly, Variant, Impeccable, or a provided URL when the user has previously expressed that they want reference-led work and the task is not urgent.
+- **Agent-selected reference**: if the user says to proceed, state the selected reference category or specific source before implementation, such as `MotionSites liquid video`, `Godly editorial interactive`, `Apple cinematic product`, or a named inspected site.
+- **No-reference experiment**: only use this when speed matters or the user asks for an experiment. State that it is not reference-led, so the result may inherit the agent's own default composition patterns.
+
+If no concrete reference was selected or inspected, do not later imply that the page followed Godly, MotionSites, Variant, or any other real-site reference. Be honest: "this is an original pass using the archetype, not a reference replication."
+
+If the user complains that pages look like the same template, first audit whether a real reference was selected. The fix is usually to choose a specific reference and rebuild the composition, not to add more polish to the same left-copy/right-visual pattern.
+
 ## Hero-First Immersion Gate
 
 For any public-facing website, company page, landing page, product page, homepage, industry overview, or polished visual report, treat the first viewport as a separate deliverable. Do not start implementation by laying out all text sections and then adding a decorative image later.
@@ -119,6 +133,20 @@ Before accepting a Hero, check:
 - Decorative grids, floating dots, radial glows, generic dashboards, and oversized typography are support layers only. They do not count as the primary visual subject.
 - If no asset exists for a public/presentation page, generate or source one before implementation. If image generation is unavailable, state that limitation and choose the next-best owned/code-native visual plan; do not silently ship a text-only Hero.
 - The Hero should be scannable in 3 seconds. Treat anything that requires reading a multi-line paragraph in the first viewport as a body section, not Hero content.
+
+### Display Headline Typesetting Gate
+
+For Chinese Hero headlines and final CTA headlines, do not rely on browser auto-wrapping. Treat display text as designed typography.
+
+Before accepting a Hero or closing CTA:
+
+- Rewrite long sentences into short display phrases before tuning CSS.
+- Prefer balanced manual line breaks, such as `先定风格 / 再写网页` or `把审美 / 写进流程`.
+- Avoid punctuation in display-scale H1 text unless the specific reference uses it successfully.
+- Avoid Chinese comma/full stop dangling at line ends or creating accidental three-line fragments.
+- Keep the explanation in the subhead or body section, not inside the display headline.
+- Screenshot-check desktop and mobile. If the H1 or CTA heading feels awkward, rewrite the copy first and only then adjust type size or width.
+- Apply this to all major section titles, not only the first viewport, when the page is meant to look premium.
 
 ## Visual Dashboard / Static Report Mode
 

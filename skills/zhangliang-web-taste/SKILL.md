@@ -58,6 +58,32 @@ When a MotionSites prompt or similar premium prompt is available:
 
 Good output is not "this resembles a MotionSites template." Good output is "this uses MotionSites-level craft for the user's actual page."
 
+## Reference Accountability Taste Gate
+
+The user expects reference-led web design when discussing Godly, MotionSites, Variant, Impeccable, or premium web examples. Do not skip that step silently.
+
+Before building a premium page, check:
+
+- Did the user ask to choose or use references?
+- Has the agent named a concrete reference path before coding?
+- Is the result visibly derived from that reference's mechanics, or did it fall back to the agent's usual layout?
+
+If no specific reference was selected:
+
+- Ask the user to pick one when the work is high-stakes or public-facing.
+- If proceeding without asking, explicitly say which archetype is being used and that it is not a direct reference replication.
+- Do not claim Godly/MotionSites-level reference work after the fact if no page or prompt was actually inspected.
+
+Composition drift to catch:
+
+- repeated left-heavy title block with large empty left area and right-side visual mass
+- identical dark hero rhythm across unrelated pages
+- same metric strip under every Hero
+- same floating pill nav and dark green accent reused without brand reason
+- fixing typography while leaving the underlying composition template unchanged
+
+When the user says "it looks like the same mold," stop polishing and choose a new concrete reference or rebuild the Hero composition from scratch.
+
 ## Design Contract Taste Gate
 
 When `premium-web-workflow` selects a Web Design Vault Lite archetype, enforce it as a taste contract.
@@ -121,6 +147,29 @@ Default to `image_gen` bitmap assets for Hero art. Use SVG for diagrams, data ob
 If a Hero can be described as "big words on a dark background," it fails unless the whole concept is deliberately typographic and still has excellent spacing, hierarchy, and restraint.
 
 Hero video assets may be generated when they add something a still image cannot: product motion, spatial depth, cinematic atmosphere, or a loop that makes the page feel alive. Background Hero videos should usually be muted, short, locally hosted, and supported by a poster/fallback.
+
+## Chinese Display Headline Taste
+
+The user is sensitive to awkward Chinese headline wrapping. A premium page fails if the large H1, section title, or closing CTA headline becomes a full sentence broken by commas, full stops, and browser auto-wrap.
+
+Prefer:
+
+- short paired lines with manual breaks
+- no punctuation in display-scale H1
+- strong parallel rhythm, such as `先定风格 / 再写网页`
+- subhead for explanation, not the H1
+- screenshot review of the exact desktop and mobile wrapping
+- rewriting copy first, then adjusting CSS
+
+Avoid:
+
+- full explanatory sentences as Hero H1
+- Chinese comma/full stop dangling at line ends
+- `让 Codex 先懂网页，再开始写网页。` style large headings
+- three-line accidental wraps caused by viewport width
+- improving only the Hero title while leaving lower section titles as long sentence headings
+
+If the screenshot shows awkward display headline rhythm, rewrite the heading into designed lines first. Do not treat it as a CSS-only issue.
 
 ## Image Asset Boundary
 

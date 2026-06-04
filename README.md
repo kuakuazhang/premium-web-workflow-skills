@@ -15,21 +15,23 @@ This package contains five skills:
 The workflow pushes Codex to:
 
 1. Start from a Web Design Vault Lite contract instead of vague "make it premium" taste words.
-2. Choose a visual archetype such as Apple Cinematic, MotionSites Liquid Video, Godly Editorial, Premium Research Dashboard, Data Story Map, or Luxury Minimal Report.
-3. Treat the Hero/first viewport as a separate deliverable before writing the rest of the page.
-4. Generate or source a strong Hero visual asset when no premium asset exists yet.
-5. Use MotionSites in two layers:
+2. Make the reference basis explicit: user-selected reference, agent-selected reference, or no-reference experiment.
+3. Choose a visual archetype such as Apple Cinematic, MotionSites Liquid Video, Godly Editorial, Premium Research Dashboard, Data Story Map, or Luxury Minimal Report.
+4. Treat the Hero/first viewport as a separate deliverable before writing the rest of the page.
+5. Generate or source a strong Hero visual asset when no premium asset exists yet.
+6. Design Chinese display headlines with short manual line breaks instead of accidental browser wrapping.
+7. Use MotionSites in two layers:
    - **Direct Reuse Mode**: choose a design on `https://motionsites.ai/`, paste the official `Copy` prompt, reproduce it first, then adapt.
    - **Reference Mode**: if no prompt is selected, borrow only design mechanics such as Hero composition, motion, image role, glass effects, and section rhythm.
-6. Use Godly as a deep real-site reference source when no direct prompt exists, especially for Hero, motion, and premium site mechanics.
-7. Keep important text, buttons, nav, tables, charts, and diagrams as real DOM/SVG/canvas instead of flattened screenshots.
-8. Use Codex built-in `image_gen` / GPT Image as the default bitmap image generation path for Hero atmosphere, renders, textures, visual scenes, and static fallbacks; do not default to SVG Hero art.
-9. Use Seedance 2.0 only when a page needs a custom video asset, such as replacing a MotionSites demo video with the user's actual product/scene motion.
-10. Use Ian Xiaohei 1.0 illustrations for middle/body logic explanation, and Ian Xiaohei 2.0 scenes for real-object situation/story moments; neither is the main premium Hero system.
-11. Add meaningful motion and browser-verify desktop/mobile screenshots.
-12. Localize critical remote videos/images when a page will be kept or deployed, and add fallback visuals so a dead external URL does not break the Hero.
-13. Treat Build Web Apps / `frontend-app-builder` as implementation support, not as a replacement for this visual workflow.
-14. Reject giant-text/dense-paragraph Heroes that lack a real visual subject.
+8. Use Godly as a deep real-site reference source when no direct prompt exists, especially for Hero, motion, and premium site mechanics.
+9. Keep important text, buttons, nav, tables, charts, and diagrams as real DOM/SVG/canvas instead of flattened screenshots.
+10. Use Codex built-in `image_gen` / GPT Image as the default bitmap image generation path for Hero atmosphere, renders, textures, visual scenes, and static fallbacks; do not default to SVG Hero art.
+11. Use Seedance 2.0 only when a page needs a custom video asset, such as replacing a MotionSites demo video with the user's actual product/scene motion.
+12. Use Ian Xiaohei 1.0 illustrations for middle/body logic explanation, and Ian Xiaohei 2.0 scenes for real-object situation/story moments; neither is the main premium Hero system.
+13. Add meaningful motion and browser-verify desktop/mobile screenshots.
+14. Localize critical remote videos/images when a page will be kept or deployed, and add fallback visuals so a dead external URL does not break the Hero.
+15. Treat Build Web Apps / `frontend-app-builder` as implementation support, not as a replacement for this visual workflow.
+16. Reject giant-text/dense-paragraph Heroes that lack a real visual subject.
 
 ## Install
 
@@ -80,6 +82,12 @@ For normal webpage creation:
 
 ```text
 做一个公司官网首页，按 premium-web-workflow 默认流程走。先读取 Web Design Vault Lite，选一个视觉母版并形成简短 Design Contract，再做沉浸式 Hero 方案和视觉资产，不要先排文字内容。如果能找到合适的 MotionSites 直接复用模板，先让我选；如果没有，就进入参考模式。
+```
+
+For reference-led premium work:
+
+```text
+做这个网页前，请先明确参考来源：要么让我从 MotionSites / Godly / Variant / Impeccable 选一个，要么你先说你选了哪个具体参考方向。不要直接开干，也不要做成你默认的左侧大标题、右侧影像模子。
 ```
 
 For Godly deep reference:
