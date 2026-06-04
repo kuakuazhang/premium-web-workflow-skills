@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-06-04 - Hero readability and asset gate
+
+- Added a failure rule for giant-text Heroes with dense strategic paragraphs.
+- Clarified that dark grids, particle dots, glows, and oversized typography do not count as a primary Hero visual asset.
+- Required public/presentation pages to generate, source, or explicitly plan a real Hero visual subject when no asset exists.
+
 ## 2026-06-04 - Build Web Apps bridge and static report triggers
 
 - Added trigger coverage for 静态HTML, 静态报告, 单文件HTML, 单文件报告, 战略看板, and 可视化网页.

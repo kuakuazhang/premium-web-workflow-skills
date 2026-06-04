@@ -64,12 +64,27 @@ If no strong asset exists and the page is meant to look premium, generate a besp
 The Hero must have:
 
 - one clear visual subject or immersive spatial atmosphere
+- a real generated, owned, or code-native primary visual asset; a dark grid, particle dots, glow, or huge typography alone does not satisfy the Hero asset requirement
 - real HTML headline, copy, nav, CTA, and key labels layered into the scene
 - composition that feels like a website first viewport, not a report cover or slide
+- readable first-screen information density: one headline idea, one short supporting idea, and at most 2-3 key chips/CTAs before the fold
 - desktop and mobile first-viewport verification
 - a hint of the next section when appropriate
 
 Exceptions: skip the Hero-first visual asset only when the user explicitly asks for an internal dashboard, wireframe, pure documentation page, small code fix, accessibility-only fix, or very fast prototype. Even then, avoid PPT-like title blocks when possible.
+
+### Hero Readability And Asset Gate
+
+Do not confuse "Hero-first" with "make the headline enormous."
+
+Before accepting a Hero, check:
+
+- The main headline fits in the first viewport without chaotic wrapping, clipping, or dominating every other element.
+- The left or primary copy area is not a dense paragraph block. If the strategic conclusion is long, compress it to one short sentence and move the details below the fold.
+- The first viewport has a real subject: generated image, owned image/video, product/scene render, spatial illustration, 3D/canvas object, or a strongly designed data object.
+- Decorative grids, floating dots, radial glows, generic dashboards, and oversized typography are support layers only. They do not count as the primary visual subject.
+- If no asset exists for a public/presentation page, generate or source one before implementation. If image generation is unavailable, state that limitation and choose the next-best owned/code-native visual plan; do not silently ship a text-only Hero.
+- The Hero should be scannable in 3 seconds. Treat anything that requires reading a multi-line paragraph in the first viewport as a body section, not Hero content.
 
 ## Visual Dashboard / Static Report Mode
 
@@ -88,6 +103,7 @@ For both types:
 - include hover/focus/active states for controls
 - verify desktop and mobile or define an intentional wide-screen-only layout for true data walls
 - avoid PPT-like cover sections followed by static cards
+- avoid "giant text wall Hero" patterns where the first screen is mostly oversized type and dense paragraphs without a generated/owned visual subject
 
 ## MotionSites Two-Layer Layer
 

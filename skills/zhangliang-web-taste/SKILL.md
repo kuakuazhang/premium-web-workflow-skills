@@ -14,6 +14,7 @@ The goal is not generic "nice UI." The goal is to avoid AI-looking PPT pages and
 The user dislikes pages that feel like:
 
 - a PowerPoint cover with a big title, subtitle, and decorative cards
+- a huge typographic poster where the title wraps chaotically and the supporting copy is dense
 - a static report page with rounded blocks and weak visual subject
 - left text / right image with no spatial integration
 - a dashboard-like knowledge base when the request is a premium webpage
@@ -67,6 +68,7 @@ Prefer:
 - full-bleed or near full-bleed image as a background plate, spatial layer, or immersive scene
 - real HTML title, copy, CTA, and key labels over or within the visual scene
 - one strong visual subject with depth, lighting, and negative space
+- restrained first-screen copy: one core sentence, not a dense strategic paragraph
 - high-quality video background when motion is central to the first impression
 - lightweight floating top navigation that does not dominate the first viewport
 - a hint of the next section visible below the fold
@@ -74,6 +76,8 @@ Prefer:
 Avoid by default:
 
 - starting from text sections and adding the Hero asset as an afterthought
+- using oversized typography, dark grid backgrounds, particles, or glows as a substitute for a real Hero visual asset
+- putting a long conclusion paragraph in the Hero's primary copy area
 - a large rounded card wrapping the Hero
 - left-text/right-image composition unless clearly strongest
 - an image trapped inside a right-side card
@@ -84,6 +88,8 @@ Avoid by default:
 Hero visual assets may be generated with image generation. The asset should not contain readable UI text, buttons, labels, tables, or important claims.
 
 If no provided product/image/video asset exists, generate a bespoke Hero visual asset or reference image. For company overview, industry map, research summary, or "four companies quick view" pages, this is especially important: the first viewport should feel like an immersive website, not a report title slide.
+
+If a Hero can be described as "big words on a dark background," it fails unless the whole concept is deliberately typographic and still has excellent spacing, hierarchy, and restraint.
 
 Hero video assets may be generated when they add something a still image cannot: product motion, spatial depth, cinematic atmosphere, or a loop that makes the page feel alive. Background Hero videos should usually be muted, short, locally hosted, and supported by a poster/fallback.
 
@@ -151,6 +157,7 @@ Do not stop at adjectives like "高级一点." Convert critique into implementat
 - **Sidebar knowledge system**: fixed left navigation makes learning pages feel like a backend/wiki. For premium first view, prefer top floating nav; keep deep navigation lower or as secondary UI.
 - **Card grid autopilot**: three-column equal cards are useful but should not become the whole design language. Add timelines, diagrams, matrices, image-led bands, and scroll moments.
 - **Decorative motion only**: motion must reveal, connect, pin, or guide. Floating ornaments without narrative do not count.
+- **Giant text wall Hero**: oversized title plus dense paragraph creates visual noise, not premium impact. Fix by reducing copy, adding a primary visual subject, and moving detailed judgment below the fold.
 
 ## Browser Verification Gate
 
