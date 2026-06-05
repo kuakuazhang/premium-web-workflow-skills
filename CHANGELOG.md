@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-06-05 - Awwwards self-evolution workflow
+
+- Added an Awwwards-only self-evolution experiment with 3 desktop-first rounds: creative Skill intro, visual report, and product/company page.
+- Added `Awwwards Reference Scout`: when no reference is selected for an experiment, find 3 concrete Awwwards pages and choose 1 main reference before designing.
+- Added `Specific Site First`, `Style Diversity Gate`, `Self Evolution Loop`, `Low Disturbance Mode`, `Evidence Before Rule`, and `Desktop First Experiment Mode`.
+- Added screenshot evidence and experiment notes under `experiments/self-evolution-v1/`.
+- Clarified that experiment rounds can defer mobile fine-tuning, while production delivery should return to desktop and mobile verification.
+
 ## 2026-06-04 - Reference accountability and headline rhythm
 
 - Updated the showcase page Hero and major section headings to use short manual Chinese display lines.

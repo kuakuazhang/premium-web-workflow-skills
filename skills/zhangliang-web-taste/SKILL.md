@@ -101,6 +101,29 @@ Composition drift to catch:
 
 When the user says "it looks like the same mold," stop polishing and choose a new concrete reference or rebuild the Hero composition from scratch.
 
+## Awwwards Self-Evolution Taste Gate
+
+When the work is an experiment to improve this workflow, default to Awwwards-only scouting unless the user names another source. The user wants low-disturbance progress, not a long debate, but the reference basis must still be visible.
+
+For each experiment round, the agent should:
+
+- Find 3 concrete Awwwards pages, not a mood-board category.
+- Choose 1 main reference and say why it fits the current page type.
+- State what previous visual mold this round intentionally avoids.
+- Borrow mechanics, not brand assets: page geometry, section order, motion rhythm, navigation behavior, visual hierarchy, and raster/DOM boundaries.
+- Build all real content into the page. A beautiful Hero alone is incomplete.
+- Verify desktop first during experiments. Mobile can wait unless the user asks for production readiness.
+
+Taste failures this gate is meant to catch:
+
+- claiming "Awwwards reference" without naming a concrete Awwwards page
+- changing color while keeping the same left-title/right-visual Hero
+- reusing the same metric strip, floating pill nav, card grid, or dark-glass rhythm across unrelated pages
+- asking the user for repeated subjective feedback before trying a new concrete reference
+- writing a new rule into the skill without screenshot evidence and a failure/success note
+
+If an experiment scores below 4/5 on Hero immersion, reference mechanics, Chinese typography, content completeness, or layout difference, the next move is to rebuild from a different reference skeleton. Do not only tune CSS.
+
 ## Design Contract Taste Gate
 
 When `premium-web-workflow` selects a Web Design Vault Lite archetype, enforce it as a taste contract.

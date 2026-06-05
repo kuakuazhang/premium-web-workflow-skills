@@ -103,6 +103,30 @@ If no concrete reference was selected or inspected, do not later imply that the 
 
 If the user complains that pages look like the same template, first audit whether a real reference was selected. The fix is usually to choose a specific reference and rebuild the composition, not to add more polish to the same left-copy/right-visual pattern.
 
+### Awwwards Reference Scout And Self-Evolution Gate
+
+When the user asks for self-evolution, design experiments, or a premium webpage without a selected reference, use Awwwards as the default scout source. Do not broaden to MotionSites, Godly, Variant, Impeccable, or generic inspiration unless the user asks.
+
+For each low-disturbance experiment round:
+
+1. Find exactly 3 concrete Awwwards webpage candidates.
+2. Show or record a candidate table: website name, Awwwards link, original-site link or source clue, why it fits, borrowable mechanics, and risks.
+3. Choose 1 main reference yourself when the user wants low disturbance, and state why.
+4. Before designing, write one sentence naming the previous pattern this round must avoid.
+5. Deeply decompose the chosen reference: first-viewport geometry, page skeleton, scroll rhythm, navigation, content modules, motion, typography, and DOM/SVG/canvas vs raster boundary.
+6. Build with the user's real content. Do not copy the reference brand, logo, wording, video, or proprietary assets.
+7. Verify desktop first: 1440x900 Hero screenshot, at least 2 desktop section screenshots, at least 3 anchor/link checks, Chinese display headline fit, content completeness, and image-boundary correctness.
+
+Specific-site rule: a premium page should bind to a concrete reference site before implementation, or explicitly declare "no-reference experiment." A category label such as "Awwwards style" or "Godly-like" is not specific enough.
+
+Style Diversity Gate: consecutive experiments or repeated attempts must not reuse the same palette, Hero skeleton, content skeleton, motion method, or typography rhythm. If the previous page used a dark left-title/right-visual Hero with a metric strip, the next page must structurally avoid that mold, not only change colors.
+
+Self Evolution Loop: if a page still feels like PPT or the same template, do not keep tweaking shadows, font weight, or accent colors. Pick a new concrete reference and rebuild the page skeleton. Limit local polish to fixing a good structure, not rescuing a bad one.
+
+Evidence Before Rule: do not write a lesson back into this skill unless there is a reference record, screenshots, self-score or failure note, and a clear rule extracted from the result.
+
+Desktop First Experiment Mode: during explicit experiment rounds, desktop verification may be the primary gate and mobile fine-tuning may be deferred. For normal production, public delivery, or user-facing launch work, restore the usual desktop and mobile checks unless the user says desktop-only.
+
 ## Hero-First Immersion Gate
 
 For any public-facing website, company page, landing page, product page, homepage, industry overview, or polished visual report, treat the first viewport as a separate deliverable. Do not start implementation by laying out all text sections and then adding a decorative image later.

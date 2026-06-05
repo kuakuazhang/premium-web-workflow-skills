@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Round 1 | Skill 动效作品集</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#f4eee4;--ink:#111;--red:#ff4327;--paper:#fffaf0;--muted:#635d54}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Geist,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow-x:hidden}a{color:inherit;text-decoration:none}
+    .page{background:linear-gradient(rgba(17,17,17,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(17,17,17,.06) 1px,transparent 1px),radial-gradient(circle at 15% 5%,rgba(255,67,39,.16),transparent 28%),var(--bg);background-size:52px 52px,52px 52px,auto}
+    .nav{position:fixed;z-index:30;top:20px;left:24px;right:24px;display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border:1px solid rgba(0,0,0,.14);border-radius:999px;background:rgba(244,238,228,.8);backdrop-filter:blur(18px);box-shadow:0 18px 60px rgba(0,0,0,.12)}.brand{display:flex;gap:10px;align-items:center;font-weight:800;letter-spacing:.04em;text-transform:uppercase}.mark{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#111;color:#fff}.links{display:flex;gap:6px}.links a{padding:9px 14px;border-radius:999px;font-size:14px;font-weight:800}.links a:hover{background:#fff}.source{padding:10px 18px;border-radius:999px;background:#111;color:#fff;font-weight:800}
+    .hero{min-height:100vh;position:relative;display:grid;grid-template-columns:.72fr 1.28fr;align-items:end;gap:30px;padding:118px 34px 54px}.copy{z-index:2}.eyebrow{display:inline-flex;gap:10px;align-items:center;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.62);font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}.dot{width:8px;height:8px;border-radius:50%;background:var(--red)}h1{margin:20px 0 22px;font-size:clamp(74px,10vw,152px);line-height:.78;letter-spacing:-.085em}.copy p{max-width:520px;color:var(--muted);font-size:20px;line-height:1.55}.actions{display:flex;gap:12px;margin-top:28px}.btn{display:inline-flex;padding:13px 20px;border-radius:999px;background:#111;color:#fff;font-weight:800}.btn.light{background:#fff;color:#111;border:1px solid rgba(0,0,0,.15)}
+    .stage{position:relative;min-height:720px;perspective:1600px}.tile{position:absolute;overflow:hidden;border:1px solid rgba(0,0,0,.16);border-radius:28px;background:#fff;box-shadow:0 28px 80px rgba(0,0,0,.22);animation:float 7s ease-in-out infinite}.tile img{width:100%;height:100%;object-fit:cover;display:block}.tile-a{top:4%;left:8%;width:56%;height:34%;transform:rotateY(-18deg) rotateZ(-3deg)}.tile-b{right:2%;top:26%;width:44%;height:28%;transform:rotateY(16deg) rotateZ(5deg);animation-delay:-1s}.tile-c{left:6%;bottom:14%;width:48%;height:32%;padding:24px;background:#111;color:#fff;display:grid;align-content:space-between;transform:rotateY(-10deg) rotateZ(3deg);animation-delay:-2s}.tile-d{right:12%;bottom:7%;width:34%;height:29%;padding:24px;background:var(--red);color:#fff;display:grid;align-content:space-between;transform:rotateY(10deg) rotateZ(-5deg);animation-delay:-3s}.tile strong{font-size:clamp(28px,3.5vw,54px);line-height:.9;letter-spacing:-.05em}.tile span{font-size:13px;line-height:1.5;opacity:.75}.label{position:absolute;left:14px;right:14px;bottom:14px;display:flex;justify-content:space-between;padding:10px 12px;border-radius:16px;background:rgba(244,238,228,.82);font-size:12px;font-weight:800;backdrop-filter:blur(12px)}
+    @keyframes float{0%,100%{translate:0 0}50%{translate:0 -18px}}
+    .section{scroll-margin-top:92px;padding:120px 34px;border-top:1px solid rgba(0,0,0,.12)}.head{display:grid;grid-template-columns:.72fr 1.28fr;gap:30px;align-items:end;margin-bottom:32px}.num{font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#797166}h2{margin:0;font-size:clamp(54px,7vw,110px);line-height:.83;letter-spacing:-.075em}.intro{max-width:760px;color:#5f594f;font-size:21px;line-height:1.55}
+    .gallery{display:grid;grid-template-columns:1.1fr .9fr 1fr;gap:16px}.panel{min-height:360px;padding:26px;border:1px solid rgba(0,0,0,.14);border-radius:30px;background:rgba(255,255,255,.64);box-shadow:0 20px 70px rgba(0,0,0,.08)}.panel.dark{background:#111;color:#fff}.panel.red{background:var(--red);color:#fff}.panel h3{margin:0 0 18px;font-size:clamp(34px,4vw,64px);line-height:.9;letter-spacing:-.055em}.panel p,.panel li{font-size:16px;line-height:1.55;opacity:.75}.panel ul{display:grid;gap:12px;margin:28px 0 0;padding:0;list-style:none}.panel li{padding-top:12px;border-top:1px solid rgba(255,255,255,.24)}.panel:not(.dark):not(.red) li{border-color:rgba(0,0,0,.14)}
+    .process{display:grid;grid-template-columns:repeat(5,minmax(210px,1fr));gap:14px;overflow-x:auto;padding-bottom:12px}.step{min-height:360px;display:grid;align-content:space-between;padding:22px;border-radius:28px;background:#111;color:#fff}.step:nth-child(2n){background:#fff;color:#111}.step:nth-child(3){background:var(--red);color:#fff}.step b{display:grid;place-items:center;width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,.16)}.step:nth-child(2n) b{background:rgba(0,0,0,.08)}.step h3{font-size:34px;line-height:.95;letter-spacing:-.05em}.footer{padding:70px 34px;background:#111;color:#fff}.footer a{display:inline-flex;margin-top:18px;padding:13px 20px;border-radius:999px;background:#fff;color:#111;font-weight:800}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <nav class="nav"><a class="brand" href="index.html"><span class="mark">P</span><span>Round 1</span></a><div class="links"><a href="#reference">参考</a><a href="#gallery">作品墙</a><a href="#process">流程</a><a href="#install">安装</a></div><a class="source" href="https://www.awwwards.com/sites/aw-portfolio">AW Portfolio</a></nav>
+    <section class="hero">
+      <div class="copy">
+        <p class="eyebrow"><span class="dot"></span> Awwwards / AW Portfolio</p>
+        <h1>参考<br>先行</h1>
+        <p>把 Skill 介绍页从普通 landing 改成一个设计引擎作品集：先看参考、再拆骨架、再做真实网页。</p>
+        <div class="actions"><a class="btn" href="#reference">看参考机制</a><a class="btn light" href="#process">看流程</a></div>
+      </div>
+      <div class="stage" aria-label="作品集式视觉墙">
+        <article class="tile tile-a"><img src="../../showcase/premium-web-workflow/assets/hero-design-studio.png" alt="设计工作台视觉"><div class="label"><span>Hero Asset</span><span>interface scene</span></div></article>
+        <article class="tile tile-b"><img src="../../showcase/premium-web-workflow/assets/hero-editorial-atlas.png" alt="网页参考墙视觉"><div class="label"><span>Reference Wall</span><span>awwwards scout</span></div></article>
+        <article class="tile tile-c"><strong>别再从空白页开始</strong><span>从具体原站拆出骨架，避免 Codex 回到自己的默认模子。</span></article>
+        <article class="tile tile-d"><strong>先验收首屏</strong><span>桌面截图低于 4 分，先重做 Hero，不急着铺内容。</span></article>
+      </div>
+    </section>
+    <section class="section" id="reference">
+      <div class="head"><div><p class="num">01 / Reference</p><h2>主参考<br>不是风格词</h2></div><p class="intro">这轮不是说“做得像 Awwwards”，而是明确绑定 AW Portfolio：借作品集骨架、3D gallery、hero animation、work gallery，不借它的品牌和素材。</p></div>
+      <div class="gallery">
+        <article class="panel dark"><h3>候选 01<br>AW Portfolio</h3><p>主参考。适合把 Skill 做成动效作品集和设计引擎。</p><ul><li>可借：漂浮作品墙、案例入口、强 intro。</li><li>风险：太实验会牺牲说明清晰度。</li></ul></article>
+        <article class="panel"><h3>候选 02<br>Portfolio '25</h3><p>作品集方向明确，但 Awwwards 页面信息更少，不适合作为第一轮主拆对象。</p></article>
+        <article class="panel red"><h3>候选 03<br>Layout Land</h3><p>更偏布局机制学习，适合备选，但不够像“Skill 产品介绍”。</p></article>
+      </div>
+    </section>
+    <section class="section" id="gallery">
+      <div class="head"><div><p class="num">02 / Gallery</p><h2>用作品墙<br>承载规则</h2></div><p class="intro">页面内容不是卡片说明书，而是把“参考、Hero、真实结构、动效、验收”做成一组可浏览的设计案例。</p></div>
+      <div class="gallery">
+        <article class="panel"><h3>参考侦察</h3><p>只从 Awwwards 找 3 个具体网页候选，记录选择理由和风险。</p></article>
+        <article class="panel dark"><h3>具体原站</h3><p>必须说清楚主参考是哪一个网站。没有具体参考，就不能声称复刻了高级网站机制。</p></article>
+        <article class="panel"><h3>证据写回</h3><p>只有经过截图和失败复盘的规则，才写回 Skill。</p></article>
+      </div>
+    </section>
+    <section class="section" id="process">
+      <div class="head"><div><p class="num">03 / Process</p><h2>低打扰<br>自进化</h2></div><p class="intro">Codex 自己推进实验，但每轮结束必须给出候选、主参考、桌面截图、自评分和下一条可写回规则。</p></div>
+      <div class="process">
+        <article class="step"><b>01</b><div><h3>找 3 个候选</h3><p>只用 Awwwards，不能混用其他灵感库。</p></div></article>
+        <article class="step"><b>02</b><div><h3>选 1 个原站</h3><p>说明为什么选它，以及它有什么风险。</p></div></article>
+        <article class="step"><b>03</b><div><h3>拆网页骨架</h3><p>拆首屏、导航、滚动、内容模块和视觉资产边界。</p></div></article>
+        <article class="step"><b>04</b><div><h3>做实验页</h3><p>用我们的真实内容重建，不复制品牌素材。</p></div></article>
+        <article class="step"><b>05</b><div><h3>截图评分</h3><p>桌面端先过 4 分，再考虑写回 Skill。</p></div></article>
+      </div>
+    </section>
+    <footer class="footer" id="install"><h2>Round 1 完成</h2><p>下一轮必须避开红黑作品墙，进入数据视觉和报告叙事。</p><a href="round-2-visual-report.html">进入 Round 2</a></footer>
+  </main>
+  <script>
+    window.addEventListener("load", () => {
+      const shot = new URLSearchParams(location.search).get("shot");
+      const selector = shot ? `#${shot}` : location.hash;
+      if (!selector) return;
+      const target = document.querySelector(selector);
+      if (!target) return;
+      const jump = () => target.scrollIntoView({ block: "start" });
+      jump();
+      setTimeout(jump, 100);
+      setTimeout(jump, 300);
+      setTimeout(jump, 700);
+    });
+  </script>
+</body>
+</html>

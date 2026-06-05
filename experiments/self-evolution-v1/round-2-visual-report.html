@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Round 2 | 可视化报告实验</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#102533;--blue:#2d84ff;--green:#70d86b;--yellow:#ffe36e;--paper:#eef8f4;--line:rgba(16,37,51,.18)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:inherit;text-decoration:none}.page{background:linear-gradient(90deg,rgba(16,37,51,.06) 1px,transparent 1px),linear-gradient(rgba(16,37,51,.06) 1px,transparent 1px),radial-gradient(circle at 85% 8%,rgba(255,227,110,.7),transparent 24%),var(--paper);background-size:44px 44px,44px 44px,auto}
+    .nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:16px 28px;border-bottom:1px solid var(--line);background:rgba(238,248,244,.84);backdrop-filter:blur(18px)}.brand{font-weight:700;letter-spacing:.08em;text-transform:uppercase}.links{display:flex;gap:20px;font-size:14px;font-weight:700}.source{padding:9px 14px;border-radius:999px;background:var(--ink);color:#fff;font-weight:700}
+    .hero{min-height:92vh;display:grid;grid-template-columns:.95fr 1.05fr;gap:34px;align-items:center;padding:74px 28px 52px}.kicker{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}h1{margin:18px 0 22px;font-size:clamp(58px,8vw,132px);line-height:.86;letter-spacing:-.06em}.lead{max-width:680px;font-size:21px;line-height:1.58;color:rgba(16,37,51,.72)}.report-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}.chip{padding:9px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.5);font-size:13px;font-weight:700}
+    .radar{min-height:660px;position:relative;border:1px solid var(--line);border-radius:34px;background:rgba(255,255,255,.42);box-shadow:0 30px 90px rgba(16,37,51,.12);overflow:hidden}.radar svg{width:100%;height:100%;position:absolute;inset:0}.pulse{position:absolute;width:14px;height:14px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 10px rgba(45,132,255,.16);animation:pulse 2.4s ease infinite}.p1{left:24%;top:32%}.p2{left:58%;top:22%;background:var(--green);box-shadow:0 0 0 10px rgba(112,216,107,.18);animation-delay:.6s}.p3{right:18%;bottom:22%;background:var(--yellow);box-shadow:0 0 0 10px rgba(255,227,110,.28);animation-delay:1.1s}.radar-note{position:absolute;left:28px;right:28px;bottom:28px;padding:22px;border-radius:24px;background:var(--ink);color:#fff}.radar-note strong{display:block;font-size:40px;line-height:.95;letter-spacing:-.04em}.radar-note span{display:block;margin-top:12px;color:rgba(255,255,255,.68);line-height:1.5}@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.35)}}
+    .section{scroll-margin-top:78px;padding:104px 28px;border-top:1px solid var(--line)}.head{display:grid;grid-template-columns:.8fr 1.2fr;gap:28px;margin-bottom:32px;align-items:end}.num{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}h2{margin:0;font-size:clamp(48px,6.5vw,106px);line-height:.86;letter-spacing:-.06em}.intro{max-width:760px;color:rgba(16,37,51,.72);font-size:20px;line-height:1.58}
+    .signal-map{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}.map{min-height:580px;border:1px solid var(--line);border-radius:34px;background:#fff;position:relative;overflow:hidden}.map svg{width:100%;height:100%}.legend{display:grid;gap:14px}.legend-item{min-height:130px;padding:20px;border:1px solid var(--line);border-radius:24px;background:rgba(255,255,255,.58)}.legend-item b{display:block;margin-bottom:10px;font-size:22px}.legend-item span{color:rgba(16,37,51,.68);line-height:1.5}
+    .matrix{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:28px;overflow:hidden;background:#fff;box-shadow:0 24px 80px rgba(16,37,51,.08)}.matrix th,.matrix td{padding:22px;text-align:left;border-bottom:1px solid var(--line);border-right:1px solid var(--line);vertical-align:top}.matrix th{background:var(--ink);color:#fff;font-size:14px;letter-spacing:.08em;text-transform:uppercase}.matrix tr:last-child td{border-bottom:0}.matrix td:last-child,.matrix th:last-child{border-right:0}.matrix b{display:block;margin-bottom:10px}.ok{color:#0d8f4f}.bad{color:#d74b2f}
+    .timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--line);border-radius:30px;overflow:hidden;background:#fff}.time{min-height:310px;padding:22px;border-right:1px solid var(--line);display:grid;align-content:space-between}.time:last-child{border-right:0}.time:nth-child(2){background:var(--yellow)}.time:nth-child(4){background:var(--green)}.time b{font-size:13px;letter-spacing:.1em;text-transform:uppercase}.time h3{margin:0;font-size:32px;line-height:.95;letter-spacing:-.04em}.time p{color:rgba(16,37,51,.68);line-height:1.5}.footer{padding:70px 28px;background:var(--ink);color:#fff}.footer a{display:inline-flex;margin-top:16px;padding:13px 20px;border-radius:999px;background:#fff;color:var(--ink);font-weight:700}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <nav class="nav"><a class="brand" href="index.html">Round 2 / Visual Report</a><div class="links"><a href="#map">信号图</a><a href="#matrix">失败矩阵</a><a href="#recipe">写回流程</a></div><a class="source" href="https://www.awwwards.com/sites/environment-report">Environment Report</a></nav>
+    <section class="hero">
+      <div>
+        <p class="kicker">Awwwards / Environment Report</p>
+        <h1>反 PPT<br>生产报告</h1>
+        <p class="lead">这轮训练行业报告和可视化网页：首屏必须有真实数据对象，正文必须用矩阵、关系图和时间线承载判断，而不是报告封面加卡片区。</p>
+        <div class="report-meta"><span class="chip">桌面优先</span><span class="chip">真实 SVG / DOM</span><span class="chip">蓝绿黄研究气质</span></div>
+      </div>
+      <div class="radar" aria-label="反 PPT 诊断雷达">
+        <svg viewBox="0 0 700 660" role="img" aria-label="网页生产诊断关系图">
+          <defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="#2d84ff"/><stop offset="1" stop-color="#70d86b"/></linearGradient></defs>
+          <circle cx="350" cy="320" r="220" fill="none" stroke="rgba(16,37,51,.12)" stroke-width="1"/><circle cx="350" cy="320" r="150" fill="none" stroke="rgba(16,37,51,.12)" stroke-width="1"/><circle cx="350" cy="320" r="70" fill="none" stroke="rgba(16,37,51,.12)" stroke-width="1"/>
+          <path d="M160 215 C255 130 395 125 520 185 C590 220 610 310 570 410 C510 545 300 555 185 465 C90 390 92 285 160 215Z" fill="rgba(45,132,255,.16)" stroke="url(#g)" stroke-width="4"/>
+          <line x1="350" y1="320" x2="175" y2="210" stroke="rgba(16,37,51,.18)"/><line x1="350" y1="320" x2="520" y2="185" stroke="rgba(16,37,51,.18)"/><line x1="350" y1="320" x2="570" y2="410" stroke="rgba(16,37,51,.18)"/><line x1="350" y1="320" x2="185" y2="465" stroke="rgba(16,37,51,.18)"/>
+          <text x="92" y="195" font-size="18" font-weight="700">参考具体性</text><text x="505" y="160" font-size="18" font-weight="700">Hero 资产</text><text x="552" y="438" font-size="18" font-weight="700">内容完整</text><text x="116" y="493" font-size="18" font-weight="700">截图证据</text>
+        </svg>
+        <span class="pulse p1"></span><span class="pulse p2"></span><span class="pulse p3"></span>
+        <div class="radar-note"><strong>核心判断：网页失败不是 CSS 问题。</strong><span>它通常是参考过浅、首屏没有视觉主体、内容区骨架偷懒、验收没有截图证据。</span></div>
+      </div>
+    </section>
+    <section class="section" id="map">
+      <div class="head"><div><p class="num">01 / Signal Map</p><h2>把失败<br>画出来</h2></div><p class="intro">参考 Environment Report 的 single-page 数据叙事，本轮用一个真实 SVG 信号图替代“报告页标题 + 几张卡片”的惯性。</p></div>
+      <div class="signal-map">
+        <div class="map">
+          <svg viewBox="0 0 900 580" role="img" aria-label="反 PPT 失败链路图">
+            <rect width="900" height="580" fill="#fff"/><g fill="none" stroke="#102533" stroke-opacity=".16"><path d="M0 100H900M0 200H900M0 300H900M0 400H900M0 500H900"/><path d="M150 0V580M300 0V580M450 0V580M600 0V580M750 0V580"/></g>
+            <path d="M110 430 C210 220 340 300 440 150 S650 120 780 70" stroke="#2d84ff" stroke-width="6" fill="none"/>
+            <path d="M110 430 C240 460 330 390 450 420 S660 350 790 300" stroke="#70d86b" stroke-width="6" fill="none"/>
+            <path d="M110 430 C270 370 330 250 500 265 S670 215 790 180" stroke="#ffe36e" stroke-width="8" fill="none"/>
+            <g font-size="17" font-weight="700" fill="#102533"><text x="86" y="456">直接写 HTML</text><text x="314" y="306">参考模糊</text><text x="428" y="138">Hero 失焦</text><text x="615" y="205">内容卡片化</text><text x="704" y="86">截图复盘</text></g>
+            <g fill="#102533"><circle cx="110" cy="430" r="10"/><circle cx="340" cy="300" r="10"/><circle cx="440" cy="150" r="10"/><circle cx="650" cy="120" r="10"/><circle cx="780" cy="70" r="10"/></g>
+          </svg>
+        </div>
+        <div class="legend">
+          <div class="legend-item"><b>蓝线：设计生产力</b><span>从具体参考开始，页面越早形成骨架，后面越少靠补丁救火。</span></div>
+          <div class="legend-item"><b>绿线：内容完整度</b><span>只做首屏会快速下滑；内容区必须沿用同一视觉系统。</span></div>
+          <div class="legend-item"><b>黄线：证据质量</b><span>截图、自评分、失败点是写回 Skill 的前置条件。</span></div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="matrix">
+      <div class="head"><div><p class="num">02 / Matrix</p><h2>失败矩阵<br>不靠感觉</h2></div><p class="intro">报告型网页最容易“看起来有信息，但没有结构”。矩阵用真实表格呈现，不把判断烤进图片。</p></div>
+      <table class="matrix">
+        <thead><tr><th>问题</th><th>表象</th><th>真正原因</th><th>修法</th></tr></thead>
+        <tbody>
+          <tr><td><b class="bad">像 PPT</b></td><td>封面大标题 + 数据卡片</td><td>没有参考网页骨架，只是在排版文字</td><td>先找 Awwwards 具体原站，拆首屏和滚动结构</td></tr>
+          <tr><td><b class="bad">Hero 空洞</b></td><td>网格、粒子、超大字</td><td>没有视觉主体或真实场景</td><td>生成图像、产品对象、数据对象或代码场景</td></tr>
+          <tr><td><b class="ok">可写回</b></td><td>截图分数稳定超过 4 分</td><td>规则经过了实验验证</td><td>阶段结束后合并到 Skill，而不是每轮立刻写死</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section class="section" id="recipe">
+      <div class="head"><div><p class="num">03 / Timeline</p><h2>证据后<br>再写回</h2></div><p class="intro">Skill 的进化不能靠聊天里的情绪判断。每条规则都要有候选、参考、截图、失败点和复盘依据。</p></div>
+      <div class="timeline">
+        <article class="time"><b>Step 01</b><div><h3>候选</h3><p>每轮 3 个 Awwwards 具体网页。</p></div></article>
+        <article class="time"><b>Step 02</b><div><h3>主参考</h3><p>选 1 个原站，写清选择理由。</p></div></article>
+        <article class="time"><b>Step 03</b><div><h3>实验页</h3><p>真实内容进入新骨架。</p></div></article>
+        <article class="time"><b>Step 04</b><div><h3>截图</h3><p>桌面首屏 + 两个内容区。</p></div></article>
+        <article class="time"><b>Step 05</b><div><h3>写回</h3><p>只保留被证据支持的规则。</p></div></article>
+      </div>
+    </section>
+    <footer class="footer"><h2>Round 2 完成</h2><p>下一轮必须避开研究报告和数据图，进入黑白产品发布页。</p><a href="round-3-product-site.html">进入 Round 3</a></footer>
+  </main>
+  <script>
+    window.addEventListener("load", () => {
+      const shot = new URLSearchParams(location.search).get("shot");
+      const selector = shot ? `#${shot}` : location.hash;
+      if (!selector) return;
+      const target = document.querySelector(selector);
+      if (!target) return;
+      const jump = () => target.scrollIntoView({ block: "start" });
+      jump();
+      setTimeout(jump, 100);
+      setTimeout(jump, 300);
+      setTimeout(jump, 700);
+    });
+  </script>
+</body>
+</html>

@@ -3,29 +3,41 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Premium Web Workflow | 先选参考，再做网页</title>
-  <meta name="description" content="Premium Web Workflow 是一套给 Codex 使用的网页设计 Skill：先选参考，再做 Hero、内容、动效和截图验收。" />
+  <title>Premium Web Workflow | 参考驱动实验页</title>
+  <meta name="description" content="一个参考驱动的 Codex 网页设计工作流介绍页实验。" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --bg: #f4f0e8;
+      --ink: #11110f;
+      --muted: #6f6b62;
+      --line: rgba(18, 18, 16, .15);
+      --paper: rgba(255, 252, 245, .78);
+      --red: #ff4b26;
+      --blue: #244dff;
+      --green: #34d38b;
+      --dark: #10100e;
+    }
+
     * {
       box-sizing: border-box;
     }
 
     html,
     body {
-      width: 100%;
       margin: 0;
-      overflow-x: hidden;
+      width: 100%;
+      min-height: 100%;
       scroll-behavior: smooth;
-      background: #000;
-      color: #fff;
-      font-family: "Inter", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     body {
-      min-height: 100svh;
+      overflow-x: hidden;
     }
 
     a {
@@ -34,705 +46,137 @@
     }
 
     button {
-      border: 0;
-      color: inherit;
       font: inherit;
     }
 
     .page {
       position: relative;
-      width: 100%;
-      min-height: 100svh;
-      overflow: visible;
-      background: #000;
-    }
-
-    .background-video {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      background: #000;
-    }
-
-    .video-fallback {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
       background:
-        radial-gradient(circle at 68% 26%, rgba(255, 255, 255, .24), transparent 27%),
-        radial-gradient(circle at 28% 72%, rgba(120, 120, 120, .28), transparent 34%),
-        linear-gradient(135deg, #070707 0%, #151515 44%, #050505 100%);
-    }
-
-    .bottom-blur {
-      pointer-events: none;
-      position: fixed;
-      inset: 0;
-      z-index: 1;
-      backdrop-filter: blur(28px);
-      -webkit-backdrop-filter: blur(28px);
-      mask-image: linear-gradient(to top, black 0%, transparent 45%);
-      -webkit-mask-image: linear-gradient(to top, black 0%, transparent 45%);
-    }
-
-    .liquid-glass {
-      position: relative;
-      overflow: hidden;
-      border: none;
-      background: rgba(255, 255, 255, .01);
-      background-blend-mode: luminosity;
-      box-shadow: inset 0 1px 1px rgba(255, 255, 255, .1);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-    }
-
-    .liquid-glass::before {
-      content: "";
-      pointer-events: none;
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      padding: 1.4px;
-      background: linear-gradient(180deg, rgba(255,255,255,.45) 0%, rgba(255,255,255,.15) 20%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,.15) 80%, rgba(255,255,255,.45) 100%);
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-    }
-
-    @keyframes blurFadeUp {
-      from {
-        opacity: 0;
-        filter: blur(20px);
-        transform: translateY(40px);
-      }
-
-      to {
-        opacity: 1;
-        filter: blur(0);
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes mobileLinkIn {
-      from {
-        opacity: 0;
-        transform: translateX(-18px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    .animate-blur-fade-up {
-      opacity: 0;
-      animation: blurFadeUp 1s ease-out forwards;
+        linear-gradient(rgba(17, 17, 15, .055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(17, 17, 15, .055) 1px, transparent 1px),
+        radial-gradient(circle at 18% 16%, rgba(255, 75, 38, .15), transparent 30%),
+        radial-gradient(circle at 76% 12%, rgba(36, 77, 255, .13), transparent 28%),
+        var(--bg);
+      background-size: 56px 56px, 56px 56px, auto, auto, auto;
     }
 
     .nav {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 50;
-      display: flex;
+      top: 18px;
+      left: 20px;
+      right: 20px;
+      z-index: 80;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      justify-content: space-between;
-      padding: 24px 48px;
+      gap: 18px;
+      padding: 10px 12px;
+      border: 1px solid rgba(17, 17, 15, .14);
+      border-radius: 999px;
+      background: rgba(244, 240, 232, .72);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 16px 60px rgba(20, 18, 14, .12);
     }
 
-    .logo {
-      height: 40px;
-      display: inline-flex;
+    .brand,
+    .nav-links,
+    .nav-actions {
+      display: flex;
       align-items: center;
-      gap: 11px;
+    }
+
+    .brand {
+      gap: 10px;
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: .06em;
       text-transform: uppercase;
     }
 
-    .logo-mark {
+    .brand-mark {
       display: grid;
       width: 34px;
       height: 34px;
       place-items: center;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, .92);
-      color: #000;
-      font-weight: 700;
+      border-radius: 50%;
+      background: var(--ink);
+      color: var(--bg);
     }
 
     .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      color: rgba(255, 255, 255, .82);
-      font-size: 14px;
-      font-weight: 500;
+      gap: 6px;
+      padding: 4px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .42);
     }
 
     .nav-links a {
-      transition: color .2s ease;
+      padding: 8px 13px;
+      border-radius: 999px;
+      color: rgba(17, 17, 15, .7);
+      font-size: 13px;
+      font-weight: 700;
+      transition: background .2s ease, color .2s ease;
     }
 
     .nav-links a:hover {
-      color: rgba(255, 255, 255, 1);
+      background: #fff;
+      color: var(--ink);
     }
 
     .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .pill-button,
-    .circle-button,
-    .menu-button {
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: color .2s ease, background .2s ease, transform .2s ease;
-    }
-
-    .pill-button:hover,
-    .circle-button:hover,
-    .menu-button:hover {
-      transform: translateY(-1px);
-      background: rgba(255, 255, 255, .06);
-    }
-
-    .pill-button {
-      min-height: 40px;
-      gap: 9px;
-      padding: 8px 22px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 500;
-    }
-
-    .circle-button,
-    .menu-button {
-      width: 40px;
-      height: 40px;
-      border-radius: 999px;
-    }
-
-    .menu-button {
-      display: none;
-      position: relative;
-    }
-
-    .menu-button svg {
-      position: absolute;
-      transition: transform .5s ease-out, opacity .5s ease-out;
-    }
-
-    .menu-button .icon-close {
-      opacity: 0;
-      transform: rotate(-180deg) scale(.5);
-    }
-
-    .menu-button.is-open .icon-menu {
-      opacity: 0;
-      transform: rotate(180deg) scale(.5);
-    }
-
-    .menu-button.is-open .icon-close {
-      opacity: 1;
-      transform: rotate(0) scale(1);
-    }
-
-    .mobile-menu {
-      position: fixed;
-      top: 72px;
-      left: 0;
-      right: 0;
-      z-index: 40;
-      padding: 14px 18px 18px;
-      border-top: 1px solid rgba(31, 41, 55, 1);
-      border-bottom: 1px solid rgba(31, 41, 55, 1);
-      background: rgba(17, 24, 39, .95);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, .45);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(-16px);
-      transition: opacity .5s ease-out, transform .5s ease-out;
-    }
-
-    .mobile-menu.is-open {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-    }
-
-    .mobile-menu a {
-      display: block;
-      padding: 12px;
-      border-radius: 10px;
-      color: rgba(255, 255, 255, .84);
-      font-size: 15px;
-      font-weight: 500;
-    }
-
-    .mobile-menu.is-open a {
-      animation: mobileLinkIn .45s ease-out both;
-    }
-
-    .mobile-menu a:hover {
-      background: rgba(31, 41, 55, .5);
-      color: #fff;
-    }
-
-    .mobile-actions {
-      display: none;
-      gap: 10px;
-      margin-top: 10px;
-      padding-top: 14px;
-      border-top: 1px solid rgba(255, 255, 255, .1);
-    }
-
-    .hero {
-      position: relative;
-      z-index: 10;
-      display: flex;
-      min-height: 100svh;
-      flex-direction: column;
       justify-content: flex-end;
-      padding: 112px 48px 64px;
-    }
-
-    .hero-inner {
-      display: flex;
-      align-items: flex-end;
-      gap: 32px;
-      width: 100%;
-    }
-
-    .hero-copy {
-      flex: 1;
-      min-width: 0;
-      width: 100%;
-    }
-
-    .meta-row {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 24px;
-      margin-bottom: 32px;
-      color: rgba(255, 255, 255, .88);
-      font-size: 14px;
-      font-weight: 500;
-    }
-
-    .meta-item {
-      display: inline-flex;
-      align-items: center;
       gap: 8px;
     }
 
-    .meta-item .filled {
-      fill: #fff;
-    }
-
-    h1 {
-      max-width: 970px;
-      margin: 0 0 24px;
-      font-size: clamp(42px, 7vw, 104px);
-      font-weight: 400;
-      letter-spacing: -.04em;
-      line-height: .92;
-    }
-
-    .title-line {
-      display: block;
-    }
-
-    .description {
-      max-width: 680px;
-      margin: 0 0 48px;
-      color: rgb(156, 163, 175);
-      font-size: clamp(17px, 1.7vw, 22px);
-      line-height: 1.55;
-      font-weight: 400;
-    }
-
-    .cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-
-    .primary-button {
-      cursor: pointer;
+    .ghost-button,
+    .solid-button,
+    .icon-button {
       display: inline-flex;
-      min-height: 48px;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      padding: 12px 32px;
+      border: 1px solid rgba(17, 17, 15, .18);
       border-radius: 999px;
-      background: #fff;
-      color: #000;
-      font-size: 16px;
-      font-weight: 500;
-      transition: background .2s ease, transform .2s ease;
-    }
-
-    .primary-button svg {
-      fill: #000;
-    }
-
-    .primary-button:hover {
-      transform: translateY(-1px);
-      background: rgb(229, 231, 235);
-    }
-
-    .secondary-button {
       cursor: pointer;
-      display: inline-flex;
-      min-height: 48px;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 32px;
-      border-radius: 999px;
-      font-size: 16px;
-      font-weight: 500;
-      transition: background .2s ease, transform .2s ease;
+      transition: transform .2s ease, box-shadow .2s ease;
     }
 
-    .secondary-button:hover {
-      transform: translateY(-1px);
-      background: rgba(255, 255, 255, .06);
-    }
-
-    .arrow-row {
-      display: flex;
-      flex-shrink: 0;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      gap: 12px;
-    }
-
-    .arrow-button {
-      cursor: pointer;
-      display: inline-flex;
-      min-height: 48px;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 12px 24px;
-      border-radius: 999px;
-      color: rgba(255, 255, 255, .92);
-      font-size: 15px;
-      font-weight: 500;
-      transition: background .2s ease, transform .2s ease;
-    }
-
-    .arrow-button:hover {
-      transform: translateY(-1px);
-      background: rgba(255, 255, 255, .06);
-    }
-
-    .content {
-      position: relative;
-      z-index: 12;
-      padding: 10px 48px 72px;
-    }
-
-    .cinema-section {
-      min-height: 100svh;
-      display: grid;
-      align-items: center;
-      padding: 112px 0 72px;
-      scroll-margin-top: 0;
-    }
-
-    .section-shell {
-      width: 100%;
-      scroll-margin-top: 96px;
-      border-radius: 34px;
-      background: rgba(5, 5, 5, .42);
-      box-shadow: 0 40px 120px rgba(0, 0, 0, .34);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-    }
-
-    .section-grid {
-      display: grid;
-      grid-template-columns: minmax(260px, .74fr) minmax(0, 1.26fr);
-      gap: 34px;
-      padding: 34px;
-    }
-
-    .section-kicker {
-      display: inline-flex;
-      align-items: center;
+    .ghost-button,
+    .solid-button {
+      min-height: 42px;
       gap: 9px;
-      margin: 0 0 22px;
-      color: rgba(255, 255, 255, .72);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    .section-kicker::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #fff;
-      box-shadow: 0 0 22px rgba(255, 255, 255, .82);
-    }
-
-    h2 {
-      max-width: 720px;
-      margin: 0;
-      font-size: clamp(34px, 5.8vw, 82px);
-      font-weight: 400;
-      letter-spacing: -.045em;
-      line-height: .94;
-    }
-
-    .section-copy {
-      max-width: 560px;
-      margin: 24px 0 0;
-      color: rgb(156, 163, 175);
-      font-size: clamp(16px, 1.45vw, 19px);
-      line-height: 1.62;
-    }
-
-    .reference-stage {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      align-content: end;
-    }
-
-    .glass-card,
-    .step-card,
-    .score-card {
-      position: relative;
-      overflow: hidden;
-      border-radius: 24px;
-      background: rgba(255, 255, 255, .045);
-      box-shadow: inset 0 1px 1px rgba(255, 255, 255, .08);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-    }
-
-    .glass-card::before,
-    .step-card::before,
-    .score-card::before {
-      content: "";
-      pointer-events: none;
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      padding: 1px;
-      background: linear-gradient(180deg, rgba(255,255,255,.36), rgba(255,255,255,.05) 44%, rgba(255,255,255,.18));
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-    }
-
-    .glass-card {
-      min-height: 220px;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .glass-card.is-primary {
-      grid-column: span 2;
-      min-height: 280px;
-      background: rgba(255, 255, 255, .075);
-    }
-
-    .card-index {
-      color: rgba(255, 255, 255, .56);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    .glass-card h3,
-    .step-card h3,
-    .score-card h3 {
-      margin: 0;
-      font-size: clamp(24px, 3vw, 42px);
-      font-weight: 400;
-      letter-spacing: -.035em;
-      line-height: 1;
-    }
-
-    .glass-card p,
-    .step-card p,
-    .score-card p {
-      margin: 18px 0 0;
-      color: rgba(229, 231, 235, .72);
-      font-size: 15px;
-      line-height: 1.55;
-    }
-
-    .pipeline {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 10px;
-      align-items: stretch;
-    }
-
-    .step-card {
-      min-height: 360px;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .step-number {
-      color: rgba(255, 255, 255, .48);
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .asset-wall {
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 14px;
-    }
-
-    .asset-panel {
-      min-height: 560px;
-      padding: 24px;
-      border-radius: 30px;
-      background:
-        radial-gradient(circle at 70% 22%, rgba(255, 255, 255, .2), transparent 22%),
-        radial-gradient(circle at 20% 82%, rgba(255, 255, 255, .12), transparent 28%),
-        rgba(255, 255, 255, .045);
-      overflow: hidden;
-    }
-
-    .asset-window {
-      height: 100%;
-      min-height: 420px;
-      border-radius: 24px;
-      background:
-        linear-gradient(135deg, rgba(255,255,255,.2), rgba(255,255,255,.04)),
-        rgba(0, 0, 0, .18);
-      box-shadow: inset 0 1px 1px rgba(255,255,255,.1);
-      display: grid;
-      place-items: center;
-      text-align: center;
-      padding: 24px;
-    }
-
-    .asset-window strong {
-      display: block;
-      max-width: 520px;
-      font-size: clamp(30px, 5vw, 74px);
-      font-weight: 400;
-      letter-spacing: -.05em;
-      line-height: .95;
-    }
-
-    .asset-window span {
-      display: block;
-      max-width: 420px;
-      margin: 22px auto 0;
-      color: rgba(229, 231, 235, .68);
-      font-size: 15px;
-      line-height: 1.5;
-    }
-
-    .asset-list {
-      display: grid;
-      gap: 14px;
-    }
-
-    .asset-note {
-      min-height: 176px;
-      padding: 20px;
-      border-radius: 24px;
-      background: rgba(255,255,255,.045);
-    }
-
-    .asset-note b {
-      display: block;
-      margin-bottom: 14px;
-      font-size: 18px;
-      font-weight: 600;
-    }
-
-    .asset-note span {
-      color: rgba(229,231,235,.68);
+      padding: 10px 18px;
       font-size: 14px;
-      line-height: 1.52;
+      font-weight: 800;
     }
 
-    .score-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
+    .ghost-button {
+      background: rgba(255, 255, 255, .5);
     }
 
-    .score-card {
-      min-height: 174px;
-      padding: 22px;
+    .solid-button {
+      border-color: var(--ink);
+      background: var(--ink);
+      color: #fffaf1;
     }
 
-    .score-card strong {
-      display: block;
-      margin-bottom: 26px;
-      font-size: 38px;
-      font-weight: 400;
-      letter-spacing: -.04em;
+    .icon-button {
+      display: none;
+      width: 42px;
+      height: 42px;
+      background: rgba(255, 255, 255, .56);
     }
 
-    .install-panel {
-      display: grid;
-      grid-template-columns: minmax(260px, 1fr) minmax(300px, .72fr);
-      gap: 28px;
-      align-items: end;
-      padding: 38px;
-    }
-
-    .code-block {
-      margin: 0;
-      padding: 24px;
-      border-radius: 24px;
-      background: rgba(0, 0, 0, .44);
-      color: rgba(255, 255, 255, .86);
-      overflow-x: auto;
-      font-size: 14px;
-      line-height: 1.72;
-    }
-
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
+    .ghost-button:hover,
+    .solid-button:hover,
+    .icon-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 34px rgba(17, 17, 15, .16);
     }
 
     svg {
-      display: block;
       width: 18px;
       height: 18px;
       stroke: currentColor;
@@ -742,412 +186,929 @@
       fill: none;
     }
 
-    @media (max-width: 1023px) {
+    .mobile-menu {
+      position: fixed;
+      top: 78px;
+      left: 20px;
+      right: 20px;
+      z-index: 70;
+      display: none;
+      gap: 8px;
+      padding: 14px;
+      border: 1px solid rgba(17, 17, 15, .14);
+      border-radius: 24px;
+      background: rgba(244, 240, 232, .94);
+      box-shadow: 0 24px 70px rgba(17, 17, 15, .18);
+    }
+
+    .mobile-menu.is-open {
+      display: grid;
+    }
+
+    .mobile-menu a {
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, .52);
+      font-weight: 800;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      padding: 124px 28px 34px;
+      display: grid;
+      grid-template-columns: minmax(280px, .86fr) minmax(360px, 1.14fr);
+      gap: 26px;
+      align-items: end;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      align-content: end;
+      min-height: calc(100svh - 158px);
+      padding: clamp(22px, 4vw, 54px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      width: fit-content;
+      max-width: 100%;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 22px;
+      padding: 8px 12px;
+      border: 1px solid rgba(17, 17, 15, .16);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .5);
+      color: rgba(17, 17, 15, .72);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      white-space: normal;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--red);
+      box-shadow: 0 0 0 5px rgba(255, 75, 38, .16);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin-bottom: 24px;
+      font-size: clamp(58px, 8.6vw, 132px);
+      line-height: .82;
+      letter-spacing: -.075em;
+      font-weight: 800;
+    }
+
+    .line {
+      display: block;
+    }
+
+    .hero-copy p {
+      max-width: 520px;
+      color: rgba(17, 17, 15, .7);
+      font-size: clamp(17px, 1.55vw, 22px);
+      line-height: 1.55;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .hero-board {
+      position: relative;
+      z-index: 1;
+      min-height: calc(100svh - 158px);
+      perspective: 1600px;
+    }
+
+    .board-stage {
+      position: absolute;
+      inset: 3% 0 0;
+      transform-style: preserve-3d;
+    }
+
+    .work-card {
+      position: absolute;
+      overflow: hidden;
+      border: 1px solid rgba(17, 17, 15, .18);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, .7);
+      box-shadow: 0 26px 80px rgba(17, 17, 15, .2);
+      transform-style: preserve-3d;
+      animation: floatCard 7s ease-in-out infinite;
+    }
+
+    .work-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(.92) contrast(1.04);
+    }
+
+    .work-card .caption {
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 16px;
+      background: rgba(244, 240, 232, .82);
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 800;
+      backdrop-filter: blur(12px);
+    }
+
+    .card-a {
+      top: 2%;
+      left: 10%;
+      width: 58%;
+      height: 38%;
+      transform: rotateX(6deg) rotateY(-17deg) rotateZ(-2deg);
+      animation-delay: -.4s;
+    }
+
+    .card-b {
+      right: 3%;
+      top: 22%;
+      width: 45%;
+      height: 32%;
+      transform: rotateX(8deg) rotateY(16deg) rotateZ(4deg);
+      animation-delay: -1.2s;
+    }
+
+    .card-c {
+      left: 0;
+      bottom: 11%;
+      width: 48%;
+      height: 34%;
+      background: var(--dark);
+      color: #fff;
+      transform: rotateX(11deg) rotateY(-10deg) rotateZ(3deg);
+      animation-delay: -2s;
+    }
+
+    .card-d {
+      right: 13%;
+      bottom: 4%;
+      width: 36%;
+      height: 29%;
+      transform: rotateX(8deg) rotateY(10deg) rotateZ(-5deg);
+      animation-delay: -3s;
+    }
+
+    .dark-card {
+      display: grid;
+      align-content: space-between;
+      padding: 22px;
+      background:
+        linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px),
+        #11110f;
+      background-size: 28px 28px;
+    }
+
+    .dark-card strong {
+      max-width: 260px;
+      font-size: clamp(24px, 3vw, 44px);
+      line-height: .92;
+      letter-spacing: -.04em;
+    }
+
+    .dark-card span {
+      color: rgba(255,255,255,.68);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .ticker {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 3;
+      overflow: hidden;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 250, 241, .5);
+    }
+
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 24s linear infinite;
+    }
+
+    .ticker span {
+      padding: 15px 20px;
+      color: rgba(17, 17, 15, .72);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    @keyframes floatCard {
+      0%, 100% {
+        translate: 0 0;
+      }
+      50% {
+        translate: 0 -16px;
+      }
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    .section {
+      position: relative;
+      z-index: 5;
+      scroll-margin-top: 96px;
+      padding: clamp(76px, 10vw, 150px) 28px;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(260px, .7fr) minmax(320px, 1.3fr);
+      gap: 26px;
+      align-items: end;
+      margin-bottom: 32px;
+    }
+
+    .section-number {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin-bottom: 0;
+      font-size: clamp(44px, 6.5vw, 106px);
+      line-height: .86;
+      letter-spacing: -.07em;
+      font-weight: 800;
+    }
+
+    .section-intro {
+      max-width: 720px;
+      margin: 0;
+      color: rgba(17, 17, 15, .7);
+      font-size: clamp(17px, 1.4vw, 21px);
+      line-height: 1.58;
+    }
+
+    .reference-strip {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr 1fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .panel {
+      position: relative;
+      overflow: hidden;
+      min-height: 330px;
+      padding: 24px;
+      border: 1px solid rgba(17, 17, 15, .15);
+      border-radius: 28px;
+      background: var(--paper);
+      box-shadow: 0 18px 70px rgba(17, 17, 15, .1);
+    }
+
+    .panel.dark {
+      background: #11110f;
+      color: #fffaf1;
+    }
+
+    .panel.blue {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .panel.red {
+      background: var(--red);
+      color: #fffaf1;
+    }
+
+    .panel h3 {
+      max-width: 420px;
+      margin-bottom: 18px;
+      font-size: clamp(28px, 3.7vw, 56px);
+      line-height: .92;
+      letter-spacing: -.05em;
+      font-weight: 800;
+    }
+
+    .panel p,
+    .panel li {
+      color: currentColor;
+      opacity: .74;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .panel ul {
+      display: grid;
+      gap: 12px;
+      margin: 28px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .panel li {
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,.22);
+    }
+
+    .panel:not(.dark):not(.blue):not(.red) li {
+      border-color: rgba(17,17,15,.14);
+    }
+
+    .mini-label {
+      display: inline-block;
+      margin-bottom: 18px;
+      color: currentColor;
+      opacity: .62;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .hero-lab {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .hero-preview {
+      min-height: 620px;
+      padding: 0;
+      background: #111;
+    }
+
+    .hero-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: .92;
+    }
+
+    .hero-preview::after {
+      content: "Hero 主视觉不是装饰，而是第一屏的空间骨架";
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(244, 240, 232, .82);
+      color: var(--ink);
+      font-size: clamp(22px, 3vw, 42px);
+      line-height: .95;
+      letter-spacing: -.05em;
+      font-weight: 800;
+      backdrop-filter: blur(12px);
+    }
+
+    .rules-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .rule {
+      min-height: 302px;
+      display: grid;
+      align-content: space-between;
+    }
+
+    .motion-row {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(220px, 1fr));
+      gap: 16px;
+      overflow-x: auto;
+      padding-bottom: 14px;
+    }
+
+    .motion-card {
+      min-height: 390px;
+      display: grid;
+      align-content: space-between;
+    }
+
+    .motion-card .step {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(17, 17, 15, .08);
+      font-weight: 900;
+    }
+
+    .dark .step,
+    .blue .step,
+    .red .step {
+      background: rgba(255,255,255,.16);
+    }
+
+    .review-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 16px;
+    }
+
+    .score-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .score-item {
+      display: grid;
+      grid-template-columns: 70px 1fr auto;
+      gap: 14px;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(17,17,15,.14);
+    }
+
+    .score-item strong {
+      font-size: 28px;
+      letter-spacing: -.04em;
+    }
+
+    .bar {
+      height: 10px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: rgba(17,17,15,.1);
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: var(--ink);
+    }
+
+    .install {
+      padding-bottom: 36px;
+    }
+
+    .install-card {
+      display: grid;
+      grid-template-columns: 1fr .85fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    pre {
+      height: 100%;
+      margin: 0;
+      padding: 24px;
+      overflow: auto;
+      border-radius: 28px;
+      background: #11110f;
+      color: #fffaf1;
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      animation: fadeUp .86s cubic-bezier(.2, .8, .2, 1) forwards;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 1080px) {
       .nav {
-        padding: 20px 24px;
+        grid-template-columns: 1fr auto;
       }
 
       .nav-links {
         display: none;
       }
 
-      .menu-button {
+      .icon-button {
         display: inline-flex;
       }
 
-      .hero {
-        padding: 96px 24px 44px;
+      .desktop-only {
+        display: none;
       }
 
-      .hero-inner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .arrow-row {
-        justify-content: flex-start;
-      }
-
-      .content {
-        padding: 0 24px 56px;
-      }
-
-      .cinema-section {
-        min-height: auto;
-        padding: 88px 0 48px;
-      }
-
-      .section-grid,
-      .install-panel {
+      .hero,
+      .section-head,
+      .hero-lab,
+      .review-grid,
+      .install-card {
         grid-template-columns: 1fr;
       }
 
-      .pipeline,
-      .score-grid {
-        grid-template-columns: 1fr 1fr;
+      .hero-board,
+      .hero-copy {
+        min-height: 560px;
       }
 
-      .asset-wall {
+      .reference-strip {
         grid-template-columns: 1fr;
       }
     }
 
-    @media (max-width: 639px) {
+    @media (max-width: 720px) {
       .nav {
-        padding: 16px;
+        top: 12px;
+        left: 12px;
+        right: 12px;
       }
 
-      .logo {
-        height: 32px;
-      }
-
-      .logo-mark {
-        width: 30px;
-        height: 30px;
-      }
-
-      .nav-actions .desktop-action {
+      .brand span:last-child {
         display: none;
       }
 
-      .mobile-actions {
-        display: flex;
+      .nav-actions .solid-button {
+        display: none;
       }
 
-      .mobile-actions .pill-button {
-        flex: 1;
+      .icon-button {
+        border-color: var(--ink);
+        background: var(--ink);
+        color: #fffaf1;
       }
 
       .hero {
-        padding: 84px 16px 32px;
-      }
-
-      .meta-row {
-        column-gap: 12px;
-        row-gap: 9px;
-        margin-bottom: 24px;
-        font-size: 12px;
+        padding: 92px 14px 34px;
+        gap: 0;
       }
 
       .hero-copy {
-        max-width: calc(100vw - 32px);
+        min-height: auto;
+        padding: 18px 4px 30px;
       }
 
-      .meta-item:last-child {
-        flex-basis: 100%;
+      .eyebrow {
+        font-size: 11px;
+        line-height: 1.35;
       }
 
       h1 {
-        margin-bottom: 18px;
-        font-size: clamp(36px, 11vw, 48px);
-        line-height: .96;
+        font-size: clamp(52px, 18vw, 86px);
       }
 
-      .description {
-        width: 100%;
-        max-width: 310px;
-        margin-bottom: 28px;
-        font-size: 15px;
-        overflow-wrap: break-word;
+      .hero-board {
+        min-height: 520px;
+        margin-top: 18px;
       }
 
-      .primary-button,
-      .secondary-button,
-      .arrow-button {
-        min-height: 44px;
-        padding: 11px 22px;
-        font-size: 14px;
+      .card-a {
+        left: 1%;
+        width: 78%;
+        height: 30%;
       }
 
-      .content {
-        padding: 0 16px 42px;
+      .card-b {
+        top: 28%;
+        right: 0;
+        width: 65%;
+        height: 28%;
       }
 
-      .section-shell {
-        border-radius: 26px;
+      .card-c {
+        left: 7%;
+        bottom: 11%;
+        width: 70%;
+        height: 28%;
       }
 
-      .section-grid,
-      .install-panel {
-        padding: 22px;
+      .card-d {
+        display: none;
       }
 
-      .reference-stage,
-      .pipeline,
-      .score-grid {
+      .section {
+        padding: 78px 14px;
+      }
+
+      .panel {
+        min-height: 260px;
+        padding: 20px;
+        border-radius: 24px;
+      }
+
+      .hero-preview {
+        min-height: 460px;
+      }
+
+      .rules-grid {
         grid-template-columns: 1fr;
-      }
-
-      .glass-card.is-primary {
-        grid-column: auto;
-      }
-
-      .step-card,
-      .glass-card,
-      .score-card,
-      .asset-note {
-        min-height: auto;
-      }
-
-      .asset-panel {
-        min-height: auto;
-        padding: 16px;
-      }
-
-      .asset-window {
-        min-height: 320px;
       }
     }
   </style>
 </head>
 <body>
   <div class="page">
-    <div class="video-fallback" aria-hidden="true"></div>
-    <video
-      class="background-video"
-      autoplay
-      muted
-      loop
-      playsinline
-      preload="metadata"
-      src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260406_094145_4a271a6c-3869-4f1c-8aa7-aeb0cb227994.mp4"
-    ></video>
-    <div class="bottom-blur" aria-hidden="true"></div>
-    <nav class="nav" aria-label="Primary">
-      <a class="logo animate-blur-fade-up" href="https://github.com/kuakuazhang/premium-web-workflow-skills" style="animation-delay:0ms">
-        <span class="logo-mark">P</span>
-        <span>高级网页工作流</span>
+    <nav class="nav" aria-label="主导航">
+      <a class="brand" href="#top">
+        <span class="brand-mark">P</span>
+        <span>Premium Web Workflow</span>
       </a>
-
-      <div class="nav-links" aria-label="Sections">
-        <a class="animate-blur-fade-up" href="#reference" style="animation-delay:100ms">参考</a>
-        <a class="animate-blur-fade-up" href="#hero" style="animation-delay:150ms">Hero</a>
-        <a class="animate-blur-fade-up" href="#motion" style="animation-delay:200ms">流程</a>
-        <a class="animate-blur-fade-up" href="#review" style="animation-delay:250ms">验收</a>
-        <a class="animate-blur-fade-up" href="#install" style="animation-delay:300ms">安装</a>
+      <div class="nav-links">
+        <a href="#reference">参考</a>
+        <a href="#hero">Hero</a>
+        <a href="#motion">流程</a>
+        <a href="#review">验收</a>
+        <a href="#install">安装</a>
       </div>
-
       <div class="nav-actions">
-        <a class="pill-button liquid-glass desktop-action animate-blur-fade-up" href="https://github.com/kuakuazhang/premium-web-workflow-skills" style="animation-delay:350ms">
-          <span>GitHub</span>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>
-        </a>
-        <button class="circle-button liquid-glass desktop-action animate-blur-fade-up" type="button" aria-label="Profile" style="animation-delay:400ms">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="7" r="4"/></svg>
-        </button>
-        <button class="menu-button liquid-glass animate-blur-fade-up" type="button" aria-label="打开菜单" aria-expanded="false" style="animation-delay:350ms">
-          <svg class="icon-menu" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
-          <svg class="icon-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        <a class="ghost-button desktop-only" href="https://www.awwwards.com/sites/aw-portfolio">参考来源</a>
+        <a class="solid-button" href="https://github.com/kuakuazhang/premium-web-workflow-skills">GitHub</a>
+        <button class="icon-button" type="button" aria-label="打开菜单" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg>
         </button>
       </div>
     </nav>
 
-    <div class="mobile-menu" aria-label="Mobile navigation">
-      <a href="#reference" style="animation-delay:50ms">参考</a>
-      <a href="#hero" style="animation-delay:100ms">Hero</a>
-      <a href="#motion" style="animation-delay:150ms">流程</a>
-      <a href="#review" style="animation-delay:200ms">验收</a>
-      <a href="#install" style="animation-delay:250ms">安装</a>
-      <div class="mobile-actions">
-        <a class="pill-button liquid-glass" href="https://github.com/kuakuazhang/premium-web-workflow-skills">GitHub</a>
-        <button class="circle-button liquid-glass" type="button" aria-label="Profile">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="7" r="4"/></svg>
-        </button>
-      </div>
+    <div class="mobile-menu" aria-label="移动导航">
+      <a href="#reference">参考</a>
+      <a href="#hero">Hero</a>
+      <a href="#motion">流程</a>
+      <a href="#review">验收</a>
+      <a href="#install">安装</a>
+      <a href="https://github.com/kuakuazhang/premium-web-workflow-skills">GitHub</a>
     </div>
 
-    <main>
-    <section class="hero" id="top">
-      <div class="hero-inner">
-        <section class="hero-copy" aria-label="Hero">
-          <div class="meta-row animate-blur-fade-up" style="animation-delay:300ms">
-            <span class="meta-item">
-              <svg class="filled" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1-5 4.87 1.18 6.88L12 17.77 5.82 21l1.18-6.88-5-4.87 6.91-1Z"/></svg>
-              <span>4.8/5 Hero 门禁</span>
-            </span>
-            <span class="meta-item">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-              <span>90 秒复盘</span>
-            </span>
-            <span class="meta-item">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
-              <span>参考驱动 V4</span>
-            </span>
-          </div>
-
-          <h1 class="animate-blur-fade-up" style="animation-delay:400ms"><span class="title-line">先选参考</span><span class="title-line">再做网页</span></h1>
-          <p class="description animate-blur-fade-up" style="animation-delay:500ms">
-            让 Codex 先从高级参考出发，再把其中的构图、主视觉、真实结构、动效和截图验收转成可交付网页。
+    <main id="top">
+      <section class="hero" aria-label="首页">
+        <div class="hero-copy fade-up">
+          <p class="eyebrow"><span class="dot"></span> Awwwards 实验</p>
+          <h1>
+            <span class="line">参考</span>
+            <span class="line">先行</span>
+          </h1>
+          <p>
+            这不是修改 Skill 本体，而是一次样稿实验：用动效作品集的结构，重新介绍这套 Codex 网页工作流。
           </p>
-
-          <div class="cta-row">
-            <a class="primary-button animate-blur-fade-up" href="https://github.com/kuakuazhang/premium-web-workflow-skills" style="animation-delay:600ms">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 3 14 9-14 9z"/></svg>
-              <span>安装 Skill</span>
-            </a>
-            <a class="secondary-button liquid-glass animate-blur-fade-up" href="#reference" style="animation-delay:700ms">
-              <span>选择参考</span>
-            </a>
+          <div class="hero-actions">
+            <a class="solid-button" href="#reference">看参考机制</a>
+            <a class="ghost-button" href="#motion">看完整流程</a>
           </div>
-        </section>
-
-        <div class="arrow-row" aria-label="Reference mode navigation">
-          <button class="arrow-button liquid-glass animate-blur-fade-up" type="button" style="animation-delay:800ms">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
-            <span>Godly</span>
-          </button>
-          <button class="arrow-button liquid-glass animate-blur-fade-up" type="button" style="animation-delay:900ms">
-            <span>MotionSites</span>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
-          </button>
         </div>
-      </div>
-    </section>
 
-    <div class="content">
-      <section class="cinema-section">
-        <div class="section-shell liquid-glass" id="reference">
-          <div class="section-grid">
-            <div>
-              <p class="section-kicker">01 / 参考控制</p>
-              <h2><span class="title-line">先选参考</span><span class="title-line">再动代码</span></h2>
-              <p class="section-copy">
-                工作流不能静默发明所谓高级感。它必须先说明：这次是用户选择的 MotionSites prompt、Godly 真实网站参考，还是无参考实验。
-              </p>
-            </div>
-            <div class="reference-stage">
-              <article class="glass-card is-primary">
-                <span class="card-index">直接复刻模式</span>
-                <div>
-                  <h3>先还原 MotionSites</h3>
-                  <p>用户粘贴官方复制 prompt 时，Codex 先复刻机制：视频角色、玻璃按钮、导航行为、入场节奏、内容位置和响应式规则。</p>
-                </div>
-              </article>
-              <article class="glass-card">
-                <span class="card-index">深度参考模式</span>
-                <div>
-                  <h3>拆解 Godly 机制</h3>
-                  <p>检查真实网站，把布局、滚动、动效、字体和图片语法拆出来，再用我们的内容重建。</p>
-                </div>
-              </article>
-              <article class="glass-card">
-                <span class="card-index">风险标签</span>
-                <div>
-                  <h3>不能默认开干</h3>
-                  <p>如果没有选择具体参考，编码前就要说清楚。不能事后暗示自己做的是 Godly 或 MotionSites 风格。</p>
-                </div>
-              </article>
-            </div>
+        <div class="hero-board" aria-label="作品集式视觉墙">
+          <div class="board-stage">
+            <article class="work-card card-a">
+              <img src="assets/hero-design-studio.png" alt="深色设计工作台视觉" />
+              <div class="caption"><span>Hero Asset</span><span>image + interface</span></div>
+            </article>
+            <article class="work-card card-b">
+              <img src="assets/hero-editorial-atlas.png" alt="编辑式网页参考板" />
+              <div class="caption"><span>Reference Wall</span><span>Awwwards scout</span></div>
+            </article>
+            <article class="work-card card-c dark-card">
+              <strong>别再从空白页面开始</strong>
+              <span>先选参考、再拆机制、再写页面。这个顺序会直接决定网页是不是还像 PPT。</span>
+            </article>
+            <article class="work-card card-d panel red">
+              <span class="mini-label">Quality Gate</span>
+              <h3>4 分以下 重做首屏</h3>
+              <p>Hero、字体、动效、移动端和内容完整度都要过截图检查。</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="ticker" aria-hidden="true">
+          <div class="ticker-track">
+            <span>Awwwards Reference Scout</span><span>Hero First</span><span>Real DOM / SVG / Canvas</span><span>GSAP Motion</span><span>Chinese By Default</span>
+            <span>Awwwards Reference Scout</span><span>Hero First</span><span>Real DOM / SVG / Canvas</span><span>GSAP Motion</span><span>Chinese By Default</span>
           </div>
         </div>
       </section>
 
-      <section class="cinema-section">
-        <div class="section-shell liquid-glass" id="hero">
-          <div class="section-grid">
-            <div>
-              <p class="section-kicker">02 / Hero 生产</p>
-              <h2><span class="title-line">Hero 不是</span><span class="title-line">标题块</span></h2>
-              <p class="section-copy">
-                第一屏是独立交付物。它需要视觉主体、克制文案、明确的文字安全区，并且要先通过桌面和移动端截图检查。
-              </p>
-            </div>
-            <div class="asset-wall">
-              <div class="asset-panel liquid-glass">
-                <div class="asset-window">
-                  <div>
-                    <strong>先有图像、视频或场景。</strong>
-                    <span>公开页面默认用 GPT 生图或已有素材做主视觉。SVG 可以做图表和结构，但不能偷换成廉价 Hero 插画。</span>
-                  </div>
-                </div>
-              </div>
-              <div class="asset-list">
-                <div class="asset-note liquid-glass"><b>生成图片</b><span>用于电影感底图、产品渲染、编辑场景、材质纹理和视频备用封面。</span></div>
-                <div class="asset-note liquid-glass"><b>自有视频</b><span>当动效本身有价值时使用。关键视频要本地化，不能长期依赖临时远程地址。</span></div>
-                <div class="asset-note liquid-glass"><b>真实网页层</b><span>标题、按钮、标签、图表和说明必须留在 HTML 中，不能烤进图片里。</span></div>
-              </div>
-            </div>
+      <section class="section" id="reference">
+        <div class="section-head">
+          <div>
+            <p class="section-number">01 / Reference Scout</p>
+            <h2><span class="line">先找</span><span class="line">样本</span></h2>
+          </div>
+          <p class="section-intro">
+            当用户没有给具体参考时，Codex 不应该立刻写 HTML。它应该先把业务内容翻译成搜索条件，从 Awwwards、Godly、MotionSites 等来源里找到可借鉴的结构。
+          </p>
+        </div>
+        <div class="reference-strip">
+          <article class="panel dark">
+            <span class="mini-label">这次参考</span>
+            <h3>AW Portfolio</h3>
+            <p>借它的动效作品集气质：Intro animation、Hero animation、3D gallery、Work gallery、滚动中的内容切换。</p>
+            <ul>
+              <li>不复制品牌、文字、图片和完整页面结构。</li>
+              <li>只拆布局机制、空间关系、动画节奏和内容组织。</li>
+            </ul>
+          </article>
+          <article class="panel">
+            <span class="mini-label">搜索输入</span>
+            <h3>用户最多补一句</h3>
+            <p>不要让用户填设计问卷。只要问清首屏气质：科技沉浸、苹果极简、奢华报告、游戏感、数据决策舱，或者由 Codex 自动先选。</p>
+          </article>
+          <article class="panel blue">
+            <span class="mini-label">输出形式</span>
+            <h3>给出 3 个候选方向</h3>
+            <p>每个候选都说明：为什么适合、能借什么机制、有什么风险。用户选定后再进入深拆和实现。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="hero">
+        <div class="section-head">
+          <div>
+            <p class="section-number">02 / Hero Gate</p>
+            <h2><span class="line">先做</span><span class="line">首屏</span></h2>
+          </div>
+          <p class="section-intro">
+            首屏不是一个大标题加两颗按钮。它要先成为一个能被截图判断的视觉场：有主体、有空间、有入口，也有下一屏的暗示。
+          </p>
+        </div>
+        <div class="hero-lab">
+          <article class="panel hero-preview">
+            <img src="assets/hero-design-studio.png" alt="Hero 主视觉示意" />
+          </article>
+          <div class="rules-grid">
+            <article class="panel rule">
+              <span class="mini-label">规则 01</span>
+              <h3>中文标题先设计</h3>
+              <p>展示级标题不能让浏览器随意换行。先压缩成对仗短句，再检查桌面和移动端。</p>
+            </article>
+            <article class="panel rule red">
+              <span class="mini-label">规则 02</span>
+              <h3>图像不是贴图</h3>
+              <p>图片负责氛围和主体；按钮、表格、图表和业务判断必须留在网页层。</p>
+            </article>
+            <article class="panel rule blue">
+              <span class="mini-label">规则 03</span>
+              <h3>不要同一套模子</h3>
+              <p>换颜色不等于换布局。参考必须改变结构、滚动、密度和节奏。</p>
+            </article>
+            <article class="panel rule">
+              <span class="mini-label">规则 04</span>
+              <h3>不止首页漂亮</h3>
+              <p>参考给的是骨架，内容区要沿用同一视觉系统继续做完。</p>
+            </article>
           </div>
         </div>
       </section>
 
-      <section class="cinema-section">
-        <div class="section-shell liquid-glass" id="motion">
-          <div class="section-grid">
-            <div>
-              <p class="section-kicker">03 / 构建流程</p>
-              <h2><span class="title-line">保留气质</span><span class="title-line">填满内容</span></h2>
-              <p class="section-copy">
-                复制来的 Hero prompt 只是开场。后面的页面必须沿用同一套视觉系统，把我们的真实内容继续做完，而不是停在一个漂亮首页。
-              </p>
-            </div>
-            <div class="pipeline">
-              <article class="step-card"><span class="step-number">01</span><div><h3>选参考</h3><p>用户选择、Agent 声明，或者明确标注这是无参考实验。</p></div></article>
-              <article class="step-card"><span class="step-number">02</span><div><h3>做 Hero</h3><p>第一屏按照选定参考的机制来做，不再自由发挥。</p></div></article>
-              <article class="step-card"><span class="step-number">03</span><div><h3>填内容</h3><p>把同一套风格延展到所有 section，而不是换成报告模板。</p></div></article>
-              <article class="step-card"><span class="step-number">04</span><div><h3>加动效</h3><p>用入场、悬停、菜单和滚动节奏连接体验。</p></div></article>
-              <article class="step-card"><span class="step-number">05</span><div><h3>截图验收</h3><p>桌面和移动端都要看。如果回到旧模子，就重做。</p></div></article>
-            </div>
+      <section class="section" id="motion">
+        <div class="section-head">
+          <div>
+            <p class="section-number">03 / Production Flow</p>
+            <h2><span class="line">拆解</span><span class="line">再建</span></h2>
           </div>
+          <p class="section-intro">
+            这套流程要把“审美”变成可执行步骤。不是说一句高级，而是让 Codex 每一步都有明确产物和失败判定。
+          </p>
+        </div>
+        <div class="motion-row">
+          <article class="panel motion-card">
+            <span class="step">01</span>
+            <div><h3>参考侦察</h3><p>把内容类型、气质、视觉主体、禁忌翻译成搜索条件。</p></div>
+          </article>
+          <article class="panel motion-card dark">
+            <span class="step">02</span>
+            <div><h3>机制深拆</h3><p>拆首屏构图、滚动状态、图库结构、文字密度和交互节奏。</p></div>
+          </article>
+          <article class="panel motion-card">
+            <span class="step">03</span>
+            <div><h3>Hero 生产</h3><p>默认使用生成图、自有图像、视频或代码场景，不用空洞背景冒充。</p></div>
+          </article>
+          <article class="panel motion-card blue">
+            <span class="step">04</span>
+            <div><h3>内容延展</h3><p>参考结构要服务我们的内容：参考、规则、流程、验收、安装都要完整。</p></div>
+          </article>
+          <article class="panel motion-card red">
+            <span class="step">05</span>
+            <div><h3>截图复盘</h3><p>如果首屏像 PPT、标题乱、导航失效、移动端挤压，就回到设计层重做。</p></div>
+          </article>
         </div>
       </section>
 
-      <section class="cinema-section">
-        <div class="section-shell liquid-glass" id="review">
-          <div class="section-grid">
-            <div>
-              <p class="section-kicker">04 / 质量门禁</p>
-              <h2><span class="title-line">拒绝</span><span class="title-line">PPT 感</span></h2>
-              <p class="section-copy">
-                这个工作流必须有硬失败标准。只换颜色、保留同一套构图、首页下面没有内容、或者所有 section 都变成同一种玻璃卡片，都算失败。
-              </p>
-            </div>
-            <div class="score-grid">
-              <article class="score-card"><strong>4+</strong><h3>参考还原</h3><p>选定参考的机制必须看得见，而不是只在嘴上说。</p></article>
-              <article class="score-card"><strong>4+</strong><h3>Hero 沉浸</h3><p>第一屏有真实视觉主体，也有清晰入口。</p></article>
-              <article class="score-card"><strong>4+</strong><h3>内容完整</h3><p>用户原本要表达的内容必须真的出现在页面里。</p></article>
-              <article class="score-card"><strong>4+</strong><h3>移动端首屏</h3><p>不能有标题裁切、信息挤压或按钮失效。</p></article>
-            </div>
+      <section class="section" id="review">
+        <div class="section-head">
+          <div>
+            <p class="section-number">04 / Review System</p>
+            <h2><span class="line">验收</span><span class="line">不靠感觉</span></h2>
           </div>
+          <p class="section-intro">
+            好看不能只靠一句“高级”。这个页面必须被浏览器截图检查：桌面、移动端、锚点跳转、标题换行和内容完整度都要看。
+          </p>
+        </div>
+        <div class="review-grid">
+          <article class="panel">
+            <span class="mini-label">这一版实验目标</span>
+            <h3>从同一套 landing 模板里跳出来</h3>
+            <p>这次参考的是动效作品集，所以页面要更像一个案例墙和设计实验室，而不是常规产品官网。</p>
+            <div class="score-list">
+              <div class="score-item"><strong>90%</strong><div class="bar"><span style="width:90%"></span></div><span>布局差异</span></div>
+              <div class="score-item"><strong>85%</strong><div class="bar"><span style="width:85%"></span></div><span>参考机制</span></div>
+              <div class="score-item"><strong>92%</strong><div class="bar"><span style="width:92%"></span></div><span>中文排版</span></div>
+            </div>
+          </article>
+          <article class="panel dark">
+            <span class="mini-label">失败即重做</span>
+            <h3>不是补几个动画就算升级</h3>
+            <ul>
+              <li>如果还像左文右图产品页，失败。</li>
+              <li>如果内容区没有完整介绍 Skill，失败。</li>
+              <li>如果标题依然是长句自动换行，失败。</li>
+              <li>如果移动端只剩挤压文字，失败。</li>
+            </ul>
+          </article>
         </div>
       </section>
 
-      <section class="cinema-section">
-        <div class="section-shell liquid-glass" id="install">
-          <div class="install-panel">
-            <div>
-              <p class="section-kicker">05 / 安装使用</p>
-              <h2><span class="title-line">把审美</span><span class="title-line">变成默认</span></h2>
-              <p class="section-copy">
-                当用户说“做网页”，Codex 应该先询问或声明参考路径，把 Hero 当成真实设计对象，再把同一套视觉系统延展到内容区，最后截图验收。
-              </p>
-              <div class="cta-row" style="margin-top:32px">
-                <a class="primary-button" href="https://github.com/kuakuazhang/premium-web-workflow-skills"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 3 14 9-14 9z"/></svg><span>打开 GitHub</span></a>
-                <a class="secondary-button liquid-glass" href="#top"><span>回到首页</span></a>
-              </div>
+      <section class="section install" id="install">
+        <div class="section-head">
+          <div>
+            <p class="section-number">05 / Install</p>
+            <h2><span class="line">安装后</span><span class="line">默认使用</span></h2>
+          </div>
+          <p class="section-intro">
+            这套 Skill 的目标是让“做网页”默认进入参考驱动流程：先找参考、再定 Hero、再重建内容、最后截图验收。
+          </p>
+        </div>
+        <div class="install-card">
+          <article class="panel red">
+            <span class="mini-label">给同事看的说明</span>
+            <h3>不是网页模板库</h3>
+            <p>它是一套 Codex 工作流约束：让模型不要直接写静态报告，而是按真实网站生产方式做设计、实现和复盘。</p>
+            <div class="hero-actions">
+              <a class="solid-button" href="https://github.com/kuakuazhang/premium-web-workflow-skills">打开 GitHub</a>
+              <a class="ghost-button" href="#top">回到首页</a>
             </div>
-            <pre class="code-block"><code>git clone https://github.com/kuakuazhang/premium-web-workflow-skills
+          </article>
+          <pre><code>git clone https://github.com/kuakuazhang/premium-web-workflow-skills
 cd premium-web-workflow-skills
-bash install.sh</code></pre>
-          </div>
+bash install.sh
+
+# 之后直接说：
+# 做一个可视化网页
+# 做一个公司官网
+# 把这个页面改得不像 PPT</code></pre>
         </div>
       </section>
-    </div>
     </main>
   </div>
 
   <script>
-    const menuButton = document.querySelector(".menu-button");
+    const menuButton = document.querySelector(".icon-button");
     const mobileMenu = document.querySelector(".mobile-menu");
-    const navOffset = 92;
+    const navOffset = 104;
 
-    function scrollToHash(hash, updateUrl = true) {
-      if (!hash || hash === "#") return;
+    function scrollToTarget(hash, updateUrl = true, behavior = "smooth") {
       const target = document.querySelector(hash);
       if (!target) return;
 
       const top = target.getBoundingClientRect().top + window.scrollY - navOffset;
-      window.scrollTo({ top: Math.max(top, 0), behavior: "smooth" });
+      window.scrollTo({ top: Math.max(top, 0), behavior });
 
       if (updateUrl) {
         history.pushState(null, "", hash);
@@ -1155,8 +1116,7 @@ bash install.sh</code></pre>
     }
 
     menuButton.addEventListener("click", () => {
-      const isOpen = menuButton.classList.toggle("is-open");
-      mobileMenu.classList.toggle("is-open", isOpen);
+      const isOpen = mobileMenu.classList.toggle("is-open");
       menuButton.setAttribute("aria-expanded", String(isOpen));
       menuButton.setAttribute("aria-label", isOpen ? "关闭菜单" : "打开菜单");
     });
@@ -1166,10 +1126,9 @@ bash install.sh</code></pre>
         const hash = link.getAttribute("href");
         if (hash && hash.length > 1) {
           event.preventDefault();
-          scrollToHash(hash);
+          scrollToTarget(hash);
         }
 
-        menuButton.classList.remove("is-open");
         mobileMenu.classList.remove("is-open");
         menuButton.setAttribute("aria-expanded", "false");
         menuButton.setAttribute("aria-label", "打开菜单");
@@ -1178,7 +1137,9 @@ bash install.sh</code></pre>
 
     window.addEventListener("load", () => {
       if (window.location.hash) {
-        setTimeout(() => scrollToHash(window.location.hash, false), 180);
+        scrollToTarget(window.location.hash, false, "auto");
+        setTimeout(() => scrollToTarget(window.location.hash, false, "auto"), 180);
+        setTimeout(() => scrollToTarget(window.location.hash, false, "auto"), 520);
       }
     });
   </script>
