@@ -174,6 +174,8 @@ Before accepting a Hero, check:
 
 For Chinese Hero headlines and final CTA headlines, do not rely on browser auto-wrapping. Treat display text as designed typography.
 
+For Chinese-heavy pages, visual reports, evidence pages, screenshots, or Swiss/research-style webpages, also read `references/chinese-layout-evidence-gate.md`. It provides Chinese title length bands, weight ladder, single-accent research palette rules, section skeleton registry, screenshot framing, image-slot discipline, and visual-plus-code review.
+
 Before accepting a Hero or closing CTA:
 
 - Rewrite long sentences into short display phrases before tuning CSS.
@@ -183,6 +185,8 @@ Before accepting a Hero or closing CTA:
 - Keep the explanation in the subhead or body section, not inside the display headline.
 - Screenshot-check desktop and mobile. If the H1 or CTA heading feels awkward, rewrite the copy first and only then adjust type size or width.
 - Apply this to all major section titles, not only the first viewport, when the page is meant to look premium.
+- Classify Chinese display text by length before setting CSS. Longer Chinese lines need smaller size, looser line-height, and less negative tracking than English display type.
+- Use a weight ladder: large display text may be lighter, but small labels, nav, captions, and chart text must be heavier enough to read.
 
 ## Visual Dashboard / Static Report Mode
 
@@ -198,6 +202,9 @@ For both types:
 
 - charts, filters, tabs, legends, tables, timelines, maps, and cards must be real DOM/SVG/canvas, not screenshot images
 - use generated images only for non-textual atmosphere, section art, product/industry metaphor, or background plates
+- if the page is Chinese, evidence-heavy, screenshot-heavy, Swiss/research-style, or report-like, use `references/chinese-layout-evidence-gate.md` before implementation
+- choose section skeletons before coding body sections: matrix, timeline, network, map, proof rail, product scene, screenshot showcase, signal map, or CTA
+- bind screenshots and evidence images to explicit slots and ratios before placing or generating them
 - include hover/focus/active states for controls
 - verify desktop and mobile or define an intentional wide-screen-only layout for true data walls
 - avoid PPT-like cover sections followed by static cards
@@ -333,6 +340,7 @@ Use this order for new website or landing-page work:
 
 0. **Web Design Vault Lite Contract**
    - Read `references/web-design-vault-lite.md`.
+   - For Chinese-heavy, screenshot/evidence-heavy, Swiss/research, or visual-report pages, also read `references/chinese-layout-evidence-gate.md`.
    - Choose one primary archetype and optionally one secondary influence.
    - Define the Hero asset path, media grammar, layout rhythm, motion grammar, interaction inventory, and DOM/SVG/canvas vs raster boundary.
    - If using Awwwards, Godly, MotionSites, Variant, Impeccable, or another premium reference, read `references/reference-forensics-protocol.md`, open the original site when possible, capture evidence screenshots, and map reference mechanics to the user's content before coding.

@@ -165,6 +165,57 @@ Before finalizing a premium page:
 
 If a page passes visual mood but fails these mechanical checks, it is not done.
 
+## Chinese Layout And Evidence Taste Gate
+
+Borrow the portable parts of Chinese presentation-design systems, but translate them into web rules. This is especially important for Chinese reports, strategy pages, company pages, evidence-heavy pages, and screenshot-heavy visual dashboards.
+
+Chinese display text:
+
+- Classify the headline by length before setting CSS: 1 short line, 2 short lines, 2 long lines, or 3+ lines.
+- Do not copy English display line-height into Chinese. Tight English type can look intentional; tight Chinese type often looks squeezed.
+- Rewrite 3-line display headlines before styling. Move explanation into the subhead.
+- Use manual breaks for H1/H2/CTA display text. Do not let browser wrapping decide the rhythm.
+- Check section titles, not only the Hero. Lower-page headings often keep the old awkward sentence problem.
+
+Weight and readability:
+
+- Large display type can be lighter; small Chinese labels, nav, captions, chart labels, and table text must be heavier enough to read.
+- Avoid 14-16px Chinese labels in weight 300.
+- If a visual report feels weak or blurry, check small-text weight before adding shadows, blur, or glow.
+
+Research / Swiss / institutional pages:
+
+- Use a calibrated near-white / ink / grey base plus one accent color.
+- Do not mix arbitrary saturated accents, gradients, glass, glow, and shadows when the chosen style is Swiss or research-like.
+- Let accent color mark hierarchy and data state, not decorate every element.
+
+Section skeletons:
+
+- Before coding each body section, choose a skeleton: immersive Hero, editorial statement, matrix, timeline, relationship network, signal map, proof rail, product scene, screenshot showcase, map, or CTA.
+- Do not let every section become `kicker + giant heading + cards`.
+- Public creative pages with 6-8 sections should normally use at least 4 different skeleton families.
+- If the page still looks like the same mold after color changes, rebuild from a different skeleton instead of tuning margins.
+
+Axis and hierarchy:
+
+- Define shared content axes for nav, Hero, body, captions, and footer.
+- Do not add arbitrary inner padding inside already padded wrappers.
+- Kicker/eyebrow text belongs above the headline and stays subordinate. It should not compete in a separate column or appear above every section by habit.
+
+Screenshots and evidence images:
+
+- Classify each image before placing it: fidelity display, beautified screenshot, or redesigned concept image.
+- Pick a slot ratio first: `21:9`, `16:10`, `16:9`, `4:3`, `1:1`, or a grid crop.
+- If the screenshot is evidence, preserve readability and use programmatic framing instead of AI-redrawing it.
+- Generated images should not contain page chrome, large titles, footers, logos, or important readable claims.
+- Labels, captions, buttons, filters, charts, tables, and explanations stay as real DOM/SVG/canvas.
+
+Review method:
+
+- Review the browser screenshot first: title rhythm, content axis, image slots, skeleton variety, and evidence readability.
+- Then inspect DOM/code boundaries: important content must not be flattened into images.
+- If the visual result fails, diagnose skeleton, slot, axis, or type-scale mismatch before changing colors.
+
 ## Design Contract Taste Gate
 
 When `premium-web-workflow` selects a Web Design Vault Lite archetype, enforce it as a taste contract.

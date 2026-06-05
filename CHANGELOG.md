@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-06-05 - Chinese layout and evidence gates
+
+- Added `references/chinese-layout-evidence-gate.md`, inspired by portable methods from `op7418/guizang-ppt-skill` and translated into web-specific rules.
+- Added Chinese headline length bands, readable weight ladder, single-accent Swiss/research palettes, section skeleton registry, shared content axes, kicker hierarchy, screenshot/evidence framing, image-slot discipline, and visual-plus-code review.
+- Updated `premium-web-workflow` and `zhangliang-web-taste` so Chinese-heavy, report-like, screenshot-heavy, and evidence-heavy webpages use the new gate before implementation and review.
+- Clarified that PPT-only horizontal deck mechanics, fixed slide counts, and slide-template locks are not copied into the web workflow.
+
 ## 2026-06-05 - Reference forensics and GSAP motion gates
 
 - Added `references/reference-forensics-protocol.md` for concrete website references: original-site access checks, screenshot evidence, visual DNA extraction, mechanics-to-content mapping, side-by-side verification, and Chinese typography adaptation.

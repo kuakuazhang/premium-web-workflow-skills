@@ -24,19 +24,20 @@ The workflow pushes Codex to:
 8. Generate or source a strong Hero visual asset when no premium asset exists yet.
 9. Design Chinese display headlines with short manual line breaks instead of accidental browser wrapping.
 10. Run mechanical preflight checks for Hero, Chinese title line-height, CTA fit, nav pressure, section layout repetition, and real DOM/SVG/canvas boundaries.
-11. Use MotionSites in two layers:
+11. Apply the Chinese Layout And Evidence Gate for Chinese-heavy, report-like, screenshot-heavy, and evidence-heavy pages: headline length bands, weight ladder, single-accent research palettes, section skeletons, shared axes, and image slot rules.
+12. Use MotionSites in two layers:
    - **Direct Reuse Mode**: choose a design on `https://motionsites.ai/`, paste the official `Copy` prompt, reproduce it first, then adapt.
    - **Reference Mode**: if no prompt is selected, borrow only design mechanics such as Hero composition, motion, image role, glass effects, and section rhythm.
-12. Use Godly as a deep real-site reference source when no direct prompt exists, especially for Hero, motion, and premium site mechanics.
-13. Translate reference motion into an explicit GSAP plan when needed: core tweens, timelines, ScrollTrigger pin/scrub, responsive matchMedia, and performance cleanup.
-14. Keep important text, buttons, nav, tables, charts, and diagrams as real DOM/SVG/canvas instead of flattened screenshots.
-15. Use Codex built-in `image_gen` / GPT Image as the default bitmap image generation path for Hero atmosphere, renders, textures, visual scenes, and static fallbacks; do not default to SVG Hero art.
-16. Use Seedance 2.0 only when a page needs a custom video asset, such as replacing a MotionSites demo video with the user's actual product/scene motion.
-17. Use Ian Xiaohei 1.0 illustrations for middle/body logic explanation, and Ian Xiaohei 2.0 scenes for real-object situation/story moments; neither is the main premium Hero system.
-18. Add meaningful motion and browser-verify screenshots. During explicit self-evolution experiments, desktop screenshots are the primary gate; for production delivery, return to desktop/mobile verification.
-19. Localize critical remote videos/images when a page will be kept or deployed, and add fallback visuals so a dead external URL does not break the Hero.
-20. Treat Build Web Apps / `frontend-app-builder` as implementation support, not as a replacement for this visual workflow.
-21. Reject giant-text/dense-paragraph Heroes that lack a real visual subject.
+13. Use Godly as a deep real-site reference source when no direct prompt exists, especially for Hero, motion, and premium site mechanics.
+14. Translate reference motion into an explicit GSAP plan when needed: core tweens, timelines, ScrollTrigger pin/scrub, responsive matchMedia, and performance cleanup.
+15. Keep important text, buttons, nav, tables, charts, and diagrams as real DOM/SVG/canvas instead of flattened screenshots.
+16. Use Codex built-in `image_gen` / GPT Image as the default bitmap image generation path for Hero atmosphere, renders, textures, visual scenes, and static fallbacks; do not default to SVG Hero art.
+17. Use Seedance 2.0 only when a page needs a custom video asset, such as replacing a MotionSites demo video with the user's actual product/scene motion.
+18. Use Ian Xiaohei 1.0 illustrations for middle/body logic explanation, and Ian Xiaohei 2.0 scenes for real-object situation/story moments; neither is the main premium Hero system.
+19. Add meaningful motion and browser-verify screenshots. During explicit self-evolution experiments, desktop screenshots are the primary gate; for production delivery, return to desktop/mobile verification.
+20. Localize critical remote videos/images when a page will be kept or deployed, and add fallback visuals so a dead external URL does not break the Hero.
+21. Treat Build Web Apps / `frontend-app-builder` as implementation support, not as a replacement for this visual workflow.
+22. Reject giant-text/dense-paragraph Heroes that lack a real visual subject.
 
 ## Install
 
@@ -96,6 +97,18 @@ skills/premium-web-workflow/references/reference-forensics-protocol.md
 
 This protocol requires original-site access checks, reference screenshots, visual DNA extraction, mechanics-to-content mapping, Chinese typography adaptation, GSAP motion translation, and side-by-side screenshot verification before claiming a strong reference match.
 
+## Chinese Layout And Evidence Gate
+
+Chinese-heavy pages, visual reports, strategy pages, screenshot-heavy pages, and evidence-heavy webpages now use:
+
+```text
+skills/premium-web-workflow/references/chinese-layout-evidence-gate.md
+```
+
+This gate borrows portable methods from Chinese presentation-design systems and translates them into web rules: Chinese headline length bands, readable weight ladder, single-accent Swiss/research palettes, section skeleton registry, shared content axes, kicker hierarchy, screenshot/evidence framing, image slot discipline, and visual-plus-code review.
+
+It deliberately does not copy PPT-only mechanics such as horizontal deck navigation, fixed slide counts, or slide-template locks. The goal is better webpages, not prettier slides.
+
 ## Recommended Prompt To Use
 
 For direct reuse:
@@ -132,6 +145,12 @@ For concrete reference replication:
 
 ```text
 我给你一个参考网页。请先按 Reference Forensics Protocol 拆解：验证原站能打开，截参考首屏和中段，提取视觉 DNA，写出“参考机制 -> 我的内容”的映射表，再开始实现。实现后把参考截图和我们页面截图并排打分，低于 4/5 不要说已经参考成功。
+```
+
+For Chinese report / evidence-heavy pages:
+
+```text
+这是中文报告/网页，请按 Chinese Layout And Evidence Gate 先处理：中文大标题按字数分档，正文和小标签按字重阶梯，截图先定槽位和比例，body section 先选 skeleton，再实现。不要把截图、表格、按钮、图表和正文烤进图片里。
 ```
 
 For GSAP motion:
