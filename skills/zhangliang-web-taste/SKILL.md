@@ -36,6 +36,23 @@ The user prefers pages that feel like:
 - motion that guides attention and gives the page continuity
 - mobile first viewport that still has identity, Hero, and visual presence
 
+## Default Language Taste
+
+If the user asks in Chinese, the finished webpage should default to Chinese visible copy. This applies even when the chosen reference, copied prompt, or inspiration site is English.
+
+Use English references for the design mechanics, not as a reason to ship English demo text. Translate and rewrite into natural Chinese for:
+
+- nav labels
+- Hero headlines and support copy
+- CTA buttons
+- section headings
+- card labels and body copy
+- dashboard labels, table headers, filters, legends, and quality notes
+
+Keep proper nouns such as Codex, MotionSites, Godly, GitHub, GSAP, API, and Hero when they read naturally as product or technical names. The surrounding explanatory language should still be Chinese.
+
+For direct reuse of a MotionSites prompt, first reproduce the layout and mechanics, then localize the content into Chinese before final review. If a page remains mostly English after adaptation, treat it as incomplete unless the user explicitly requested English.
+
 ## Premium Prompt References
 
 MotionSites-style prompts are useful when Codex needs a concrete, high-craft implementation target. Use them as a taste amplifier, not as a template to copy.

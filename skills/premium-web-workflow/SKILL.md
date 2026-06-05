@@ -27,6 +27,16 @@ brief / content
 
 Be proactive. If the user asks for a webpage and does not specify a stack, use the existing project stack when there is one. If there is no project, create the lightest reasonable web app or static HTML that supports the intended interaction and motion.
 
+## Default Language Rule
+
+When the user asks in Chinese, build the visible webpage in Chinese by default, including nav labels, Hero copy, section headings, buttons, cards, table labels, empty states, and quality notes.
+
+Premium references such as MotionSites, Godly, Variant, Impeccable, Apple, or Awwwards may be in English. Use those references for mechanics: composition, asset role, rhythm, typography scale, motion, and interaction. Do not carry their English demo copy into the final page unless the user explicitly asks for an English page, bilingual page, or imported English brand copy.
+
+Proper nouns and tool names such as Codex, MotionSites, Godly, GSAP, GitHub, Hero, and API may remain in English when that is the natural product name. Surrounding explanatory content should still be Chinese.
+
+For Chinese display headlines, rewrite the phrase in Chinese first, then manually break lines. Do not translate a reference headline literally if it creates awkward Chinese typography.
+
 ## Build Web Apps Bridge
 
 The official `frontend-app-builder` / Build Web Apps skill can be useful for implementation, dependency setup, static HTML delivery, and browser verification. It is not a substitute for this skill.

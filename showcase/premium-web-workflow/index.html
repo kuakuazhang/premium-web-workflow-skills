@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Premium Web Workflow | Reference First</title>
-  <meta name="description" content="A cinematic MotionSites-style showcase for the Premium Web Workflow Codex skill." />
+  <title>Premium Web Workflow | 先选参考，再做网页</title>
+  <meta name="description" content="Premium Web Workflow 是一套给 Codex 使用的网页设计 Skill：先选参考，再做 Hero、内容、动效和截图验收。" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -18,6 +18,7 @@
       width: 100%;
       margin: 0;
       overflow-x: hidden;
+      scroll-behavior: smooth;
       background: #000;
       color: #fff;
       font-family: "Inter", sans-serif;
@@ -457,6 +458,7 @@
 
     .section-shell {
       width: 100%;
+      scroll-margin-top: 96px;
       border-radius: 34px;
       background: rgba(5, 5, 5, .42);
       box-shadow: 0 40px 120px rgba(0, 0, 0, .34);
@@ -914,15 +916,15 @@
     <nav class="nav" aria-label="Primary">
       <a class="logo animate-blur-fade-up" href="https://github.com/kuakuazhang/premium-web-workflow-skills" style="animation-delay:0ms">
         <span class="logo-mark">P</span>
-        <span>Premium Web Workflow</span>
+        <span>高级网页工作流</span>
       </a>
 
       <div class="nav-links" aria-label="Sections">
-        <a class="animate-blur-fade-up" href="#reference" style="animation-delay:100ms">References</a>
-        <a class="animate-blur-fade-up" href="#hero" style="animation-delay:150ms">Hero Gate</a>
-        <a class="animate-blur-fade-up" href="#motion" style="animation-delay:200ms">Motion</a>
-        <a class="animate-blur-fade-up" href="#review" style="animation-delay:250ms">Review</a>
-        <a class="animate-blur-fade-up" href="#install" style="animation-delay:300ms">Install</a>
+        <a class="animate-blur-fade-up" href="#reference" style="animation-delay:100ms">参考</a>
+        <a class="animate-blur-fade-up" href="#hero" style="animation-delay:150ms">Hero</a>
+        <a class="animate-blur-fade-up" href="#motion" style="animation-delay:200ms">流程</a>
+        <a class="animate-blur-fade-up" href="#review" style="animation-delay:250ms">验收</a>
+        <a class="animate-blur-fade-up" href="#install" style="animation-delay:300ms">安装</a>
       </div>
 
       <div class="nav-actions">
@@ -933,7 +935,7 @@
         <button class="circle-button liquid-glass desktop-action animate-blur-fade-up" type="button" aria-label="Profile" style="animation-delay:400ms">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="7" r="4"/></svg>
         </button>
-        <button class="menu-button liquid-glass animate-blur-fade-up" type="button" aria-label="Open menu" aria-expanded="false" style="animation-delay:350ms">
+        <button class="menu-button liquid-glass animate-blur-fade-up" type="button" aria-label="打开菜单" aria-expanded="false" style="animation-delay:350ms">
           <svg class="icon-menu" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
           <svg class="icon-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
         </button>
@@ -941,11 +943,11 @@
     </nav>
 
     <div class="mobile-menu" aria-label="Mobile navigation">
-      <a href="#reference" style="animation-delay:50ms">References</a>
-      <a href="#hero" style="animation-delay:100ms">Hero Gate</a>
-      <a href="#motion" style="animation-delay:150ms">Motion</a>
-      <a href="#review" style="animation-delay:200ms">Review</a>
-      <a href="#install" style="animation-delay:250ms">Install</a>
+      <a href="#reference" style="animation-delay:50ms">参考</a>
+      <a href="#hero" style="animation-delay:100ms">Hero</a>
+      <a href="#motion" style="animation-delay:150ms">流程</a>
+      <a href="#review" style="animation-delay:200ms">验收</a>
+      <a href="#install" style="animation-delay:250ms">安装</a>
       <div class="mobile-actions">
         <a class="pill-button liquid-glass" href="https://github.com/kuakuazhang/premium-web-workflow-skills">GitHub</a>
         <button class="circle-button liquid-glass" type="button" aria-label="Profile">
@@ -961,30 +963,30 @@
           <div class="meta-row animate-blur-fade-up" style="animation-delay:300ms">
             <span class="meta-item">
               <svg class="filled" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1-5 4.87 1.18 6.88L12 17.77 5.82 21l1.18-6.88-5-4.87 6.91-1Z"/></svg>
-              <span>4.8/5 Hero Gate</span>
+              <span>4.8/5 Hero 门禁</span>
             </span>
             <span class="meta-item">
               <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-              <span>90 sec review</span>
+              <span>90 秒复盘</span>
             </span>
             <span class="meta-item">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
-              <span>Reference-led V4</span>
+              <span>参考驱动 V4</span>
             </span>
           </div>
 
-          <h1 class="animate-blur-fade-up" style="animation-delay:400ms"><span class="title-line">Reference First.</span><span class="title-line">Build Better.</span></h1>
+          <h1 class="animate-blur-fade-up" style="animation-delay:400ms"><span class="title-line">先选参考</span><span class="title-line">再做网页</span></h1>
           <p class="description animate-blur-fade-up" style="animation-delay:500ms">
-            A Codex web workflow that starts from a chosen premium reference, then turns the mechanics into hero assets, real HTML structure, motion, and screenshot gates.
+            让 Codex 先从高级参考出发，再把其中的构图、主视觉、真实结构、动效和截图验收转成可交付网页。
           </p>
 
           <div class="cta-row">
             <a class="primary-button animate-blur-fade-up" href="https://github.com/kuakuazhang/premium-web-workflow-skills" style="animation-delay:600ms">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 3 14 9-14 9z"/></svg>
-              <span>Install Skill</span>
+              <span>安装 Skill</span>
             </a>
             <a class="secondary-button liquid-glass animate-blur-fade-up" href="#reference" style="animation-delay:700ms">
-              <span>Choose Reference</span>
+              <span>选择参考</span>
             </a>
           </div>
         </section>
@@ -1003,36 +1005,36 @@
     </section>
 
     <div class="content">
-      <section class="cinema-section" id="reference">
-        <div class="section-shell liquid-glass">
+      <section class="cinema-section">
+        <div class="section-shell liquid-glass" id="reference">
           <div class="section-grid">
             <div>
-              <p class="section-kicker">01 / Reference Control</p>
-              <h2><span class="title-line">Choose.</span><span class="title-line">Then Build.</span></h2>
+              <p class="section-kicker">01 / 参考控制</p>
+              <h2><span class="title-line">先选参考</span><span class="title-line">再动代码</span></h2>
               <p class="section-copy">
-                The workflow should not silently invent a premium style. It must first declare whether the page is using a user-selected MotionSites prompt, a Godly real-site reference, or a no-reference experiment.
+                工作流不能静默发明所谓高级感。它必须先说明：这次是用户选择的 MotionSites prompt、Godly 真实网站参考，还是无参考实验。
               </p>
             </div>
             <div class="reference-stage">
               <article class="glass-card is-primary">
-                <span class="card-index">Direct reuse mode</span>
+                <span class="card-index">直接复刻模式</span>
                 <div>
-                  <h3>MotionSites prompt first</h3>
-                  <p>When the user pastes an official copied prompt, Codex reproduces the mechanics first: video role, glass buttons, nav behavior, entry timing, content position, and responsive rules.</p>
+                  <h3>先还原 MotionSites</h3>
+                  <p>用户粘贴官方复制 prompt 时，Codex 先复刻机制：视频角色、玻璃按钮、导航行为、入场节奏、内容位置和响应式规则。</p>
                 </div>
               </article>
               <article class="glass-card">
-                <span class="card-index">Deep reference mode</span>
+                <span class="card-index">深度参考模式</span>
                 <div>
-                  <h3>Godly mechanics</h3>
-                  <p>Inspect a real site, extract layout, scroll, motion, typography, and asset grammar, then rebuild those mechanics for the user's content.</p>
+                  <h3>拆解 Godly 机制</h3>
+                  <p>检查真实网站，把布局、滚动、动效、字体和图片语法拆出来，再用我们的内容重建。</p>
                 </div>
               </article>
               <article class="glass-card">
-                <span class="card-index">Risk label</span>
+                <span class="card-index">风险标签</span>
                 <div>
-                  <h3>No silent default</h3>
-                  <p>If no reference is selected, say so before coding. Do not imply a Godly or MotionSites result after the fact.</p>
+                  <h3>不能默认开干</h3>
+                  <p>如果没有选择具体参考，编码前就要说清楚。不能事后暗示自己做的是 Godly 或 MotionSites 风格。</p>
                 </div>
               </article>
             </div>
@@ -1040,88 +1042,88 @@
         </div>
       </section>
 
-      <section class="cinema-section" id="hero">
-        <div class="section-shell liquid-glass">
+      <section class="cinema-section">
+        <div class="section-shell liquid-glass" id="hero">
           <div class="section-grid">
             <div>
-              <p class="section-kicker">02 / Hero Production</p>
-              <h2><span class="title-line">Hero is not</span><span class="title-line">a title block.</span></h2>
+              <p class="section-kicker">02 / Hero 生产</p>
+              <h2><span class="title-line">Hero 不是</span><span class="title-line">标题块</span></h2>
               <p class="section-copy">
-                The first viewport is a separate deliverable. It needs a visual subject, restrained copy, a clear text-safe area, and desktop plus mobile screenshot review before the rest of the page is accepted.
+                第一屏是独立交付物。它需要视觉主体、克制文案、明确的文字安全区，并且要先通过桌面和移动端截图检查。
               </p>
             </div>
             <div class="asset-wall">
               <div class="asset-panel liquid-glass">
                 <div class="asset-window">
                   <div>
-                    <strong>Image, video, or scene first.</strong>
-                    <span>For public pages, default to GPT image generation or owned media. SVG diagrams are useful later, but not as a cheap replacement for the primary Hero visual.</span>
+                    <strong>先有图像、视频或场景。</strong>
+                    <span>公开页面默认用 GPT 生图或已有素材做主视觉。SVG 可以做图表和结构，但不能偷换成廉价 Hero 插画。</span>
                   </div>
                 </div>
               </div>
               <div class="asset-list">
-                <div class="asset-note liquid-glass"><b>Generated image</b><span>Use for cinematic plates, product renders, editorial scenes, textures, and fallback posters.</span></div>
-                <div class="asset-note liquid-glass"><b>Owned video</b><span>Use when motion is the point. Localize critical video files instead of depending on temporary URLs.</span></div>
-                <div class="asset-note liquid-glass"><b>Real HTML layer</b><span>Titles, buttons, tabs, labels, charts, and explanations stay in the page, not inside the raster asset.</span></div>
+                <div class="asset-note liquid-glass"><b>生成图片</b><span>用于电影感底图、产品渲染、编辑场景、材质纹理和视频备用封面。</span></div>
+                <div class="asset-note liquid-glass"><b>自有视频</b><span>当动效本身有价值时使用。关键视频要本地化，不能长期依赖临时远程地址。</span></div>
+                <div class="asset-note liquid-glass"><b>真实网页层</b><span>标题、按钮、标签、图表和说明必须留在 HTML 中，不能烤进图片里。</span></div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="cinema-section" id="motion">
-        <div class="section-shell liquid-glass">
+      <section class="cinema-section">
+        <div class="section-shell liquid-glass" id="motion">
           <div class="section-grid">
             <div>
-              <p class="section-kicker">03 / Build Pipeline</p>
-              <h2><span class="title-line">Keep the vibe.</span><span class="title-line">Fill the page.</span></h2>
+              <p class="section-kicker">03 / 构建流程</p>
+              <h2><span class="title-line">保留气质</span><span class="title-line">填满内容</span></h2>
               <p class="section-copy">
-                A copied Hero prompt is only the opening scene. The rest of the page must continue the same system with real content, not stop because the reference only provided one viewport.
+                复制来的 Hero prompt 只是开场。后面的页面必须沿用同一套视觉系统，把我们的真实内容继续做完，而不是停在一个漂亮首页。
               </p>
             </div>
             <div class="pipeline">
-              <article class="step-card"><span class="step-number">01</span><div><h3>Reference</h3><p>User chooses, agent declares, or experiment is labeled.</p></div></article>
-              <article class="step-card"><span class="step-number">02</span><div><h3>Hero</h3><p>Build the first viewport against the selected mechanics.</p></div></article>
-              <article class="step-card"><span class="step-number">03</span><div><h3>Content</h3><p>Extend the style into sections, not a new report template.</p></div></article>
-              <article class="step-card"><span class="step-number">04</span><div><h3>Motion</h3><p>Use reveal, hover, menu, and scroll rhythm to connect the experience.</p></div></article>
-              <article class="step-card"><span class="step-number">05</span><div><h3>Verify</h3><p>Screenshot desktop and mobile. Rebuild if it falls back to the old mold.</p></div></article>
+              <article class="step-card"><span class="step-number">01</span><div><h3>选参考</h3><p>用户选择、Agent 声明，或者明确标注这是无参考实验。</p></div></article>
+              <article class="step-card"><span class="step-number">02</span><div><h3>做 Hero</h3><p>第一屏按照选定参考的机制来做，不再自由发挥。</p></div></article>
+              <article class="step-card"><span class="step-number">03</span><div><h3>填内容</h3><p>把同一套风格延展到所有 section，而不是换成报告模板。</p></div></article>
+              <article class="step-card"><span class="step-number">04</span><div><h3>加动效</h3><p>用入场、悬停、菜单和滚动节奏连接体验。</p></div></article>
+              <article class="step-card"><span class="step-number">05</span><div><h3>截图验收</h3><p>桌面和移动端都要看。如果回到旧模子，就重做。</p></div></article>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="cinema-section" id="review">
-        <div class="section-shell liquid-glass">
+      <section class="cinema-section">
+        <div class="section-shell liquid-glass" id="review">
           <div class="section-grid">
             <div>
-              <p class="section-kicker">04 / Quality Gate</p>
-              <h2><span class="title-line">Reject the</span><span class="title-line">PPT feeling.</span></h2>
+              <p class="section-kicker">04 / 质量门禁</p>
+              <h2><span class="title-line">拒绝</span><span class="title-line">PPT 感</span></h2>
               <p class="section-copy">
-                The workflow needs hard failure checks. A page fails when it only changes colors, keeps the same composition, hides content below an empty Hero, or turns every section into the same glass card.
+                这个工作流必须有硬失败标准。只换颜色、保留同一套构图、首页下面没有内容、或者所有 section 都变成同一种玻璃卡片，都算失败。
               </p>
             </div>
             <div class="score-grid">
-              <article class="score-card"><strong>4+</strong><h3>Reference fidelity</h3><p>The chosen mechanics are visible, not just named.</p></article>
-              <article class="score-card"><strong>4+</strong><h3>Hero immersion</h3><p>The first viewport has a real subject and clear entry point.</p></article>
-              <article class="score-card"><strong>4+</strong><h3>Content depth</h3><p>The rest of the user's material is actually present.</p></article>
-              <article class="score-card"><strong>4+</strong><h3>Mobile viewport</h3><p>No clipped titles, crowded metadata, or broken controls.</p></article>
+              <article class="score-card"><strong>4+</strong><h3>参考还原</h3><p>选定参考的机制必须看得见，而不是只在嘴上说。</p></article>
+              <article class="score-card"><strong>4+</strong><h3>Hero 沉浸</h3><p>第一屏有真实视觉主体，也有清晰入口。</p></article>
+              <article class="score-card"><strong>4+</strong><h3>内容完整</h3><p>用户原本要表达的内容必须真的出现在页面里。</p></article>
+              <article class="score-card"><strong>4+</strong><h3>移动端首屏</h3><p>不能有标题裁切、信息挤压或按钮失效。</p></article>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="cinema-section" id="install">
-        <div class="section-shell liquid-glass">
+      <section class="cinema-section">
+        <div class="section-shell liquid-glass" id="install">
           <div class="install-panel">
             <div>
-              <p class="section-kicker">05 / Install</p>
-              <h2><span class="title-line">Make this the</span><span class="title-line">default habit.</span></h2>
+              <p class="section-kicker">05 / 安装使用</p>
+              <h2><span class="title-line">把审美</span><span class="title-line">变成默认</span></h2>
               <p class="section-copy">
-                When the user says "做网页", Codex should ask for or declare the reference path, build the Hero as a real design object, continue the same visual system through the content, and verify before shipping.
+                当用户说“做网页”，Codex 应该先询问或声明参考路径，把 Hero 当成真实设计对象，再把同一套视觉系统延展到内容区，最后截图验收。
               </p>
               <div class="cta-row" style="margin-top:32px">
-                <a class="primary-button" href="https://github.com/kuakuazhang/premium-web-workflow-skills"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 3 14 9-14 9z"/></svg><span>Open GitHub</span></a>
-                <a class="secondary-button liquid-glass" href="#top"><span>Back to Hero</span></a>
+                <a class="primary-button" href="https://github.com/kuakuazhang/premium-web-workflow-skills"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 3 14 9-14 9z"/></svg><span>打开 GitHub</span></a>
+                <a class="secondary-button liquid-glass" href="#top"><span>回到首页</span></a>
               </div>
             </div>
             <pre class="code-block"><code>git clone https://github.com/kuakuazhang/premium-web-workflow-skills
@@ -1137,21 +1139,47 @@ bash install.sh</code></pre>
   <script>
     const menuButton = document.querySelector(".menu-button");
     const mobileMenu = document.querySelector(".mobile-menu");
+    const navOffset = 92;
+
+    function scrollToHash(hash, updateUrl = true) {
+      if (!hash || hash === "#") return;
+      const target = document.querySelector(hash);
+      if (!target) return;
+
+      const top = target.getBoundingClientRect().top + window.scrollY - navOffset;
+      window.scrollTo({ top: Math.max(top, 0), behavior: "smooth" });
+
+      if (updateUrl) {
+        history.pushState(null, "", hash);
+      }
+    }
 
     menuButton.addEventListener("click", () => {
       const isOpen = menuButton.classList.toggle("is-open");
       mobileMenu.classList.toggle("is-open", isOpen);
       menuButton.setAttribute("aria-expanded", String(isOpen));
-      menuButton.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+      menuButton.setAttribute("aria-label", isOpen ? "关闭菜单" : "打开菜单");
     });
 
-    mobileMenu.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const hash = link.getAttribute("href");
+        if (hash && hash.length > 1) {
+          event.preventDefault();
+          scrollToHash(hash);
+        }
+
         menuButton.classList.remove("is-open");
         mobileMenu.classList.remove("is-open");
         menuButton.setAttribute("aria-expanded", "false");
-        menuButton.setAttribute("aria-label", "Open menu");
+        menuButton.setAttribute("aria-label", "打开菜单");
       });
+    });
+
+    window.addEventListener("load", () => {
+      if (window.location.hash) {
+        setTimeout(() => scrollToHash(window.location.hash, false), 180);
+      }
     });
   </script>
 </body>
