@@ -17,23 +17,26 @@ The workflow pushes Codex to:
 1. Start from a Web Design Vault Lite contract instead of vague "make it premium" taste words.
 2. Make the reference basis explicit: user-selected reference, agent-selected reference, or no-reference experiment.
 3. When no reference is selected for an experiment, scout exactly 3 concrete Awwwards pages, choose 1 main reference, and record why.
-4. Bind high-craft work to a specific site reference or explicitly mark it as a no-reference experiment.
-5. Avoid reusing the same palette, Hero skeleton, content skeleton, motion method, and typography rhythm across consecutive experiments.
-6. Treat the Hero/first viewport as a separate deliverable before writing the rest of the page.
-7. Generate or source a strong Hero visual asset when no premium asset exists yet.
-8. Design Chinese display headlines with short manual line breaks instead of accidental browser wrapping.
-9. Use MotionSites in two layers:
+4. Run Reference Forensics for concrete references: verify original-site access, capture screenshots, extract visual DNA, map mechanics to user content, and compare side-by-side.
+5. Bind high-craft work to a specific site reference or explicitly mark it as a no-reference experiment.
+6. Avoid reusing the same palette, Hero skeleton, content skeleton, motion method, and typography rhythm across consecutive experiments.
+7. Treat the Hero/first viewport as a separate deliverable before writing the rest of the page.
+8. Generate or source a strong Hero visual asset when no premium asset exists yet.
+9. Design Chinese display headlines with short manual line breaks instead of accidental browser wrapping.
+10. Run mechanical preflight checks for Hero, Chinese title line-height, CTA fit, nav pressure, section layout repetition, and real DOM/SVG/canvas boundaries.
+11. Use MotionSites in two layers:
    - **Direct Reuse Mode**: choose a design on `https://motionsites.ai/`, paste the official `Copy` prompt, reproduce it first, then adapt.
    - **Reference Mode**: if no prompt is selected, borrow only design mechanics such as Hero composition, motion, image role, glass effects, and section rhythm.
-10. Use Godly as a deep real-site reference source when no direct prompt exists, especially for Hero, motion, and premium site mechanics.
-11. Keep important text, buttons, nav, tables, charts, and diagrams as real DOM/SVG/canvas instead of flattened screenshots.
-12. Use Codex built-in `image_gen` / GPT Image as the default bitmap image generation path for Hero atmosphere, renders, textures, visual scenes, and static fallbacks; do not default to SVG Hero art.
-13. Use Seedance 2.0 only when a page needs a custom video asset, such as replacing a MotionSites demo video with the user's actual product/scene motion.
-14. Use Ian Xiaohei 1.0 illustrations for middle/body logic explanation, and Ian Xiaohei 2.0 scenes for real-object situation/story moments; neither is the main premium Hero system.
-15. Add meaningful motion and browser-verify screenshots. During explicit self-evolution experiments, desktop screenshots are the primary gate; for production delivery, return to desktop/mobile verification.
-16. Localize critical remote videos/images when a page will be kept or deployed, and add fallback visuals so a dead external URL does not break the Hero.
-17. Treat Build Web Apps / `frontend-app-builder` as implementation support, not as a replacement for this visual workflow.
-18. Reject giant-text/dense-paragraph Heroes that lack a real visual subject.
+12. Use Godly as a deep real-site reference source when no direct prompt exists, especially for Hero, motion, and premium site mechanics.
+13. Translate reference motion into an explicit GSAP plan when needed: core tweens, timelines, ScrollTrigger pin/scrub, responsive matchMedia, and performance cleanup.
+14. Keep important text, buttons, nav, tables, charts, and diagrams as real DOM/SVG/canvas instead of flattened screenshots.
+15. Use Codex built-in `image_gen` / GPT Image as the default bitmap image generation path for Hero atmosphere, renders, textures, visual scenes, and static fallbacks; do not default to SVG Hero art.
+16. Use Seedance 2.0 only when a page needs a custom video asset, such as replacing a MotionSites demo video with the user's actual product/scene motion.
+17. Use Ian Xiaohei 1.0 illustrations for middle/body logic explanation, and Ian Xiaohei 2.0 scenes for real-object situation/story moments; neither is the main premium Hero system.
+18. Add meaningful motion and browser-verify screenshots. During explicit self-evolution experiments, desktop screenshots are the primary gate; for production delivery, return to desktop/mobile verification.
+19. Localize critical remote videos/images when a page will be kept or deployed, and add fallback visuals so a dead external URL does not break the Hero.
+20. Treat Build Web Apps / `frontend-app-builder` as implementation support, not as a replacement for this visual workflow.
+21. Reject giant-text/dense-paragraph Heroes that lack a real visual subject.
 
 ## Install
 
@@ -83,6 +86,16 @@ It contains 3 desktop-first rounds:
 
 These experiments are the evidence behind the Awwwards Reference Scout, Specific Site First, Style Diversity Gate, Self Evolution Loop, Low Disturbance Mode, Evidence Before Rule, and Desktop First Experiment Mode rules.
 
+## Reference Forensics
+
+Concrete reference work now uses:
+
+```text
+skills/premium-web-workflow/references/reference-forensics-protocol.md
+```
+
+This protocol requires original-site access checks, reference screenshots, visual DNA extraction, mechanics-to-content mapping, Chinese typography adaptation, GSAP motion translation, and side-by-side screenshot verification before claiming a strong reference match.
+
 ## Recommended Prompt To Use
 
 For direct reuse:
@@ -113,6 +126,18 @@ For low-disturbance Awwwards scouting:
 
 ```text
 做这个网页前，请按 premium-web-workflow 的 Awwwards Reference Scout 走。只从 Awwwards 找 3 个具体网页候选，给出候选表，然后你自己选 1 个主参考并说明要避开上一版哪个模子。先做桌面端实验页，截图验收后再决定是否写回 Skill。
+```
+
+For concrete reference replication:
+
+```text
+我给你一个参考网页。请先按 Reference Forensics Protocol 拆解：验证原站能打开，截参考首屏和中段，提取视觉 DNA，写出“参考机制 -> 我的内容”的映射表，再开始实现。实现后把参考截图和我们页面截图并排打分，低于 4/5 不要说已经参考成功。
+```
+
+For GSAP motion:
+
+```text
+这个页面需要高级动效。请先把参考网站的动效拆成 GSAP motion plan：哪些用 CSS transition，哪些用 gsap timeline，哪些用 ScrollTrigger pin/scrub，哪些需要 reduced-motion fallback。动效必须解释层级、连接 section 或呈现产品状态，不要只做漂浮装饰。
 ```
 
 For Godly deep reference:

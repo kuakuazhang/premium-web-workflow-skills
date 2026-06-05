@@ -124,6 +124,47 @@ Taste failures this gate is meant to catch:
 
 If an experiment scores below 4/5 on Hero immersion, reference mechanics, Chinese typography, content completeness, or layout difference, the next move is to rebuild from a different reference skeleton. Do not only tune CSS.
 
+## Reference Forensics Taste Gate
+
+The user does not consider a page "reference-led" just because a reference was named. The reference must be opened, screenshotted, decomposed, mapped, and compared.
+
+Before accepting any Awwwards/Godly/original-site reference:
+
+- Verify the original site works. Try `https`, `http`, `www`, and no-`www` when needed.
+- Capture the reference Hero and at least one below-fold section.
+- Extract visual DNA: palette, typography, line-height, spacing, surfaces, image/video role, motion, and section rhythm.
+- Create a mechanics-to-content mapping: what reference mechanic becomes what part of the user's page.
+- Capture the implemented page in the same viewport and compare side by side.
+
+Taste failures:
+
+- reference site was never opened
+- Awwwards page was inspected but original site failed and that limitation was not declared
+- the implementation uses unrelated colors while claiming the reference
+- only the broad layout family was borrowed, not the visual DNA
+- Chinese type copied English tight line-height and looks squeezed
+- lower sections revert to the agent's default cards, metrics, glass panels, or left-right blocks
+
+If any of these happen, say the reference did not land and rebuild from the mechanics map.
+
+## Mechanical Preflight Taste Gate
+
+Borrow this from strong taste-checker skills: stop relying on subjective "looks good" language and run mechanical checks.
+
+Before finalizing a premium page:
+
+- Hero H1 should be short, deliberately broken, and not an accidental long sentence.
+- Display Chinese line-height should breathe; do not use ultra-tight English display rhythm directly.
+- CTA labels should fit on one line and not wrap.
+- Nav should be calm, single-line, and not dominate the first viewport.
+- Eyebrows/kickers should be used sparingly; do not put a tiny uppercase label above every section by habit.
+- Consecutive sections should not share the same layout family. A page with 6-8 sections should have at least 4 distinct section skeletons when it is a public/creative page.
+- Do not repeat the same card grid, metric strip, floating pill nav, dark-glass panel, or bento rhythm across unrelated pages.
+- Body sections need their own design logic, not only a good Hero followed by generic content.
+- Buttons, tabs, filters, charts, tables, labels, and main copy must remain real DOM/SVG/canvas.
+
+If a page passes visual mood but fails these mechanical checks, it is not done.
+
 ## Design Contract Taste Gate
 
 When `premium-web-workflow` selects a Web Design Vault Lite archetype, enforce it as a taste contract.

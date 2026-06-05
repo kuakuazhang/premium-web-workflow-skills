@@ -85,7 +85,7 @@ Optionally add one secondary influence when useful. Then define:
 - DOM/SVG/canvas vs raster boundary
 - top failure risks and browser verification targets
 
-For routine tasks, this contract can be short and internal. For ambiguous or high-risk public pages, show the user the contract briefly before coding. If the user provides a premium reference, follow the Reference Decomposition Protocol in `web-design-vault-lite.md` before implementing.
+For routine tasks, this contract can be short and internal. For ambiguous or high-risk public pages, show the user the contract briefly before coding. If the user provides a premium reference or a concrete Awwwards/Godly/original-site URL, follow the Reference Forensics Protocol in `references/reference-forensics-protocol.md` before implementing.
 
 Hard rule: if the page is public-facing or presentation-oriented, do not proceed with a text-only or SVG-only Hero unless the design contract explicitly justifies a code-native scene and the first viewport has a real visual subject.
 
@@ -112,10 +112,12 @@ For each low-disturbance experiment round:
 1. Find exactly 3 concrete Awwwards webpage candidates.
 2. Show or record a candidate table: website name, Awwwards link, original-site link or source clue, why it fits, borrowable mechanics, and risks.
 3. Choose 1 main reference yourself when the user wants low disturbance, and state why.
-4. Before designing, write one sentence naming the previous pattern this round must avoid.
-5. Deeply decompose the chosen reference: first-viewport geometry, page skeleton, scroll rhythm, navigation, content modules, motion, typography, and DOM/SVG/canvas vs raster boundary.
-6. Build with the user's real content. Do not copy the reference brand, logo, wording, video, or proprietary assets.
-7. Verify desktop first: 1440x900 Hero screenshot, at least 2 desktop section screenshots, at least 3 anchor/link checks, Chinese display headline fit, content completeness, and image-boundary correctness.
+4. Open the original site and capture reference screenshots before coding. If the original site is unavailable, mark the candidate as weak and choose another when possible.
+5. Before designing, write one sentence naming the previous pattern this round must avoid.
+6. Deeply decompose the chosen reference through `references/reference-forensics-protocol.md`: visual DNA, first-viewport geometry, page skeleton, scroll rhythm, navigation, content modules, motion, typography, and DOM/SVG/canvas vs raster boundary.
+7. Build a mechanics-to-content mapping table before implementation. A page that only copies a broad vibe or color is not reference-led.
+8. Build with the user's real content. Do not copy the reference brand, logo, wording, video, or proprietary assets.
+9. Verify desktop first: 1440x900 Hero screenshot, at least 2 desktop section screenshots, at least 3 anchor/link checks, Chinese display headline fit, content completeness, image-boundary correctness, and side-by-side reference fidelity.
 
 Specific-site rule: a premium page should bind to a concrete reference site before implementation, or explicitly declare "no-reference experiment." A category label such as "Awwwards style" or "Godly-like" is not specific enough.
 
@@ -218,6 +220,7 @@ When the visual direction is weak, the user asks for a cooler Hero, or the page 
 Use Godly when the task needs real-world premium website references rather than a directly copied prompt.
 
 - Read `references/godly-deep-reference.md` when the user mentions `godly.website`, asks to use a real website reference, wants to replicate a specific effect from a beautiful site, or says the page should look like a top-tier real website.
+- Also read `references/reference-forensics-protocol.md` when a concrete Godly/original-site reference is selected. Godly provides the deep-reference lens; Reference Forensics provides evidence capture, mechanics mapping, and side-by-side verification.
 - Godly is a curated inspiration source, not an open-source template library. Use it to find and inspect references, then extract design mechanics.
 - For a 80-90% effect match, do not summarize the reference as "clean", "premium", or "animated." Produce a detailed replication brief that covers layout geometry, visual assets, typography, color/materials, motion, interaction states, responsive behavior, and implementation choices.
 - If the user provides a specific Godly entry or original site URL, inspect that exact page in browser. Capture or observe desktop and mobile first viewports, important scroll states, hover states, and motion if possible.
@@ -332,7 +335,7 @@ Use this order for new website or landing-page work:
    - Read `references/web-design-vault-lite.md`.
    - Choose one primary archetype and optionally one secondary influence.
    - Define the Hero asset path, media grammar, layout rhythm, motion grammar, interaction inventory, and DOM/SVG/canvas vs raster boundary.
-   - If using Godly, MotionSites, Variant, Impeccable, or another premium reference, decompose the reference before coding.
+   - If using Awwwards, Godly, MotionSites, Variant, Impeccable, or another premium reference, read `references/reference-forensics-protocol.md`, open the original site when possible, capture evidence screenshots, and map reference mechanics to the user's content before coding.
    - Keep the contract short, but let it constrain the implementation.
 
 1. **Hero-First Immersion Plan**
@@ -350,6 +353,7 @@ Use this order for new website or landing-page work:
 3. **Reference Pattern Selection**
    - If no reusable prompt is selected, choose 1-3 reference patterns from high-end design references, MotionSites-style patterns, or the user's provided references.
    - When using Godly or another real-site reference, follow `references/godly-deep-reference.md` and produce a detailed replication brief before coding.
+   - When using a concrete Awwwards/Godly/original-site reference, follow `references/reference-forensics-protocol.md` and produce: working URL, screenshots captured, visual DNA, mechanics-to-content mapping, and a side-by-side match gate.
    - Summarize the chosen pattern in implementation terms: layout, image role, type scale, motion, interaction, and responsive behavior.
    - Do not copy prompt text verbatim into the final page brief. Distill and adapt it.
 

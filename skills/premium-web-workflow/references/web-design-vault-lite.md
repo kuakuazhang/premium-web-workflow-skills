@@ -204,6 +204,8 @@ Reject these as primary Hero assets:
 
 When using Godly, MotionSites, Variant, Impeccable, or any premium reference, decompose before coding:
 
+First read `reference-forensics-protocol.md` for concrete real-site references. The short checklist below is only the compact version; the forensics protocol is the source of truth for original-site access, screenshot evidence, mechanics mapping, Chinese typography adaptation, GSAP motion translation, and side-by-side verification.
+
 1. First viewport geometry
 2. Main visual asset and crop
 3. Typography scale and line rhythm
@@ -216,6 +218,16 @@ When using Godly, MotionSites, Variant, Impeccable, or any premium reference, de
 10. What must be rebuilt as DOM/SVG/canvas vs what can remain raster
 
 Do not summarize references as "clean", "high-end", or "Apple-like". Convert them into implementation constraints.
+
+Minimum evidence for reference-led work:
+
+- working reference URL or explicit unavailable-site note
+- reference Hero screenshot and at least one below-fold reference screenshot
+- visual DNA extraction: palette, type, layout skeleton, asset role, motion language
+- mechanics-to-content mapping table
+- implemented screenshots compared against the reference
+
+If only colors or broad mood match, reference fidelity fails.
 
 ## Quality Gate
 

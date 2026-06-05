@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-06-05 - Reference forensics and GSAP motion gates
+
+- Added `references/reference-forensics-protocol.md` for concrete website references: original-site access checks, screenshot evidence, visual DNA extraction, mechanics-to-content mapping, side-by-side verification, and Chinese typography adaptation.
+- Strengthened Awwwards/Godly/original-site reference handling so a named reference is not enough; the implementation must prove what was opened, captured, mapped, and matched.
+- Added mechanical preflight taste checks inspired by taste-checking workflows: Hero headline fit, Chinese line-height, CTA/nav fit, section-layout repetition, and real DOM/SVG/canvas boundaries.
+- Added GSAP motion translation guidance: use core tweens, timelines, ScrollTrigger pin/scrub, matchMedia/reduced-motion, React cleanup, and performance-safe transform/opacity animation.
+- Clarified that motion must reveal hierarchy, connect sections, show state, or make a product/visual subject feel alive; decorative drift alone does not count.
+
 ## 2026-06-05 - Awwwards self-evolution workflow
 
 - Added an Awwwards-only self-evolution experiment with 3 desktop-first rounds: creative Skill intro, visual report, and product/company page.
